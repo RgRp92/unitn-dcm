@@ -1,0 +1,54 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<p> Remember that:</p>
+
+<p><b> In phase 1 </b> the binding choice situation was chosen ( in our example was the choice situation {{ Constants.random_practice_choice_sit }} )
+</p>
+<p>
+<b> In phase 2 </b>  the binding alternative was chosen ( in our example was alternative {{ chosen_letter }} )
+</p>
+
+<p> And now: </p>
+
+<p><b>In phase 3  </b> it will be determined if your  predictions will be replaced or not, and thus your final earnings.
+</p>
+
+
+
+<br>
+<br>
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

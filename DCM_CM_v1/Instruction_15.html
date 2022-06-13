@@ -1,0 +1,80 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+.myDiv {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
+}
+
+
+</style>
+
+<h1 style="width:100%;">Location</h1 >
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<div class="myDiv" style=" position:relative;right:250px; top:10px">
+    <p >Considering this map of Trento. </p>
+
+   <p > The potential locations are characterized by two broad areas:</p>
+    <ol>
+        <li>City Center and surroundings: Include Centro Storico, Piedicastello Sud, S. Giuseppe (<span style="color:#CCCC00"> <b>Yellow area</b> </span>)</li>
+  <li>Peripheral zones: Include Mattarelo, Oltrefersina, Piedecastello Nord and Gardolo (<span style="color:#800080"> <b>Purple area </b></span>)</li>
+</ol>
+<div  style=" position:absolute; left:500px;  bottom:450px;font-size: 0.7em; width:100%" >
+<p  align="center" > <i> Map of public buildings (red dots) and considered areas  </i>  </p>
+<br>
+<img src= "{{static 'trento_buildings.jpg' }}" style="width:70%; position:absolute; right:50px; top:40px " />
+
+</div>
+
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    {{ next_button }}
+{{ endblock }}

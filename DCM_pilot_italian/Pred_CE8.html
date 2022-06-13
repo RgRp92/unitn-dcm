@@ -1,0 +1,97 @@
+{{ block title }}
+    Page title
+{{ endblock }}
+{{ block content }}
+ <p>Pred 8</p>
+<table id ="history" class="table">
+
+
+<tr>
+    <th> Predictions </th>
+                 <th>  A </th>  <td > <input  id="CE8_pred_A" type="number" name="CE8_pred_A" value= "0" min="0" step="1" > </td>
+                 <th>  B </th>  <td id > <input  id="CE8_pred_B" type="number" name="CE8_pred_B" value= "0"  min="0" step="1" ></td>
+                 <th> Status quo </th> <td>   <td> <input  id="CE8_pred_C" type="number" name="CE8_pred_C"  value= "0"  min="0" step="1" ></td>
+
+</tr>
+
+    <tr>
+      <th> <button type="button" onclick = "sendValue()" >Payoff </button> </th>
+        <th>  A </th> <td id="A"> </td>
+        <th>  B </th>  <td id="B"> </td>
+        <th> Status quo </th>  <td id="C"> </td>
+</tr>
+
+
+</table>
+
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Next</button>
+
+<script>
+
+    let fieldA = document.getElementById('CE8_pred_A');
+    let fieldB = document.getElementById('CE8_pred_B');
+    let fieldC = document.getElementById('CE8_pred_C');
+
+    let payoff_a = document.getElementById('A');
+    let payoff_b = document.getElementById('B');
+    let payoff_c = document.getElementById('C');
+
+    let num_participants = js_vars.number_players;
+
+    let form = document.getElementById('form');
+    let isValid = form.reportValidity();
+
+ function liveRecv(data) {
+      payoff_a.innerHTML =  data.payoff_a.toFixed(2);
+      payoff_b.innerHTML =  data.payoff_b.toFixed(2);
+      payoff_c.innerHTML =  data.payoff_c.toFixed(2);
+}
+
+  function sendValue() {
+
+    var myText = "Sum of predictions has to be equal to  ";
+    var num_pred = parseFloat(num_participants) -1
+    var text = myText.concat(num_pred.toString());
+
+    if(parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value)  == parseFloat(num_pred) ){
+          liveSend( { 'fieldA' : fieldA.value, 'fieldB' : fieldB.value, 'fieldC' : fieldC.value, 'clicked_button' : 1});
+          js_vars.tempA = parseFloat(fieldA.value);
+          js_vars.tempB = parseFloat(fieldB.value);
+          js_vars.tempC = parseFloat(fieldC.value);
+    }
+    else{
+          alert (text);
+    }
+  }
+
+
+
+  function checkSubmit() {
+            if (!isValid) return;
+            var myText = "Sum of predictions has to be equal to  ";
+            var num_pred = parseFloat(num_participants) -1
+            var text = myText.concat(num_pred.toString());
+
+            if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value)  != parseFloat(num_pred)) {
+               alert (text);
+            }
+            else {
+              if( js_vars.tempA != parseFloat(fieldA.value) || js_vars.tempB != parseFloat(fieldB.value) || js_vars.tempC != parseFloat(fieldC.value)) {
+               alert ("Please check your payoff before submitting the form");
+                }
+               else {
+                 form.submit();
+               }
+            }
+  }
+
+
+
+
+</script>
+
+
+
+{{ endblock }}
+

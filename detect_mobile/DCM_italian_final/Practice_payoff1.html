@@ -1,0 +1,96 @@
+{{ block title }}
+{{ endblock }}
+
+
+{{ block content }}
+
+<header  style="font-size:14pt"> <b> Please fill the blank spaces with the correct information.</b> </header>
+<p> </p>
+<p>A 10 side dice  will be rolled to decide if your predictions on other
+    participant's choices will be replaced or not. If the numbers 1, 2, 3, 4, 5, 6 and 7  come up, your  predictions  will
+    be replaced by the prediction's average  of those participants who made the same choice than you. Otherwise, your predictions will NOT be replaced. </p>
+<p>This means that: 1. there is a probability of <input id ="prob_replace" type="number" size="3" style="text-align:center;height:22px;width:40px; font-size:12pt">  that your predictions will
+     be replaced by the average of those who made the same choice than you,  and  2. there is a probability of
+   <input id = "prob_not_replace" type="number"    style="text-align:center;height:22px; width:40px; font-size:12pt">  that your predictions will not be replaced. </p>
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Next</button>
+
+<script>
+
+  let prob_replace = document.getElementById('prob_replace');
+  let prob_not_replace = document.getElementById('prob_not_replace');
+  function liveRecv(data) {
+      if (data.stop == true){
+        if (data.error_prob_not_replace == true || data.error_prob_replace == true ){
+         var text = "You have reached the maximum number of attempts. The correct answer is: 1. there is a probability of ".concat(js_vars.prob_replace_correct.toString(),
+         " that your predictions will be replaced by the average of those who made the same choice than you,  and  2. there is a probability of ",
+          js_vars.prob_not_replace_correct.toString()," that your predictions will not be replaced.");
+         alert (  text);
+        }
+        else {
+        alert ("That's correct!");
+        }
+
+        form.submit();
+      }
+      if (data.stop == false){
+        js_vars.prob_replace_guess = prob_replace.value;
+        js_vars.prob_not_replace_guess = prob_not_replace.value;
+        alert ('Oops! there is a mistake. Please make a new guess.')
+        if(data.error_prob_not_replace == true && data.error_prob_replace == true ){
+         prob_not_replace.style.backgroundColor =  "rgba(221,0,0,0.3)";
+         prob_replace.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+        if(data.error_prob_not_replace == false && data.error_prob_replace == true ){
+         prob_not_replace.disabled  = true;
+         prob_replace.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+         if(data.error_prob_not_replace == true && data.error_prob_replace == false ){
+         prob_replace.disabled  = true;
+         prob_not_replace.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+      }
+  }
+
+
+  function checkSubmit() {
+            if( prob_replace.value.toString() == ""  || prob_not_replace.value.toString() == "" ) {
+
+               if(  prob_replace.value.toString() == "") {
+               prob_replace.style.backgroundColor = "rgba(221,0,0,0.3)";
+               }
+               else {
+               prob_replace.style.backgroundColor = "white";
+               }
+               if(  prob_not_replace.value.toString() == "") {
+               prob_not_replace.style.backgroundColor =  "rgba(221,0,0,0.3)";
+               }
+               else {
+               prob_not_replace.style.backgroundColor = "white";
+               }
+               alert ("Please fill all the empty spaces");
+            }
+            else {
+              prob_not_replace.style.backgroundColor = "white";
+              prob_replace.style.backgroundColor = "white";
+              if(prob_replace.value >1 ||  prob_not_replace.value > 1  ||prob_replace.value <0 ||  prob_not_replace.value < 0){
+              alert ("The probabilities must be numbers between 0 and 1")
+              }
+              else{
+                if (js_vars.prob_replace_guess ==  prob_replace.value && js_vars.prob_not_replace_guess ==  prob_not_replace.value ){
+                 alert ("Please make a new guess before submitting")
+                }
+                else{
+                 liveSend( { 'prob_replace' : prob_replace.value, 'prob_not_replace' : prob_not_replace.value, 'clicked_button' : 1});
+                }
+              }
+            }
+  }
+
+
+
+
+</script>
+
+{{ endblock }}
+

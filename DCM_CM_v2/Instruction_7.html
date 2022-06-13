@@ -1,0 +1,33 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;">Final earning</h1 >
+
+<br>
+<p style="color:red"><b> Your final earning will be:</b>   </p>
+
+<p > €10  plus your earnings from the  <b> belief task in part 1</b>   which can range from €{{min_income}} to €{{max_income}} </p>
+
+</body>
+
+    {{ next_button }}
+{{ endblock }}

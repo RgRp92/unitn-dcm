@@ -1,0 +1,75 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p>
+A breve, ti chiederemo di <b> indicare le tue preferenze    </b> per quanto riguarda diversi  <b> progetti di installazione di tetti verdi </b>.
+</p>
+
+<p>
+Nello specifico: </b>
+</p>
+    <ul>
+  <li>Ti verranno presentate   <b> {{Constants.num_CE}} schede di scelta </b> </li>
+  <li>In ogni scheda di scelta saranno presentati  <b> 2 progetti di installazione di tetti verdi (opzione A e B) </b> e  <b> "nessun progetto" (opzione C)   </b>
+       </li>
+   <li>Ti verrà chiesto di  <b> scegliere l'opzione preferita  </b>  in ogni situazione di scelta</li>
+    </ul>
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+<button type="submit" class="btn btn-primary" onclick="clicked(event)">Next</button>
+
+<script>
+
+    let TARI = document.getElementById('TARI');
+
+function clicked(e)
+{
+            var myText = "The last waste tax you paid was equal to  ";
+            var text = myText.concat(TARI.value.toString());
+            var text2 = text.concat('€, is this correct?');
+    if(!confirm(text2)) {
+        e.preventDefault();
+    }
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}

@@ -1,0 +1,79 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;">Costs  </h1 >
+
+
+<p>
+The final attribute is the  increase in the annual tax for waste management (TARI) that will be leveraged to Trento’s households to fund this project.
+</p>
+
+<p>
+Can you please tell us  an approximate of the last waste tax  you paid?
+</p>
+
+<p> <input  id="TARI" type="number" name="TARI" value= "0" min="0"  style="text-align:center;height:50px; width:90px; font-size:18pt" > €
+</p>
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+<button type="submit" class="btn btn-primary" onclick="clicked(event)">Next</button>
+
+<script>
+
+    let TARI = document.getElementById('TARI');
+
+function clicked(e)
+{
+    if(TARI.value==0) {
+      alert("Please indicate your TARI")
+      TARI.style.backgroundColor =  "rgba(221,0,0,0.3)";
+      e.preventDefault();
+      }
+      else{
+            var myText = "The last waste tax you paid was equal to  ";
+            var text = myText.concat(TARI.value.toString());
+            var text2 = text.concat('€, is this correct?');
+    if(!confirm(text2)) {
+        e.preventDefault();
+    }
+    }
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}

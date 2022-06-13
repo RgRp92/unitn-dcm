@@ -1,0 +1,100 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+  margin-top: 15px;
+  margin-bottom: 23px;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1 style="width:100%;">Phase 2     </h1 >
+<p>
+    Now, assume that in the <b> binding choice situation (choice situation {{ Constants.random_practice_choice_sit }})</b>
+    of the <b> preference task </b>, excluding yourself:
+</p>
+<div style="position:relative; bottom:30px" >
+<ul style="position:relative; top:30px" >
+    <li><b> {{random_prediction_A}} </b> participants <b> choose option A </b></li>
+  <li><b> {{random_prediction_B}}</b> participants <b> choose option B</b></li>
+    <li><b> {{random_prediction_C}}</b> participants <b> choose option C</b></li>
+</ul>
+
+
+  <img src= "{{static 'bingo_cage2.jpg' }}" style="width:35%;position:absolute;left:700px;top:0px  " />
+
+   <div style="position: absolute; left:400px; top:20px;width:100%" >
+
+                 {{ for x in listA }}
+               <img src= "{{static 'ball_A.jpg' }}" style="width:5% " />
+               {{ endfor }}
+                </div>
+                    <div style="position: absolute; left:400px; top:80px;width:100%">
+             {{ for x in listB }}
+               <img src= "{{static 'ball_B.jpg' }}" style="width:5%" />
+               {{ endfor }}
+                  </div>
+
+                    <div style="position: absolute;  left:400px;top:140px;width:100%">
+              {{ for x in listC }}
+               <img src= "{{static 'ball_C.jpg' }}" style="width:5% " />
+               {{ endfor }}
+                   </div>
+    <div style="position: absolute; top:200px; width:75%">
+    <p  >
+Then we  place <b> {{random_prediction_A}} balls </b>  with the <b> letter A</b>, <b> {{random_prediction_B}} balls</b> with the <b> letter B</b>, and
+    <b> {{random_prediction_C}} balls</b> with the <b> letter C</b> in a bingo cage, and
+   we  <b> randomly draw </b> one of the balls.
+</p>
+<p>
+    This will <b> determine the binding alternative </b> (A, B or C).
+
+</p>
+    </div>
+
+
+</div>
+
+
+
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

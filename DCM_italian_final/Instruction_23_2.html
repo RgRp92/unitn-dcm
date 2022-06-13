@@ -1,0 +1,77 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1>Attenzione!</h1>
+
+<p>
+Ti preghiamo di rispondere
+    nel modo più <b> sincero </b> possibile, tenendo anche in considerazione che un aumento dell’imposta TARI ha delle ricadute sulla tua
+    <b> disponibilità finanziaria </b>.
+</p>
+<p>
+    Non ci sono decisioni giuste o sbagliate.
+    </p>
+<p>
+Ti preghiamo di porre attenzione a tutti i particolari delle schede di scelta presentate prima di prendere le tue decisioni.
+</p>
+
+<p>
+Ricorda che ogni scheda di scelta è indipendente dalle altre.
+</p>
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+<button type="submit" class="btn btn-primary" onclick="clicked(event)">Next</button>
+
+<script>
+
+    let TARI = document.getElementById('TARI');
+
+function clicked(e)
+{
+            var myText = "The last waste tax you paid was equal to  ";
+            var text = myText.concat(TARI.value.toString());
+            var text2 = text.concat('€, is this correct?');
+    if(!confirm(text2)) {
+        e.preventDefault();
+    }
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}

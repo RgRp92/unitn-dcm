@@ -1,0 +1,80 @@
+{{ block title }}
+ Lottery: Series 1
+{{ endblock }}
+{{ block content }}
+
+ <p>Choose your preferred option for each game </p>
+<style>
+ th{
+   border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+td , table{
+  text-align: center;
+   margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<table class="table"  RULES=GROUPS FRAME=BOX style="width:50%">
+
+
+<tr>
+   <colgroup span="3" ></colgroup>
+  <colgroup span="3"></colgroup>
+  <tr>
+    <th colspan="3" scope="colgroup">A</th>
+    <th colspan="3" scope="colgroup">B</th>
+  </tr>
+    <tr>
+    <th scope="col">Balls 1-3</th> <th scope="col">Balls 4-6</th>  <th scope="col"> </th>
+    <th scope="col">Ball  1  &nbsp &nbsp &nbsp </th>  <th scope="col">Balls 2-6</th>  <th scope="col"> </th>
+    </tr>
+
+    <tr>
+    <td>40</td> <td>10</td> <td>    <input type="radio" value="A" name="Q1"  > </td>
+    <td>75</td>  <td>5</td> <td >    <input type="radio" value="B"  name="Q1"  > </td>
+    </tr>
+
+     <tr>
+    <td>40</td> <td>10</td> <td>    <input type="radio" value="A" name="Q2"  > </td>
+    <td>83</td>  <td>5</td> <td >    <input type="radio" value="B"  name="Q2"  > </td>
+    </tr>
+
+     <tr>
+    <td>40</td> <td>10</td> <td>    <input type="radio" value="A" name="Q3"  > </td>
+    <td>93</td>  <td>5</td> <td >    <input type="radio" value="B"  name="Q3"  > </td>
+    </tr>
+
+     <tr>
+    <td>40</td> <td>10</td> <td>    <input type="radio" value="A" name="Q4"  > </td>
+    <td>106</td>  <td>5</td> <td >    <input type="radio" value="B"  name="Q4"  > </td>
+    </tr>
+
+     <tr>
+    <td>40</td> <td>10</td> <td>    <input type="radio" value="A" name="Q5"  > </td>
+    <td>125</td>  <td>5</td> <td >    <input type="radio" value="B"  name="Q5"  > </td>
+    </tr>
+
+     <tr>
+    <td>40</td> <td>10</td> <td>    <input type="radio" value="A" name="Q6"  > </td>
+    <td>150</td>  <td>5</td> <td >    <input type="radio" value="B"  name="Q6"  > </td>
+    </tr>
+
+
+     <tr>
+    <td>40</td> <td>10</td> <td>    <input type="radio" value="A" name="Q7"  > </td>
+    <td>185</td>  <td>5</td> <td >    <input type="radio" value="B"  name="Q7"  > </td>
+    </tr>
+
+
+</table>
+
+
+
+
+    {{ next_button }}
+
+{{ endblock }}

@@ -1,0 +1,46 @@
+{{ block title }}
+    Page title
+{{ endblock }}
+
+
+{{ block content }}
+<p> This section is to assess your understanding on the experiment </p>
+<p> Please fill the blank spaces with the correct information</p>
+<p>A 10 side dice  will be rolled to decide whether your predictions made in the belief
+    task will be replaced or not.</p>
+<p>If the numbers 1, 2, 3, 4, 5, 6 and 7  come up, your  predictions  will
+    be replaced by the average of those who made the same choice than you. Otherwise, your predictions will NOT be replaced. </p>
+<p>This means that: 1. there is a probability of {{form.prob_replace }}  that your predictions will
+     be replaced by the average of those who made the same choice than you,  and  2. a probability of
+    {{form.prob_not_replace }}  that your predictions will not be replaced. </p>
+
+<p>  Suppose that (excluding yourself): </p>
+<p> <b>{{ player.participant.Test_choices_A }} persons choose Option A </b>  </p>
+<p> <b>{{ player.participant.Test_choices_B }} persons choose Option B </b>  </p>
+<p> <b>{{ player.participant.Test_choices_C }} persons choose Option Status quo </b>  </p>
+<p>  And that, after rolling the dice, your predictions will NOT be replaced. Therefore, your payoffs  will be based on your own predictions, which were:  </p>
+<table id ="history" class="table">
+<tr>
+    <th> Predictions </th>
+                 <th>  A </th>  <td> {{ player.CE_pract_pred_A }}</td>
+                 <th>  B </th>  <td>{{ player.CE_pract_pred_B }} </td>
+                 <th> Status quo </th> <td>  {{ player.CE_pract_pred_C }}</td>
+</tr>
+    <tr>
+      <th> Payoff </th>
+        <th>  A </th> <td > {{ player.participant.payoff_practice_A }}</td>
+        <th>  B </th>  <td >{{ player.participant.payoff_practice_B }} </td>
+        <th> Status quo </th>  <td >{{ player.participant.payoff_practice_C }} </td>
+</tr>
+</table>
+
+<p> Then: </p>
+<p> There is a chance of {{form.Test_choices_A_prob}} out of {{subsession.session.num_participants}} that your payoff will be based on your predictions of <b>Option A</b> and equal to {{ form.payoff_A_guess}} </p>
+<p> There is a chance of {{form.Test_choices_B_prob}} out of {{subsession.session.num_participants}} that your payoff will be based on your predictions of <b>Option B</b> and equal to {{ form.payoff_B_guess}} </p>
+<p> There is a chance of {{form.Test_choices_C_prob}} out of {{subsession.session.num_participants}} that your payoff will be based on your predictions of <b>Option C</b> and equal to {{ form.payoff_C_guess}} </p>
+
+
+
+{{ next_button }}
+{{ endblock }}
+

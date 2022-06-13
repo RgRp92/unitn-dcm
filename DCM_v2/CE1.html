@@ -1,0 +1,163 @@
+
+
+
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+td, th,tr{
+   padding: 0;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<h1>
+Choice situation {{player.participant.contador}}
+</h1>
+
+<p> Please select your most preferred alternative </p>
+
+
+<p> NOTE: this is choice situation 1 in reality</p>
+
+  <div style="width:70%; position:relative; left:20%; top:10px">
+
+  <table  align="center"   >
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b>  Choice card {{player.participant.contador}}   </b> </th>
+    </tr>
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Characteristic</th> <th scope="col" style="width:20% ;text-align:center"  >Option A</th>
+          <th scope="col" style="width:20%;text-align:center" >Option B </th>
+           <th scope="col" style="width:20%;text-align:center" >Option C</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Location  </th> <td> {{location_1}}  </td>
+        <td> {{location_2}}</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Maintenance visits  </th> <td> Ogni {{maintan_1}} mesi  </td>
+        <td> Ogni {{maintan_2}} mesi </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Run off absorption   </th> <td> {{rainab_1}}  </td>
+        <td> {{rainab_2}} </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Costs </th> <td>  {{cost_1}}€  </td>
+        <td> {{cost_2}}€  </td> <td>  </td>
+    </tr>
+
+    <tr style="background-color: #F0E68C">
+  <th scope="row"> Your choice </th>
+
+        {{ for choice in form.CE1_choice}}
+             {{ if forloop.counter == 1}}
+                 <td onclick="clicked1(event)"> {{ choice }}</td>
+             {{ else}}
+                  {{ if forloop.counter == 2}}
+                  <td onclick="clicked2(event)"> {{ choice }}</td>
+                  {{ else}}
+                      <td onclick="clicked3(event)">{{ choice }}</td>
+                  {{ endif}}
+             {{ endif}}
+    {{ endfor }}
+
+ </tr>
+</table>
+
+
+  </div>
+
+
+<br>
+<br>
+
+
+</body>
+<p style="display: none;" id="choice">none</p>
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Next</button>
+
+<script>
+
+   let choice = document.getElementById('choice');
+
+   function checkSubmit() {
+       if( choice.innerHTML == "none" ) {
+          alert("Please select an option");
+        }
+       else {
+
+           //  var myText = "Your most preferred option was   ";
+            //  var text = myText.concat(choice.innerHTML);
+
+             if(confirm("Are you sure you want to continue?")) {
+                form.submit();
+               }
+       }
+  }
+
+function clicked1(e){
+               choice.innerHTML="A";
+            //     alert ("You have selected A as your most preferred option");
+}
+function clicked2(e){
+               choice.innerHTML="B";
+              //   alert ("You have selected B as your most preferred option");
+}
+function clicked3(e){
+               choice.innerHTML="Status quo";
+             //  alert ("You have selected C (no project) as your most preferred option");
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}
+

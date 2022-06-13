@@ -1,0 +1,123 @@
+{{ block title }}
+    Page title
+{{ endblock }}
+
+
+{{ block content }}
+<p>There is a probability of {{ Constants.prob_replace }}  that your predictions will
+     be replaced by those who made the same choice than you  </p>
+
+ <p> Click on the button to see if your predictions will be replaced </p>
+<button id="btn1" type="button"  onclick= "send()" >Check</button>
+ <p id = "result"></p>
+
+<table class="table">
+    <tr>
+        <th id="preAname"></th>   <td id="preA"></td>
+        <th id="preBname"></th>   <td id="preB"></td>
+        <th id="preCname"></th>   <td id="preC"></td>
+
+</tr>
+    <tr>
+        <th id="Payoff_a_name"></th>  <td id="Payoff_a"> </td>
+        <th id="Payoff_b_name"></th>  <td id="Payoff_b"> </td>
+        <th id="Payoff_c_name"></th>  <td id="Payoff_c"> </td>
+</table>
+
+ <p> Click here to check the chosen alternative </p>
+<button  id="btn2" type="button"  onclick = "send_2()" >Check</button>
+ <p id = "result2"></p>
+
+
+<script>
+
+ let result = document.getElementById('result');
+ let result2 = document.getElementById('result2');
+ let btn1 = document.getElementById('btn1');
+ let btn2 = document.getElementById('btn2');
+
+ let preAname = document.getElementById('preAname');
+ let preA = document.getElementById('preA');
+ let preBname = document.getElementById('preBname');
+ let preB = document.getElementById('preB');
+ let preCname = document.getElementById('preCname');
+ let preC = document.getElementById('preC');
+
+ let Payoff_a_name = document.getElementById('Payoff_a_name');
+ let Payoff_a = document.getElementById('Payoff_a');
+ let Payoff_b_name = document.getElementById('Payoff_b_name');
+ let Payoff_b = document.getElementById('Payoff_b');
+ let Payoff_c_name = document.getElementById('Payoff_c_name');
+ let Payoff_c = document.getElementById('Payoff_c');
+
+ function liveRecv(data) {
+   if(data.round ==1){
+     btn1.disabled = true;
+     if(data.replace_pred == 1 ) {
+         result.innerHTML = 'Your predictions will be replaced. Your predictions and corresponding payoffs will be: ';
+         preAname.innerHTML = 'Average prediction A';
+         preA.innerHTML =data.pred_a.toString() ;
+         preBname.innerHTML = 'Average prediction B';
+         preB.innerHTML = data.pred_b.toString() ;
+         preCname.innerHTML ='Average prediction C';
+         preC.innerHTML = data.pred_c.toString() ;
+
+         Payoff_a_name.innerHTML = 'Payoff A';
+         Payoff_a.innerHTML =  data.payoff_a.toString() ;
+         Payoff_b_name.innerHTML ='Payoff B';
+         Payoff_b.innerHTML =  data.payoff_b.toString() ;
+         Payoff_c_name.innerHTML = 'Payoff C';
+         Payoff_c.innerHTML =  data.payoff_c.toString();
+     }
+     else{
+          result.innerHTML = 'Your predictions will NOT be replaced. Your predictions and corresponding payoffs will be: ';
+           preAname.innerHTML = 'Prediction A';
+         preA.innerHTML =data.pred_a.toString() ;
+         preBname.innerHTML = 'Prediction B';
+         preB.innerHTML = data.pred_b.toString() ;
+         preCname.innerHTML ='Prediction C';
+         preC.innerHTML = data.pred_c.toString() ;
+
+         Payoff_a_name.innerHTML = 'Payoff A';
+         Payoff_a.innerHTML =  data.payoff_a.toString() ;
+         Payoff_b_name.innerHTML ='Payoff B';
+         Payoff_b.innerHTML =  data.payoff_b.toString() ;
+         Payoff_c_name.innerHTML = 'Payoff C';
+         Payoff_c.innerHTML =  data.payoff_c.toString();
+     }
+   }
+    if(data.round ==2){
+      btn2.disabled = true;
+      if(data.random_choice == 1){
+          result2.innerHTML = 'The alternative chosen was alternative A. Therefore your payoff is: ' + data.finalpayoff.toString();
+      }else {
+        if(data.random_choice == 2){
+           result2.innerHTML = 'The alternative chosen was alternative B. Therefore your payoff is: ' + data.finalpayoff.toString();
+        } else{
+           result2.innerHTML = 'The alternative chosen was alternative C. Therefore your payoff is: ' + data.finalpayoff.toString();
+        }
+      }
+    }
+ }
+
+  function send() {
+    liveSend( { 'clicked_button' : 1});
+  }
+
+  function send_2() {
+    if  (result.innerHTML == ''){
+
+      alert ("Please check first if your prediction will be replaced or not");
+    }
+    else{
+       liveSend( { 'clicked_button' : 2});
+
+    }
+  }
+
+
+</script>
+
+{{ next_button }}
+{{ endblock }}
+

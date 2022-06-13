@@ -1,0 +1,216 @@
+{{ block content }}
+<style>
+.circle{
+  border:2px solid ;
+  border-radius:50%;
+   border-color: red;
+}
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+td{
+text-align:center;
+}
+
+td, th,tr{
+   padding: 0;
+   margin: 0;
+    height: 30px;
+      border-bottom: 1px solid #ddd;
+
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1> For example </h1>
+
+  <p>
+    Assume we randomly draw: one ball with the letter {{ chosen_letter }}.
+</p>
+    <p>
+          Then, your predictions for the  option
+        {{ chosen_letter }} in the choice situation {{ Constants.random_practice_choice_sit }}
+        would determine your earnings
+</p>
+
+
+ <img src= "{{static 'bingo_cage2.jpg' }}" style="width:35%; position:relative; left:80px; top:30px" />
+
+  {{ if chosen_letter  == 'A'}}
+               <img src= "{{static 'ball_A.jpg' }}" style="width:5%; position:relative; right:290px; bottom:90px " />
+                  {{ else}}
+
+  {{ if  chosen_letter  == 'B'}}
+                   <img src= "{{static 'ball_B.jpg' }}" style="width:5%; position:relative; right:290px; bottom:90px  " />
+                  {{ else}}
+
+                 {{ if  chosen_letter  == 'C'}}
+                  <img src= "{{static 'ball_C.jpg' }}" style="width:5%; position:relative; right:290px; bottom:90px  " />
+
+             {{ endif}}
+             {{ endif}}
+             {{ endif}}
+
+
+ <img src= "{{static 'arrow_right.jpg' }}" style="width:8%; position:relative; left:0px; bottom:0px " />
+
+  <div style="width:50%; position:relative; left:500px;bottom:330px">
+
+
+  <table  align="center"   >
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Choice card {{Constants.random_practice_choice_sit}}  </b> </th>
+    </tr>
+      <tr>
+
+    <th scope="row" style="width:20%" >Characteristic</th> <th scope="col" style="width:20%;text-align:center" >Option A</th>
+          <th scope="col" style="width:20%;text-align:center " >Option B </th>
+           <th scope="col" style="width:20%;text-align:center" >Option C</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Location  </th> <td> Equally distributed  </td>
+        <td> Priority City center </td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Maintenance visits  </th> <td> Ogni 6 mesi  </td>
+        <td> Ogni 4 mesi </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Run off absorption   </th> <td> 50%  </td>
+        <td> 40% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Costs </th> <td>   </td>
+        <td>  </td> <td>  </td>
+    </tr>
+
+    <tr style="background-color: #F0E68C">
+
+                    {{ if Constants.random_practice_alternative  == 'A'}}
+
+        <th scope="row"> Your choice </th> <td style="text-align:center"> <input type="radio" id="A" checked="checked"   style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+      {{ else}}
+
+       {{ if Constants.random_practice_alternative  == 'B'}}
+        <th scope="row"> Your choice </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  checked="checked"   style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+       {{ else}}
+       <th scope="row"> Your choice </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   checked="checked"   style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+
+      {{ endif}}
+             {{ endif}}
+
+       {{ if  chosen_letter  == 'A'}}
+      <tr style="background-color: #F0E68C; height:10px;" >
+         <th scope="row" > Your predictions </th> <td > &nbsp &nbsp &nbsp  &nbsp {{subsession.session.example_prediction_A}}
+          <img src= "{{static 'red_circle.png' }}" style="width:30%;position:relative;right:23%"  />
+       </td>
+        <td> {{subsession.session.example_prediction_B}}  </td> <td>  {{subsession.session.example_prediction_C}} </td>
+       </tr>
+      <tr style="background-color: #F0E68C">
+         <th scope="row" > Your payoffs </th> <td style=" text-align: center"> &nbsp &nbsp &nbsp  &nbsp  &nbsp{{subsession.session.example_prediction_payoff_A}}
+          <img src= "{{static 'red_circle.png' }}" style="width:33%;position:relative;right:30%"  /> </td>
+        <td> {{subsession.session.example_prediction_payoff_B}} </td> <td> {{subsession.session.example_prediction_payoff_C}} </td>
+       </tr>
+      {{ else }}
+          {{ if  chosen_letter  == 'B'}}
+       <tr style="background-color: #F0E68C; height:10px;" >
+         <th scope="row" > Your predictions </th>  <td> {{subsession.session.example_prediction_A}}  </td> <td style=" text-align: center">
+           &nbsp &nbsp &nbsp  &nbsp {{subsession.session.example_prediction_B}}  <img src= "{{static 'red_circle.png' }}" style="width:30%;position:relative;right:23%"  /></td>
+        <td> {{subsession.session.example_prediction_C}}  </td>
+       </tr>
+      <tr style="background-color: #F0E68C">
+         <th scope="row" > Your payoffs </th>  <td> {{subsession.session.example_prediction_payoff_A}}</td> <td style=" text-align: center">
+        &nbsp &nbsp  &nbsp  &nbsp  &nbsp{{subsession.session.example_prediction_payoff_B}}<img src= "{{static 'red_circle.png' }}" style="width:33%;position:relative;right:30%"  /></td>
+        <td> {{subsession.session.example_prediction_payoff_C}}  </td>
+            </tr>
+      {{ else }}
+
+     <tr style="background-color: #F0E68C; height:10px;" >
+         <th scope="row" > Your predictions </th>  <td> {{subsession.session.example_prediction_A}}  </td>
+         <td> {{subsession.session.example_prediction_B}}  </td>
+         <td style=" text-align: center">
+           &nbsp &nbsp &nbsp  &nbsp {{subsession.session.example_prediction_C}}  <img src= "{{static 'red_circle.png' }}" style="width:30%;position:relative;right:23%"  /></td>
+
+       </tr>
+      <tr style="background-color: #F0E68C">
+         <th scope="row" > Your payoffs </th>  <td> {{subsession.session.example_prediction_payoff_A}}</td>
+          <td> {{subsession.session.example_prediction_B}}  </td>
+          <td style=" text-align: center">
+        &nbsp &nbsp  &nbsp  &nbsp  &nbsp{{subsession.session.example_prediction_payoff_C}}<img src= "{{static 'red_circle.png' }}" style="width:33%;position:relative;right:30%"  /></td>
+
+            </tr>
+
+      {{ endif }}
+      {{ endif }}
+
+
+
+</table>
+
+      <!---
+ <img src= "{{static 'red_circle.png' }}" style="width:7%;position:absolute;left:33%;top:80%"  />
+<img src= "{{static 'red_circle.png' }}" style="width:7%;position:absolute;left:60%;top:78%"  />
+      <img src= "{{static 'red_circle.png' }}" style="width:7%;position:absolute;left:60%;top:85%"  />
+ -->
+  </div>
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

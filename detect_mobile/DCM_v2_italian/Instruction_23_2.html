@@ -1,0 +1,73 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1> Let's start!</h1>
+
+<p>
+Please evaluate each of the situations presented independently of the
+others and answer with the <b>  greatest sincerity</b>, taking into account the fact that an increase in the TARI would lead to a decrease in the income available to you for the purchase of other goods and services.
+    <b> There are not right or wrong answers </b>. Please help us
+to measure preferences correctly by paying attention to the conditions presented before giving their
+response.
+</p>
+<p>
+Remember that <b> each choice situation is independent </b> from each other.
+</p>
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+<button type="submit" class="btn btn-primary" onclick="clicked(event)">Next</button>
+
+<script>
+
+    let TARI = document.getElementById('TARI');
+
+function clicked(e)
+{
+            var myText = "The last waste tax you paid was equal to  ";
+            var text = myText.concat(TARI.value.toString());
+            var text2 = text.concat('€, is this correct?');
+    if(!confirm(text2)) {
+        e.preventDefault();
+    }
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}

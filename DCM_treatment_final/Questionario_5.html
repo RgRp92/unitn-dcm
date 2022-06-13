@@ -1,0 +1,232 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p, li {
+  font-size: 1.5em;
+}
+
+
+td, th,tr{
+   padding: 5px;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid ;
+   border-right: 1px solid ;
+   border-top: 1px solid ;
+   border-left: 1px solid ;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;"> Questionario finale </h1 >
+<ol>
+
+
+<li> In scala da 1 a 5, fino a che punto sei d'accordo con le seguenti affermazioni?  </li>
+
+     <table  style="width:80%" >
+<br>
+      <tr  >
+          <th style="width:20%;text-align:center">  Fortemente in disaccordo </th>
+          <th style="width:20%;text-align:center"> Non sono d'accordo </th>
+           <th style="width:20%;;text-align:center">   Neutrale </th>
+          <th style="width:20%;;text-align:center"> D'accordo  </th>
+          <th style="width:20%;;text-align:center"> Fortemente d'accordo   </th>
+      </tr>
+           <tr >
+         <th  style="text-align:center">
+                    1 </th>
+         <th  style="text-align:center">
+                     2 </th>
+         <th  style="text-align:center">
+                     3 </th>
+         <th  style="text-align:center">
+                     4 </th>
+         <th  style="text-align:center">
+                     5 </th>
+
+     </tr>
+</table>
+
+
+    <br>
+  <table  style="width:80%" >
+
+      <tr  style="background-color: #ADDFFF">
+          <th style="width:60%;text-align:center">   </th>
+          <th style="width:5%;text-align:center"> 1 </th>
+           <th style="width:5%;;text-align:center"> 2 </th>
+          <th style="width:5%;;text-align:center">  3  </th>
+          <th style="width:5%;;text-align:center"> 4   </th>
+            <th style="width:5%;;text-align:center"> 5   </th>
+      </tr>
+
+
+      <tr >
+              <th style="background-color: #ADDFFF">Il centro della città di Trento dovrebbe essere preservato così com'è, non dovrebbero essere consentiti cambiamenti lì</th>
+
+           {{ for R in form.AE1}}
+                 <th onclick="clicked1(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ R }} </th>
+                 {{ endfor }}
+              </tr>
+
+        <tr >
+              <th style="background-color: #ADDFFF">
+                  La realizzazione di tetti verdi  a Trento migliorerà il paesaggio urbano  </th>
+           {{ for R in form.AE2}}
+                 <th onclick="clicked2(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ R }} </th>
+                 {{ endfor }}
+              </tr>
+
+      <tr >
+ <th style="background-color: #ADDFFF">
+   I tetti verdi migliorano l'estetica degli edifici
+ </th>
+          {{ for R in form.AE3}}
+                 <th onclick="clicked3(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ R }} </th>
+                 {{ endfor }}
+              </tr>
+      <tr >
+ <th style="background-color: #ADDFFF">
+    Se ci fossero i tetti verdi a Trento, un maggior numero di tutisti visiterebbe la città  </th>
+
+      {{ for R in form.AE4}}
+                 <th onclick="clicked4(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ R }} </th>
+                 {{ endfor }}
+              </tr>
+
+
+
+         <tr >
+              <th style="background-color: #ADDFFF">
+                  I tetti verdi migliorano l’efficienza energetica degli edifici
+              </th>
+
+           {{ for R in form.SGR1}}
+                 <th onclick="clicked5(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ R }} </th>
+                 {{ endfor }}
+              </tr>
+
+        <tr >
+              <th style="background-color: #ADDFFF">
+                  I tetti verdi migliorano la biodiversità in contesti urbani </th>
+           {{ for R in form.SGR2}}
+                 <th onclick="clicked6(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ R }} </th>
+                 {{ endfor }}
+              </tr>
+
+      <tr >
+ <th style="background-color: #ADDFFF">
+  I tetti verdi mitigano i cambiamenti climatici mediante assorbimento di gas serra
+ </th>
+          {{ for R in form.SGR3}}
+                 <th onclick="clicked7(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ R }} </th>
+                 {{ endfor }}
+              </tr>
+</table>
+
+
+</ol>
+
+</body>
+
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+<p style="display: none;" id="choice1">0</p>
+<p style="display: none;" id="choice2">0</p>
+<p style="display: none;" id="choice3">0</p>
+<p style="display: none;" id="choice4">0</p>
+<p style="display: none;" id="choice5">0</p>
+<p style="display: none;" id="choice6">0</p>
+<p style="display: none;" id="choice7">0</p>
+<br>
+<br>
+<br><br><br><br><br><br>
+
+
+
+</body>
+
+
+<script>
+   let choice1 = document.getElementById('choice1');
+   let choice2 = document.getElementById('choice2');
+   let choice3 = document.getElementById('choice3');
+   let choice4 = document.getElementById('choice4');
+   let choice5 = document.getElementById('choice5');
+   let choice6 = document.getElementById('choice6');
+   let choice7 = document.getElementById('choice7');
+
+   function checkSubmit() {
+
+            if( choice1.innerHTML == "0" ||
+               choice2.innerHTML == "0" ||
+                choice3.innerHTML == "0" ||
+                choice4.innerHTML == "0" ||
+                choice5.innerHTML == "0" ||
+                choice6.innerHTML == "0"||
+                choice7.innerHTML == "0" ) {
+                alert("Rispondere a tutte le domande prima di continuare");
+              }
+              else {
+                form.submit();
+              }
+
+  }
+
+function clicked1(e){
+              choice1.innerHTML ="1"
+
+}
+function clicked2(e){
+               choice2.innerHTML ="1"
+}
+function clicked3(e){
+               choice3.innerHTML ="1";
+}
+function clicked4(e){
+               choice4.innerHTML ="1";
+}
+
+function clicked5(e){
+               choice5.innerHTML ="1";
+}
+
+function clicked6(e){
+               choice6.innerHTML ="1";
+}
+
+function clicked7(e){
+               choice7.innerHTML ="1";
+}
+
+
+
+
+
+
+</script>
+{{ endblock }}

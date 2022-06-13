@@ -1,0 +1,59 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<p>
+To determine whether you would be paid according to your predictions or not, we use a fortune spinning wheel as the one shown in the picture.
+</p>
+ <img src= "{{static 'spinning_wheel_1.jpg' }}" style="width:40%; position:relative; left:600px; bottom:40px " />
+
+<div class="myDiv" style=" position:relative;right:0px; bottom: 370px;width:60%">
+<ul>
+    <li> If the pointer falls in the  <b> blue area  </b> , then <b> your beliefs will NOT be replaced </b></li>
+<br>
+    <li> If the pointer falls in the  <b> purple area  </b> , then <b> your beliefs will BE replaced </b></li>
+</ul>
+
+</div>
+
+    <p style=" position:relative;right:0px; bottom: 350px;width:70%" >
+Note that there is a probability of {{prob_not_replace}}% that your beliefs will not be replaced and a probability of {{prob_replace}}% that your beliefs will be replaced
+</p>
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

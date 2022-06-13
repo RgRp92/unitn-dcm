@@ -1,0 +1,43 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+
+li {
+  font-size: 1.5em;
+
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;"> Study Overview </h1 >
+
+<br>
+<p> <span style="color:red"> <b> Part 1</b>  </span> consists of two tasks:</p>
+
+<p>The <b>preference task</b>: you will be asked to <b> make choices</b> about green roofs projects in Trento </p>
+
+<p>The <b>belief task</b>: you will be asked your <b> beliefs about other participants’ choices</b> in the
+  <b> preference tasks. </b></p>
+
+<p>You will have the opportunity to gain some additional money from this task, depending on your decision</p>
+
+<p> Minimum €{{min_income}} and maximum €{{max_income}} </p>
+
+</body>
+
+    {{ next_button }}
+{{ endblock }}

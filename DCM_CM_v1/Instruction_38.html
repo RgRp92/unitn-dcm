@@ -1,0 +1,65 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;">Task 2 – Belief task  </h1 >
+
+<p>
+
+Assume that:
+
+
+</p>
+
+<ul>
+    <li> you chose <b>  Option A </b> in the binding choice situation {{ Constants.random_practice_choice_sit }} </li>
+
+     <li> <b> {{random_prediction_A}}  people chose option A </b> in the preference task:
+               {{ for x in listA }}
+          <span>    ID{{x}} </span>
+               {{ endfor }}
+     </li>
+</ul>
+
+
+<p>
+We look at the <b> beliefs of these respondents</b> and <b>take the average</b>.</p>
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

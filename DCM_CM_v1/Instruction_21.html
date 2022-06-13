@@ -1,0 +1,61 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p>
+Four levels of  percentage changes in the annual tax for waste managment (TARI) are propossed:
+</p>
+
+<p align="center">
++{{Constants.level1_cost}}%,   +{{Constants.level2_cost}}%,    +{{Constants.level3_cost}}% and     +{{Constants.level4_cost}}%
+</p>
+
+
+<p>
+Considering that you paid an amount equal to {{player.TARI}}€, the increase of the tax can be equal to:</p>
+
+<p align="center">
+{{a}}€,   {{b}}€,    {{c}}€  and     {{d}}€
+</p>
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+<button type="submit" class="btn btn-primary" onclick="clicked(event)">Next</button>
+
+
+
+
+{{ endblock }}

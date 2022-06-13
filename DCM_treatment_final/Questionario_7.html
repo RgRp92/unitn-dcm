@@ -1,0 +1,245 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+
+}
+
+p, li {
+  font-size: 1.5em;
+}
+span{
+  font-size: 1.2em;
+  display: block;
+
+}
+input{
+width:60px;
+height:30px;
+margin-bottom:10px;
+margin-top:10px;
+}
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;"> Questionario finale</h1 >
+<ol>
+<li>Qual è il tuo anno di nascita? </li>
+
+   <span>  <input onchange="clicked1(event)" name="anni_natto" id="anni_natto"  min="1920" max="2005" step="1" type="number"> </span>
+
+    <br>
+
+<li>Genere  </li>
+  <span onclick="clicked2(event)" style="font-size:1.2em">   {{  form.gender}}</span>
+
+ <br>
+<li>Escludendo te stesso, quanti membri vivono nella tua famiglai per ognuna delle categorie riportate sotto? (se non vi sono membri che ricadono in una o più categoria, indicare 0): </li>
+
+   <span  >   <input onchange="clicked3(event)" name="person_14_less" id="person_14_less"
+   min="0" max="20" step="1" type="number"> {{ form.person_14_less.label}} <br> </span>
+
+  <span  >    <input onchange="clicked4(event)" name="person_15_19" id="person_15_19"
+  min="0" max="20" step="1" type="number">   {{ form.person_15_19.label}} </span>
+
+   <span  >  <input onchange="clicked5(event)" name="person_20_40" id="person_20_40"
+   min="0" max="20" step="1" type="number">  {{ form.person_20_40.label}} </span>
+
+   <span  >  <input onchange="clicked6(event)" name="person_41_65" id="person_41_65"
+   min="0" max="20" step="1" type="number">  {{ form.person_41_65.label}} </span>
+
+   <span  >  <input onchange="clicked7(event)" name="person_65" id="person_65"
+   min="0" max="20" step="1" type="number"> {{ form.person_65.label}} </span>
+
+
+ <br>
+
+   <li>	Qual’è il livello di istruzione massimo che hai ottenuto, ad oggi? </li>
+  <span onclick="clicked8(event)">     {{ form.Education}}</span>
+
+
+
+
+
+</ol>
+
+</body>
+
+
+<br>
+
+
+
+<p style="display: none;" id="choice1">0</p>
+<p style="display: none;" id="choice2">0</p>
+<p style="display: none;" id="choice3">0</p>
+<p style="display: none;" id="choice4">0</p>
+
+<p style="display: none;" id="choice5">0</p>
+<p style="display: none;" id="choice6">0</p>
+<p style="display: none;" id="choice7">0</p>
+<p style="display: none;" id="choice8">0</p>
+
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+
+</body>
+
+
+<script>
+   let choice1 = document.getElementById('choice1');
+   let choice2 = document.getElementById('choice2');
+   let choice3 = document.getElementById('choice3');
+   let choice4 = document.getElementById('choice4');
+
+   let choice5 = document.getElementById('choice5');
+   let choice6 = document.getElementById('choice6');
+   let choice7 = document.getElementById('choice7');
+   let choice8 = document.getElementById('choice8');
+
+   let anni_natto = document.getElementById('anni_natto');
+   let person_14_less = document.getElementById('person_14_less');
+   let person_15_19 = document.getElementById('person_15_19');
+   let person_20_40 = document.getElementById('person_20_40');
+   let person_41_65 = document.getElementById('person_41_65');
+   let person_65 = document.getElementById('person_65');
+
+
+
+
+
+
+   function checkSubmit() {
+
+          if( choice1.innerHTML == "0" ||
+            choice2.innerHTML == "0" ||
+            choice3.innerHTML == "0" ||
+            choice4.innerHTML == "0" ||
+            choice5.innerHTML == "0" ||
+           choice6.innerHTML == "0"  ||
+           choice7.innerHTML == "0" ||
+           choice8.innerHTML == "0"  ) {
+           alert("Rispondere a tutte le domande prima di continuare");
+           }
+          else {
+
+            // var text = choice2.innerHTML;
+
+              //if(confirm(text)) {
+                form.submit();
+               //}
+            }
+
+  }
+
+function clicked1(e){
+              choice1.innerHTML ="1"
+              if (anni_natto.value <1929 || anni_natto.value>2005) {
+              alert("inserire un anno di nascita valido (maggiore di 1920 e meno di 2005")
+               anni_natto.style.backgroundColor ="rgba(221,0,0,0.3)";
+               } else {
+
+               anni_natto.style.backgroundColor ="white";
+               }
+
+}
+function clicked2(e){
+
+
+                if (anni_natto.value <1929 || anni_natto.value>2005) {
+              alert("inserire un anno di nascita valido (maggiore di 1920 e meno di 2005")
+               anni_natto.style.backgroundColor ="rgba(221,0,0,0.3)";
+                choice2.innerHTML ="0"
+               } else {
+                choice2.innerHTML ="1"
+               anni_natto.style.backgroundColor ="white";
+               }
+
+
+}
+function clicked3(e){
+                if (person_14_less.value <0 || person_14_less.value>20 || String(person_14_less.value)== ""  ) {
+              alert("inserire un numero valido (maggiore o uguale a  di 0 e meno di 20")
+               person_14_less.style.backgroundColor ="rgba(221,0,0,0.3)";
+                choice3.innerHTML ="0"
+               } else {
+                choice3.innerHTML ="1"
+               person_14_less.style.backgroundColor ="white";
+               }
+
+
+
+
+
+
+
+}
+function clicked4(e){
+
+
+                  if (person_15_19.value <0 || person_15_19.value>20  || String(person_15_19.value)== "") {
+              alert("inserire un numero valido (maggiore o uguale a  di 0 e meno di 20")
+               person_15_19.style.backgroundColor ="rgba(221,0,0,0.3)";
+                choice4.innerHTML ="0"
+               } else {
+                choice4.innerHTML ="1"
+               person_15_19.style.backgroundColor ="white";
+               }
+
+
+
+}
+function clicked5(e){
+
+         if (person_20_40.value <0 || person_20_40.value>20  || String(person_20_40.value)== "") {
+              alert("inserire un numero valido (maggiore o uguale a  di 0 e meno di 20")
+               person_20_40.style.backgroundColor ="rgba(221,0,0,0.3)";
+                choice5.innerHTML ="0"
+               } else {
+                choice5.innerHTML ="1"
+               person_20_40.style.backgroundColor ="white";
+               }
+
+}
+function clicked6(e){
+
+
+    if (person_41_65.value <0 || person_41_65.value>20  || String(person_41_65.value)== "") {
+              alert("inserire un numero valido (maggiore o uguale a  di 0 e meno di 20")
+               person_41_65.style.backgroundColor ="rgba(221,0,0,0.3)";
+                choice6.innerHTML ="0"
+               } else {
+                choice6.innerHTML ="1"
+               person_41_65.style.backgroundColor ="white";
+               }
+}
+function clicked7(e){
+
+                      if (person_65.value <0 || person_65.value>20  || String(person_65.value)== "") {
+              alert("inserire un numero valido (maggiore o uguale a  di 0 e meno di 20")
+               person_65.style.backgroundColor ="rgba(221,0,0,0.3)";
+                choice7.innerHTML ="0"
+               } else {
+                choice7.innerHTML ="1"
+               person_65.style.backgroundColor ="white";
+               }
+
+}
+
+function clicked8(e){
+               choice8.innerHTML ="1";
+}
+
+
+
+
+
+</script>
+{{ endblock }}

@@ -1,0 +1,121 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p>
+    For example <b> assume </b> that we <b> randomly draw choice situation {{ Constants.random_practice_choice_sit }}</b>.
+</p>
+                <img src= "{{static 'bingo_cage.jpg' }}" style="width:40%; position:relative; left:100px; top:30px " />
+
+  {{ if Constants.random_practice_choice_sit  == 1}}
+               <img src= "{{static 'ball_1.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+                  {{ else}}
+
+  {{ if Constants.random_practice_choice_sit  == 2}}
+                   <img src= "{{static 'ball_2.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+                  {{ else}}
+
+                 {{ if Constants.random_practice_choice_sit  == 3}}
+                  <img src= "{{static 'ball_3.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+                  {{ else}}
+
+                  {{ if Constants.random_practice_choice_sit  == 4}}
+                  <img src= "{{static 'ball_4.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+
+                  {{ else}}
+
+                   {{ if Constants.random_practice_choice_sit  == 5}}
+                   <img src= "{{static 'ball_5.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+                  {{ else}}
+
+                     {{ if Constants.random_practice_choice_sit  == 6}}
+                    <img src= "{{static 'ball_6.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+                  {{ else}}
+                 {{ if Constants.random_practice_choice_sit  == 7}}
+                  <img src= "{{static 'ball_7.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+
+                  {{ else}}
+            {{ if Constants.random_practice_choice_sit  == 8}}
+                   <img src= "{{static 'ball_8.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+
+                  {{ else}}
+                         <img src= "{{static 'ball_9.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+            {{ endif}}
+            {{ endif}}
+            {{ endif}}
+             {{ endif}}
+             {{ endif}}
+             {{ endif}}
+             {{ endif}}
+             {{ endif}}
+
+
+<br>
+<br>
+<p style="color:red;"> NOTE: In the comments it says: "Insert a picture of the choice situation 2 with empty predcitions, then insert a picture of choice situation 2 with fill in predictions, and then insert a picture of choice situation 2 with earnings" but I
+do not quite understand how</p>
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

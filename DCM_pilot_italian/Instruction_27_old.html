@@ -1,0 +1,131 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p> Once you have entered your predictions, you can click the <b> “Check Earnings” </b> button to display the  <b> earnings </b> you would get <b> based on your predictions </b></p>
+
+
+<table id ="history" class="table">
+
+
+<tr>
+    <th> Predictions </th>
+                 <th>  A </th>  <td > {{player.CE_pract_pred_A}} </td>  <td >(Out of {{num_participants}})</td>
+                 <th>  B </th>  <td >{{player.CE_pract_pred_B}} </td>  <td >(Out of {{num_participants}})</td>
+                 <th> Status quo </th>   <td>  {{player.CE_pract_pred_C}} </td> <td >(Out of {{num_participants}})</td>
+
+</tr>
+
+    <tr>
+      <th> <button type="button" onclick = "sendValue()" > Check your Payoff </button> </th>
+        <th>  A </th> <td id="A" colspan="2"> </td>
+        <th>  B </th>  <td id="B" colspan="2" > </td>
+        <th> Status quo </th>  <td id="C" colspan="2"> </td>
+</tr>
+
+
+</table>
+
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Next</button>
+
+
+
+
+
+
+
+</body>
+
+<script>
+
+
+
+    let payoff_a = document.getElementById('A');
+    let payoff_b = document.getElementById('B');
+    let payoff_c = document.getElementById('C');
+
+    let num_participants = js_vars.number_players;
+
+    let form = document.getElementById('form');
+    let isValid = form.reportValidity();
+
+ function liveRecv(data) {
+      payoff_a.innerHTML =  data.payoff_a.toFixed(2);
+      payoff_b.innerHTML =  data.payoff_b.toFixed(2);
+      payoff_c.innerHTML =  data.payoff_c.toFixed(2);
+}
+
+  function sendValue() {
+
+    var myText = "Sum of predictions has to be equal to  ";
+    var num_pred = parseFloat(num_participants) -1
+    var text = myText.concat(num_pred.toString());
+
+     liveSend( { 'clicked_button' : 1});
+       js_vars.temp =1;
+  }
+
+
+
+  function checkSubmit() {
+
+                if (!isValid) return;
+            var myText = "Sum of predictions has to be equal to  ";
+            var num_pred = parseFloat(num_participants) -1
+            var text = myText.concat(num_pred.toString());
+
+
+               if( js_vars.temp == 0) {
+                 alert ("Please check your payoff before submitting the form");
+                 }
+               else {
+                  var text = "According to your predictions, your potential payoffs can be: \n -";
+                   var text = text.concat(payoff_a.innerHTML);
+                   var text = text.concat("€  or ");
+                   var text = text.concat(payoff_b.innerHTML);
+                   var text = text.concat("€  or  ");
+                   var text = text.concat(payoff_c.innerHTML);
+                   var text = text.concat("€.");
+
+                   if(confirm(text)) {
+                    form.submit();
+                    }
+
+
+
+            }
+  }
+
+
+
+
+</script>
+
+
+
+
+
+{{ endblock }}

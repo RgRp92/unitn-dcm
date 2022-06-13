@@ -1,0 +1,11 @@
+{{ block content }}
+    {{ if subsession.round_number == Constants.num_rounds }}
+    <p>
+        Round {{ participant.selected_round }} was randomly selected for payment.
+        Your final payoff is therefore {{ player.payoff }}.
+    </p>
+    {{ endif }}
+
+{{ endblock }}
+
+

@@ -1,0 +1,102 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+.myDiv {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%
+}
+
+
+.underline_y {
+  text-decoration: underline;
+  text-decoration-color: #CCCC00;
+}
+
+
+.underline_p {
+  text-decoration: underline;
+  text-decoration-color: #800080;
+}
+</style>
+
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<div class="myDiv" style=" position:relative;width:100%">
+
+<p style="  width:70%"> The <b>90,000 m2</b> of public buildings roofs that will be transformed into green ones can be distributed in:  </p>
+
+<div class="myDiv" style=" position:absolute;right:680px; top: 115px;">
+        <p align="center">  <b> Priority city center </b> </p>
+    <p align="center"> 70,000 m2 in <span class="underline_y" > city center </span> </p>
+    <p align="center"> 20,000 m2 in <span class="underline_p" > peripheries </span> </p>
+</div>
+
+<div class="myDiv" style=" position:absolute;left:270px; top: 115px;">
+        <p align="center">  <b> Priority peripheries </b> </p>
+    <p align="center"> 20,000 m2 in <span class="underline_y" > city center </span> </p>
+    <p align="center"> 70,000 m2 in <span class="underline_p" > peripheries </span> </p>
+</div>
+
+<div class="myDiv" style=" position:absolute;left:120px; top: 290px;">
+        <p align="center">  <b> Equally distributed </b> </p>
+    <p align="center"> 45,000 m2 in <span class="underline_y" > city center </span> </p>
+    <p align="center"> 45,000 m2 in <span class="underline_p" > peripheries </span> </p>
+</div>
+
+
+<div  style=" position:absolute; left:570px;bottom:80px; font-size: 0.7em; width:50%" >
+<p  align="center" > <i> Map of public buildings (red dots) and considered areas  </i>  </p>
+<br>
+<img src= "{{static 'trento_buildings.jpg' }}" style="width:70%; position:absolute; right:50px; top:40px " />
+
+</div>
+
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</body>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    {{ next_button }}
+{{ endblock }}

@@ -1,0 +1,54 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p> There are {{num_participants}} other participants in the session, excluding yourself </p>
+
+<p> In the belief task you will be asked to <b> predict the number of respondents </b>
+    (out of {{num_participants}}) that <b> choose each alternative </b> (OPTION A, B and STATUS QUO)
+    in each of the {{Constants.num_CE}} choice situations presented in the <b> preference task </b>
+</p>
+<p> You will <b> earn money </b> according to how <b> accurate your predictions are</b>
+</p>
+<p>
+You can earn a minimum €{{min_income}} and maximum €{{max_income}}
+</p>
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

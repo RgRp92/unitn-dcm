@@ -1,0 +1,77 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1 style="width:100%;">Phase 2     </h1 >
+
+<p>
+   Subsequently we  will  <b> randomly draw </b> one of the balls from the bingo cage.
+</p>
+<p>
+    This will <b> determine the binding alternative </b> (A, B or C).
+
+</p>
+
+  <p>
+    Assume we randomly draw a ball with an {{ chosen_letter }}
+
+</p>
+
+ <img src= "{{static 'bingo_cage.jpg' }}" style="width:40%; position:relative; left:100px; top:30px " />
+
+  {{ if chosen_letter  == 'A'}}
+               <img src= "{{static 'ball_A.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+                  {{ else}}
+
+  {{ if  chosen_letter  == 'B'}}
+                   <img src= "{{static 'ball_B.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+                  {{ else}}
+
+                 {{ if  chosen_letter  == 'C'}}
+                  <img src= "{{static 'ball_C.jpg' }}" style="width:5%; position:relative; left:130px; bottom:90px " />
+
+             {{ endif}}
+             {{ endif}}
+             {{ endif}}
+
+
+<br>
+
+<br>
+<p style="color:red">
+NOTE:In the comments it says " Add picture of choice situation 2 with earnings and circle option A" but I am not quite sure how.
+</p>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

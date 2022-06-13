@@ -1,0 +1,86 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body>
+
+<h1 style="width:100%;">Phase 2     </h1 >
+<p>
+    Assume that in the <b> binding choice situation (choice situation {{ Constants.random_practice_choice_sit }})</b>
+    of the <b> preference task </b>:
+</p>
+<ul>
+    <li><b> {{random_prediction_A}} </b> participants <b> choose option A</b></li>
+  <li><b> {{random_prediction_B}}</b> participants <b> choose option B</b></li>
+    <li><b> {{random_prediction_C}}</b> participants <b> choose option C</b></li>
+</ul>
+
+<p>
+Then we will place <b> {{random_prediction_A}} balls </b>  with the <b> letter A</b>, <b> {{random_prediction_B}} balls</b> with the <b> letter B</b>, and
+    <b> {{random_prediction_C}} balls</b> with the <b> letter C</b> in a bingo cage
+</p>
+
+
+  <div style="position:relative; left:500px; top:10px" >
+  <img src= "{{static 'bingo_cage.jpg' }}" style="width:40%;  " />
+
+                  <div style="position: absolute; right:350px; top:50px;width:100%" >
+
+                 {{ for x in listA }}
+               <img src= "{{static 'ball_A.jpg' }}" style="width:5% " />
+               {{ endfor }}
+                </div>
+                    <div style="position: absolute; right:350px; top:100px;width:100%">
+             {{ for x in listB }}
+               <img src= "{{static 'ball_B.jpg' }}" style="width:5%" />
+               {{ endfor }}
+                  </div>
+
+                    <div style="position: absolute;  right:350px; top:150px;;width:100%">
+              {{ for x in listC }}
+               <img src= "{{static 'ball_C.jpg' }}" style="width:5% " />
+               {{ endfor }}
+                   </div>
+</div>
+<br>
+
+<p style="color:red">
+NOTE:the distribution of balls is not completely random.. I made some modifications to  avoid extremes.
+</p>
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

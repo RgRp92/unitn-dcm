@@ -1,0 +1,223 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+table , th, td {
+   font-size: 1.03em;
+   border: 1.2px solid;
+   border-collapse: collapse;
+   border-color: blue;
+
+
+}
+
+td{
+text-align: center;
+
+}
+
+td, th{
+ height: 5px;
+}
+
+.circle{
+  border:2px solid ;
+  border-radius:50%;
+   border-color: red;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;">Task 2 – Belief task  </h1 >
+
+<div  style=" position:relative;right:0px; top:10px, width:100%">
+<p> <b> Instead of earning: </b> </p>
+
+    <p style="color:red">
+     NOTE:  Here it says- [Add picture of choice situation 2 with earnings and circle option A], but I do not understand which one it is,
+        is the one of the practice round?
+    </p>
+
+<p> <b>  You will earn: </b> </p>
+
+    <br>
+<table  class="table" align="center"  style="width:40%" >
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Beliefs in binding choice situation </b> </th>
+    </tr>
+      <tr>
+
+    <th scope="row">Participant</th> <th scope="col">Option A</th>  <th scope="col"> Option B </th>
+           <th scope="col"> Option C</th>
+    </tr>
+
+
+
+  {{ for x in cont }}
+    <tr>
+        {{ if x == 0}}
+          <th scope="row">  ID{{listA.0}} </th> <td>  {{example_prediction_average_A.0}}  </td>
+        <td>{{example_prediction_average_B.0}}  </td> <td>{{example_prediction_average_C.0}}  </td>
+        {{ else }}
+
+        {{ if x == 1}}
+          <th scope="row">   ID{{listA.1}} </th> <td>  {{example_prediction_average_A.1}}  </td>
+        <td>{{example_prediction_average_B.1}}  </td> <td>{{example_prediction_average_C.1}}  </td>
+        {{ else }}
+
+        {{ if x == 2}}
+          <th scope="row">   ID{{listA.2}} </th> <td>  {{example_prediction_average_A.2}}  </td>
+        <td>{{example_prediction_average_B.2}}  </td> <td>{{example_prediction_average_C.2}}  </td>
+        {{ else }}
+
+
+
+        {{ if x == 3}}
+          <th scope="row">   ID{{listA.3}} </th> <td>  {{example_prediction_average_A.3}}  </td>
+        <td>{{example_prediction_average_B.3}}  </td> <td>{{example_prediction_average_C.3}}  </td>
+        {{ else }}
+
+
+
+        {{ if x == 4}}
+          <th scope="row">   ID{{listA.4}} </th> <td>  {{example_prediction_average_A.4}}  </td>
+        <td>{{example_prediction_average_B.4}}  </td> <td>{{example_prediction_average_C.4}}  </td>
+        {{ else }}
+
+
+
+        {{ if x == 5}}
+          <th scope="row">   ID{{listA.5}} </th> <td>  {{example_prediction_average_A.5}}  </td>
+        <td>{{example_prediction_average_B.5}}  </td> <td>{{example_prediction_average_C.5}}  </td>
+        {{ else }}
+
+
+
+        {{ if x == 6}}
+          <th scope="row">   ID{{listA.6}} </th> <td>  {{example_prediction_average_A.6}}  </td>
+        <td>{{example_prediction_average_B.6}}  </td> <td>{{example_prediction_average_C.6}}  </td>
+        {{ else }}
+
+
+
+        {{ if x == 7}}
+          <th scope="row">   ID{{listA.7}} </th> <td>  {{example_prediction_average_A.7}}  </td>
+        <td>{{example_prediction_average_B.7}}  </td> <td>{{example_prediction_average_C.7}}  </td>
+        {{ else }}
+
+
+        {{ if x == 8}}
+          <th scope="row">   ID{{listA.8}} </th> <td>  {{example_prediction_average_A.8}}  </td>
+        <td>{{example_prediction_average_B.8}}  </td> <td>{{example_prediction_average_C.8}}  </td>
+        {{ else }}
+
+
+        {{ if x == 9}}
+          <th scope="row">   ID{{listA.9}} </th> <td>  {{example_prediction_average_A.9}}  </td>
+        <td>{{example_prediction_average_B.9}}  </td> <td>{{example_prediction_average_C.9}}  </td>
+        {{ else }}
+
+         {{ if x == 10}}
+          <th scope="row">   ID{{listA.10}} </th> <td>  {{example_prediction_average_A.10}}  </td>
+        <td>{{example_prediction_average_B.10}}  </td> <td>{{example_prediction_average_C.10}}  </td>
+
+         {{ else }}
+        {{ if x == 11}}
+          <th scope="row">   ID{{listA.11}} </th> <td>  {{example_prediction_average_A.11}}  </td>
+        <td>{{example_prediction_average_B.11}}  </td> <td>{{example_prediction_average_C.11}}  </td>
+
+         {{ endif }}
+
+        {{ endif }}
+
+        {{ endif }}
+
+         {{ endif }}
+
+        {{ endif }}
+
+         {{ endif }}
+
+        {{ endif }}
+           {{ endif }}
+              {{ endif }}
+          {{ endif }}
+          {{ endif }}
+          {{ endif }}
+    </tr>
+               {{ endfor }}
+
+    <tr style="background-color: #F0E68C">
+
+    <th scope="row">Average</th> <td> <p class="circle" style="font-size: 1.03em;" align="center">  <b>{{AverageA}} </b>  </p>   </td>
+        <td style="text-align: center"> <b> {{AverageB}} </b> </td> <td style="text-align: center"> <b> {{AverageC}} </b>  </td>
+    </tr>
+
+</table>
+
+ </div>
+
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

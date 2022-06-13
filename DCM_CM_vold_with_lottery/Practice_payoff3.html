@@ -1,0 +1,187 @@
+{{ block title }}
+{{ endblock }}
+
+{{ block content }}
+<header  style="font-size:14pt"> <b> Please fill the blank spaces with the correct information.</b> </header>
+<p>  </p>
+
+<p>Now, suppose that, after rolling the dice, it is decided that your predictions will  be replaced.
+    Therefore, your payoffs  will be based on the average of those who made the same choice than you in the binding situation.   </p>
+<p>For instance, suppose that the prediction's average  of those that make the same choice than you were: </p>
+
+<table id ="history" class="table">
+<tr>
+    <th> Average of Predictions </th>
+                 <th>  A </th>  <td> {{ player.CE_pract_pred_A }}</td>
+                 <th>  B </th>  <td>{{ player.CE_pract_pred_B }} </td>
+                 <th> Status quo </th> <td>  {{ player.CE_pract_pred_C }}</td>
+</tr>
+<th style="font-weight:normal;border: none"> And therefore, the corresponding payoffs are:  </th>
+  <tr>
+      <th> Payoff </th>
+        <th>  A </th> <td > {{ player.participant.Test_payoff_a_pred }}</td>
+        <th>  B </th>  <td >{{ player.participant.Test_payoff_b_pred }} </td>
+        <th> Status quo </th>  <td >{{ player.participant.Test_payoff_c_pred }} </td>
+</tr>
+</table>
+
+<p> In addition, suppose that (excluding yourself):  </p>
+<ul>
+<li> {{ player.participant.Test_choices_A }} persons chose Option A  </li>
+<li>{{ player.participant.Test_choices_B }} persons chose Option B   </li>
+<li> {{ player.participant.Test_choices_C }} persons chose Option Status quo </li>
+</ul>
+<p> Then: </p>
+<p> There is a chance of  <input id="Test_choices_A_prob"  style="text-align:center;height:25px; width:40px; font-size:12pt"> out of <b > {{subsession.session.other_part}} </b>
+    that your payoff will be based on your predictions of <b>Option A</b> and equal to  <input id="payoff_A_guess"  style="text-align:center;height:25px; width:50px; font-size:12pt"> </p>
+<p> There is a chance of  <input id="Test_choices_B_prob"  style="text-align:center;height:25px; width:40px; font-size:12pt"> out of  <b> {{subsession.session.other_part}} </b>
+    that your payoff will be based on your predictions of <b>Option B</b> and equal to  <input id="payoff_B_guess"  style="text-align:center;height:25px; width:50px; font-size:12pt"> </p>
+<p> There is a chance of <input id="Test_choices_C_prob"  style="text-align:center;height:25px; width:40px; font-size:12pt"> out of <b>  {{subsession.session.other_part}}</b>
+    that your payoff will be based on your predictions of <b>Option Status quo</b> and equal to  <input id="payoff_C_guess"  style="text-align:center;height:25px; width:50px; font-size:12pt"> </p>
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Next</button>
+
+<script>
+
+  let Test_choices_A_prob = document.getElementById('Test_choices_A_prob');
+  let Test_choices_B_prob = document.getElementById('Test_choices_B_prob');
+  let Test_choices_C_prob = document.getElementById('Test_choices_C_prob');
+  let payoff_A_guess = document.getElementById('payoff_A_guess');
+  let payoff_B_guess = document.getElementById('payoff_B_guess');
+  let payoff_C_guess = document.getElementById('payoff_C_guess');
+
+   function liveRecv(data) {
+      if (data.stop == true){
+        if (data.error_Test_choices_A_prob == true || data.error_Test_choices_B_prob == true  ||
+        data.error_Test_choices_C_prob == true || data.error_payoff_A_guess == true  ||
+        data.error_payoff_B_guess == true || data.error_payoff_C_guess == true   ){
+         var text = "You have reached the maximum number of attempts. The correct answer is: 1. There is a chance of ....... ";
+         alert (text);
+        }
+        else {
+        alert ("That's correct!");
+        }
+        form.submit();
+      }
+      if (data.stop == false){
+        js_vars.Test_choices_A_prob_guess = Test_choices_A_prob.value;
+        js_vars.Test_choices_B_prob_guess = Test_choices_B_prob.value;
+        js_vars.Test_choices_C_prob_guess = Test_choices_C_prob.value;
+        js_vars.payoff_A_guess = payoff_A_guess.value;
+        js_vars.payoff_B_guess = payoff_B_guess.value;
+        js_vars.payoff_C_guess = payoff_C_guess.value;
+        alert ('Oops! there is a mistake. Please make a new guess.')
+        if(data.error_Test_choices_A_prob == true ){
+        Test_choices_A_prob.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+        else {
+        Test_choices_A_prob.disabled  = true;
+        }
+        if(data.error_Test_choices_B_prob == true ){
+         Test_choices_B_prob.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+        else {
+        Test_choices_B_prob.disabled  = true;
+        }
+        if(data.error_Test_choices_C_prob == true ){
+         Test_choices_C_prob.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+        else {
+        Test_choices_C_prob.disabled  = true;
+        }
+        if(data.error_payoff_A_guess == true ){
+         payoff_A_guess.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+        else {
+        payoff_A_guess.disabled  = true;
+        }
+
+        if(data.error_payoff_B_guess == true ){
+        payoff_B_guess.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+        else {
+        payoff_B_guess.disabled  = true;
+        }
+        if(data.error_payoff_C_guess == true ){
+         payoff_C_guess.style.backgroundColor =  "rgba(221,0,0,0.3)";
+        }
+        else {
+        payoff_C_guess.disabled  = true;
+        }
+      }
+  }
+
+
+
+  function checkSubmit() {
+            if( Test_choices_A_prob.value.toString() == ""  || Test_choices_B_prob.value.toString() == ""
+             || Test_choices_C_prob.value.toString() == "" || payoff_A_guess.value.toString() == ""
+             || payoff_B_guess.value.toString() == "" || payoff_C_guess.value.toString() == "" ) {
+
+               if(  Test_choices_A_prob.value.toString() == "") {
+               Test_choices_A_prob.style.backgroundColor = "rgba(221,0,0,0.3)";
+               }
+               else {
+               Test_choices_A_prob.style.backgroundColor = "white";
+               }
+               if(  Test_choices_B_prob.value.toString() == "") {
+               Test_choices_B_prob.style.backgroundColor = "rgba(221,0,0,0.3)";
+               }
+               else {
+               Test_choices_B_prob.style.backgroundColor = "white";
+               }
+               if(  Test_choices_C_prob.value.toString() == "") {
+               Test_choices_C_prob.style.backgroundColor = "rgba(221,0,0,0.3)";
+               }
+               else {
+               Test_choices_C_prob.style.backgroundColor = "white";
+               }
+               if(  payoff_A_guess.value.toString() == "") {
+               payoff_A_guess.style.backgroundColor = "rgba(221,0,0,0.3)";
+               }
+               else {
+               payoff_A_guess.style.backgroundColor = "white";
+               }
+               if(  payoff_B_guess.value.toString() == "") {
+               payoff_B_guess.style.backgroundColor = "rgba(221,0,0,0.3)";
+               }
+               else {
+               payoff_B_guess.style.backgroundColor = "white";
+               }
+               if(  payoff_C_guess.value.toString() == "") {
+               payoff_C_guess.style.backgroundColor = "rgba(221,0,0,0.3)";
+               }
+               else {
+               payoff_C_guess.style.backgroundColor = "white";
+               }
+
+               alert ("Please fill all the empty spaces");
+            }
+            else {
+              Test_choices_A_prob.style.backgroundColor = "white";
+              Test_choices_B_prob.style.backgroundColor = "white";
+              Test_choices_C_prob.style.backgroundColor = "white";
+              payoff_A_guess.style.backgroundColor = "white";
+              payoff_B_guess.style.backgroundColor = "white";
+              payoff_C_guess.style.backgroundColor = "white";
+
+              if (js_vars.Test_choices_A_prob ==  Test_choices_A_prob.value && js_vars.Test_choices_B_prob ==  Test_choices_B_prob.value &&
+               js_vars.Test_choices_C_prob ==  Test_choices_C_prob.value && js_vars.payoff_A_guess ==  payoff_A_guess.value &&
+               js_vars.payoff_B_guess ==  payoff_B_guess.value && js_vars.payoff_C_guess ==  payoff_C_guess.value ){
+                 alert ("Please make a new guess before submitting")
+              }
+              else{
+                   liveSend( { 'Test_choices_A_prob' : Test_choices_A_prob.value, 'Test_choices_B_prob' : Test_choices_B_prob.value,
+                   'Test_choices_C_prob' : Test_choices_C_prob.value,  'payoff_A_guess' : payoff_A_guess.value,
+                   'payoff_B_guess' : payoff_B_guess.value, 'payoff_C_guess' : payoff_C_guess.value, 'clicked_button' : 1});
+              }
+
+            }
+  }
+
+
+
+
+</script>
+{{ endblock }}
+

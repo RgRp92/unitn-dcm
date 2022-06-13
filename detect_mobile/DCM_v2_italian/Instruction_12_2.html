@@ -1,0 +1,50 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+img {
+  display:  inline;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<p>
+   Severe cases of urban runoff can cause floods
+ </p>
+
+<p align="center" ><span  style = "font-size: 1em;">
+<i> Alluvione  1966 in Trento   </i> </span> </p>
+<br>
+<img src= "{{static 'alluvione_66_1.jpg' }}" style="width:38%;  position:relative; left:60px; bottom: 24px;"/>
+<img src= "{{static 'alluvione_66_2.jpg' }}" style="width:40%;  position:relative; left:140px;  bottom: 24px " />
+
+
+
+
+
+</body>
+
+    {{ next_button }}
+{{ endblock }}

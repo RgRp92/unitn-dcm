@@ -1,0 +1,57 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p>
+    <b>
+Let’s assume that the ball numbered {{random_ball_replaced}} is drawn
+ </b>
+</p>
+
+
+
+ <img src= "{{static 'bingo_cage.jpg' }}" style="width:40%; position:relative; left:0px; top:30px " />
+
+<img src= "{{static 'ball.jpg' }}" style="width:5%; position:relative; left:50px; bottom:90px " />
+
+ <p style="font-size: 1.5em; position:relative; left:440px; bottom:260px">
+    <b> {{random_ball_replaced}}</b>
+</p>
+
+<div class="myDiv" style=" position:relative;left:380px; bottom: 230px;width:60%">
+
+
+</div>
+<br>
+<br>
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

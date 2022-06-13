@@ -1,0 +1,72 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p>
+We will ask you to <b> state your preferences   </b>  regarding  <b> green roof retrofitting projects </b>  varying with the mentioned characteristics:
+
+</p>
+    <ul>
+  <li>You will be presented with  <b> {{Constants.num_CE}} choice situations </b> </li>
+  <li>In each choice situation  <b> 2 green roofs retrofitting projects (Option A and B) </b> and the  <b> ‘no project’ (Option C)  </b>
+      (no project implementation) will be presented </li>
+   <li>You will be asked to  <b> choose </b>  your  <b> most preferred  option </b> in each choice situation</li>
+    </ul>
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+<button type="submit" class="btn btn-primary" onclick="clicked(event)">Next</button>
+
+<script>
+
+    let TARI = document.getElementById('TARI');
+
+function clicked(e)
+{
+            var myText = "The last waste tax you paid was equal to  ";
+            var text = myText.concat(TARI.value.toString());
+            var text2 = text.concat('€, is this correct?');
+    if(!confirm(text2)) {
+        e.preventDefault();
+    }
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}

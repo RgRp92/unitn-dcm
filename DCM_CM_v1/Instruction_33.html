@@ -1,0 +1,61 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1 style="width:100%;">Phase 3     </h1 >
+
+<p>
+The amount of money you earn will be calculated based on:
+</p>
+
+<ul>
+    <li>your predictions in choice situation {{ Constants.random_practice_choice_sit }}  (25% probability)</li>
+</ul>
+<p>  or </p>
+<ul>
+    <li>the predictions of people who choose the same alternative as yourself in the preference task (75% probability)</li>
+</ul>
+
+<p>
+For example, if you choose option A in choice situation {{Constants.random_practice_choice_sit}}, there is 75% chance that your predictions will be replaced by those of respondents who chose option A in choice situation {{Constants.random_practice_choice_sit}} (just as you)
+</p>
+
+
+<br>
+<br>
+<p style="color:red">
+NOTE:In the comments it says " @Tatioana ad an example of a choice situation 2 with option B marked" but I am not quite sure how.
+</p>
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

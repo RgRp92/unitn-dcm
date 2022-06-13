@@ -1,0 +1,66 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1 style="width:100%;">Task 2 – Belief task   </h1 >
+
+
+<p> Once you have entered your predictions, you can click the <b> “Check Earnings” </b> button to display the  <b> earnings </b> you would get <b> based on your predictions </b></p>
+
+<p> Note that you can earn three different amount of money
+</p>
+<p> For example, if your predictions are:
+</p>
+
+
+<p style ="font-size: 1.3em;">
+    <b> {{ random_prediction_A}} participants selected to Option A </b> -> earnings = €{{ random_payoff_A}}
+</p>
+<p style="font-size: 1.3em;">
+ <b> {{ random_prediction_B}} participants selected to Option B </b>  -> earnings = €{{ random_payoff_B}}
+</p>
+<p  style="font-size: 1.3em;">
+<b> {{ random_prediction_C}} participants selected to Option STATUS QUO</b>  -> earnings = €{{ random_payoff_C}}
+</p>
+
+<br>
+
+<p> Therefore you could earn: €{{ random_payoff_A}}, €{{ random_payoff_B}} or €{{ random_payoff_C}}
+</p>
+
+
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

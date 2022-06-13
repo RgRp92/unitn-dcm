@@ -1,0 +1,25 @@
+{{ block title }}
+    Page title
+{{ endblock }}
+{{ block content }}
+ <p>7</p>
+<table class="table">
+<tr>
+
+    {{ for choice in form.CE7_choice}}
+             {{ if forloop.counter == 1}}
+                 <th> Option A </th>  <td>{{ choice }}</td>
+             {{ else}}
+                  {{ if forloop.counter == 2}}
+                  <th> Option B </th>  <td>{{ choice }}</td>
+                  {{ else}}
+                   <th> Status quo </th>   <td>{{ choice }}</td>
+                  {{ endif}}
+             {{ endif}}
+    {{ endfor }}
+</tr>
+</table>
+{{ next_button }}
+
+
+{{ endblock }}

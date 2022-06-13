@@ -1,0 +1,59 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<p>
+To determine whether you would be paid according to your predictions or not, we use a bingo cage with 100 numbered balls
+</p>
+ <img src= "{{static 'bingo_cage.jpg' }}" style="width:40%; position:relative; left:600px; bottom:40px " />
+
+<div class="myDiv" style=" position:relative;right:0px; bottom: 270px;width:60%">
+<ul>
+    <li> If a ball numbered <b> 1 to {{prob_not_replace}} </b> is <b>randomly drawn</b>, then <b> your beliefs will NOT be replaced </b></li>
+<br>
+<li>  If a ball numbered <b>{{prob_not_replace_1}} to 100</b> is <b>randomly drawn</b>, then <b>your beliefs will be replaced</b></li>
+</ul>
+
+</div>
+
+<p style=" position:relative;right:0px; bottom: 220px;" >
+Note that there is a probability of {{prob_not_replace}}% that your beliefs will not be replaced and a probability of {{prob_replace}}% that your beliefs will be replaced
+</p>
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

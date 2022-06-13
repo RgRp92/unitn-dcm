@@ -1,0 +1,184 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+
+}
+
+p, li {
+  font-size: 1.5em;
+}
+span{
+  font-size: 1.2em;
+}
+input{
+width:100px;
+height:30px;
+margin-bottom:10px;
+margin-top:10px;
+}
+input{
+width:80px;
+height:30px;
+margin-bottom:10px;
+margin-top:10px;
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;"> Questionario finale </h1 >
+<ol>
+<li>Sei nato nel comune di Trento? </li>
+
+
+ <span onclick="clicked1(event)">    {{form.nato_trento}} </span>
+<br>
+ <li  style="display: none;" id="enunciado" > Si prega di indicare il numero di anni vissuti a Trento. Indicare 0 se inferiore all’anno </li>
+
+
+
+ <input  style="display: none;" onchange="clicked2(event)" name='anni_trento' id="anni_trento"
+  min="0" max="100"  type="number"> <span style="display: none;"  id="anni_trento2" > {{ form.anni_trento.label }} </span>
+
+<br>
+ <br>
+
+ <li style="display: none;"  id="enunciado2"  > Si prega di indicare la Regione in cui sei nato  </li>
+
+ <span style="display: none;" onclick="clicked3(event)"  id="Regione_nato">
+        {{ for Regione_nato in form.Regione_nato}}
+             {{ if forloop.counter == 1}}
+                 <b>Nord-Est  </b> <br>
+             {{ else}}
+                  {{ if forloop.counter == 4}}
+               <b>Nord-Ovest  </b> <br>
+                  {{ else}}
+                        {{ if forloop.counter == 8}}
+                      <b>Centro   </b> <br>
+                        {{ else}}
+
+                           {{ if forloop.counter == 14}}
+                          <b>Sud e Isole    </b> <br>
+
+                           {{ endif}}
+                      {{ endif}}
+                 {{ endif}}
+             {{ endif}}
+
+         {{ Regione_nato }} {{ Regione_nato.label }}<br>
+
+    {{ endfor }}
+</span>
+
+
+<p style="display: none;" id="choice1">0</p>
+<p style="display: none;" id="choice2">0</p>
+<p style="display: none;" id="choice3">0</p>
+<p style="display: none;" id="choice4">0</p>
+
+<p style="display: none;" id="choice5">0</p>
+<p style="display: none;" id="choice6">0</p>
+<p style="display: none;" id="choice7">0</p>
+
+ <br>
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+
+
+</body>
+<script>
+
+let choice1 = document.getElementById('choice1');
+   let choice2 = document.getElementById('choice2');
+   let choice3 = document.getElementById('choice3');
+
+   let enunciado= document.getElementById('enunciado');
+    let enunciado2= document.getElementById('enunciado2');
+
+    let Regione_nato= document.getElementById('Regione_nato');
+    let anni_trento2= document.getElementById('anni_trento2');
+     let anni_trento= document.getElementById('anni_trento');
+
+   let  button = document.getElementById('button');
+
+
+
+   function checkSubmit() {
+      if ( formInputs.nato_trento.value == 0 ){
+            if( choice1.innerHTML == "0" ) {
+                alert("Rispondere a tutte le domande prima di continuare");
+              }
+              else {
+                form.submit();
+              }
+       }      else{
+
+
+                     if( choice1.innerHTML == "0" || choice2.innerHTML =="0"  || choice3.innerHTML =="0" ) {
+                           alert("Rispondere a tutte le domande prima di continuare");
+                      }
+                       else {
+                       form.submit();
+                       }
+
+
+       }
+  }
+
+function clicked1(e){
+              choice1.innerHTML ="1";
+
+                if ( formInputs.nato_trento.value == 1 ){
+               enunciado.style.display = "block";
+               enunciado2.style.display = "block";
+               Regione_nato.style.display = "block";
+               anni_trento2.style.display = "inline";
+               anni_trento.style.display = "inline";
+               button.style.bottom = '550px';
+
+                }
+               else {
+                choice2.innerHTML ="0";
+                choice3.innerHTML ="0";
+                enunciado.style.display = "none";
+                 enunciado2.style.display = "none";
+               Regione_nato.style.display = "none";
+               anni_trento2.style.display = "none";
+               anni_trento.style.display = "none";
+               button.style.bottom = '10px';
+                }
+}
+
+function clicked2(e){
+
+                 if (anni_trento.value <0 || anni_trento.value>100 || String(anni_trento.value)== ""  ) {
+                alert("inserire un anno di nascita valido (maggiore  o uguale di 0 e meno di 100")
+               anni_trento.style.backgroundColor ="rgba(221,0,0,0.3)";
+               choice2.innerHTML ="0";
+
+                }
+               else {
+
+                   choice2.innerHTML ="1";
+                   anni_trento.style.backgroundColor = "white";
+
+                }
+
+
+}
+
+
+function clicked3(e){
+               choice3.innerHTML ="1";
+               }
+
+
+
+</script>
+{{ endblock }}

@@ -1,0 +1,56 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1> Phase 3 </h1>
+
+<p>
+ In overall:
+</p>
+
+<ul>
+    <li>There is  a <b> {{prob_NOT_replace}}% probability </b> that your <b> earnings are determined by your own predictions</b>  in the binding choice situation and binding alternative (as determined in Phase 1 and 2) </li>
+
+    <li>There is a <b> {{prob_replace}}% probability</b>  that <b>  your earnings</b>  are <b>determined by the predictions of people who choose the same alternative as you </b> in the binding choice situation  of the preference task </li>
+</ul>
+
+<p>
+For example, if you choose option {{Constants.random_practice_alternative}}  in the binding choice situation, there is {{prob_replace}}% chance that your predictions will be replaced by the participants who chose option {{Constants.random_practice_alternative}}  in the binding choice situation  (just as you)
+</p>
+
+
+<br>
+<br>
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

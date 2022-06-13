@@ -1,0 +1,47 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+img {
+  display:  block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;">Percentage of rainwater absorbed</h1 >
+
+<p>
+    One of the most concerning impacts of urbanization is caused by the increase of impervious surfaces, such as pavements or roofs, which seriously limits the capacity of the soil to absorb rain or storm water. This generates an excessive flow of water in the ground surface, commonly known as surface runoff, which is a primary cause of flooding and water pollution in urban areas.
+ </p>
+
+<img src= "{{static 'runoff.jpg' }}" style="width:30%;"/>
+
+
+
+
+</body>
+
+    {{ next_button }}
+{{ endblock }}
