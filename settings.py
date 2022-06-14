@@ -29,10 +29,16 @@ SESSION_CONFIGS = [
         app_sequence=['DCM_pilot_italian'],
     ),
     dict(
-        name='DCM',
-        display_name="DCM",
-        num_demo_participants=10,
+        name='DCM_1to9',
+        display_name="DCM-control-CS_1to9",
+        num_demo_participants=3,
         app_sequence=['DCM_italian_final'],
+    ),
+    dict(
+        name='DCM_9to1',
+        display_name="DCM-control-CS_9to1",
+        num_demo_participants=3,
+        app_sequence=['DCM_italian_final2'],
     ),
 ]
 
@@ -54,7 +60,14 @@ ROOMS = [
         display_name = 'Studio Pilota 1',
         participant_label_file='rooms/pilot1label.txt',
         use_secure_urls=True
-    ),]
+    ),
+    dict(
+        name='pilot_2',
+        display_name='Studio Pilota 2',
+        participant_label_file='rooms/pilot2label.txt',
+        use_secure_urls=True
+    )
+]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin passwordInput in an environment variable

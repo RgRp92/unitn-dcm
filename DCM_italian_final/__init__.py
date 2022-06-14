@@ -29,7 +29,7 @@ class Subsession(BaseSubsession):
 class Constants(BaseConstants):
 
     players_per_group = None
-    name_in_url = 'DCM_treatment_final'
+    name_in_url = 'Control_1to9'
     tasks = ['1', '2', '3','4','5','6','7','8','9']
     num_CE = len(tasks)
     ###practice test####
@@ -43,83 +43,83 @@ class Constants(BaseConstants):
     max_num_try = 5 # Maximum number of tries practice test
 
 
-    CS1_location_A = -1
+    CS1_location_A = 0
     CS2_location_A = 1
-    CS3_location_A = 0
-    CS4_location_A = 0
+    CS3_location_A = -1
+    CS4_location_A = -1
     CS5_location_A = -1
-    CS6_location_A = 1
+    CS6_location_A = 0
     CS7_location_A = 1
     CS8_location_A = 0
-    CS9_location_A = -1
+    CS9_location_A = 1
 
     CS1_rainab_A =-1
-    CS2_rainab_A = 0
+    CS2_rainab_A = 1
     CS3_rainab_A =1
     CS4_rainab_A =0
-    CS5_rainab_A =1
-    CS6_rainab_A =-1
-    CS7_rainab_A =1
-    CS8_rainab_A =-1
-    CS9_rainab_A =0
+    CS5_rainab_A =0
+    CS6_rainab_A =1
+    CS7_rainab_A =-1
+    CS8_rainab_A =0
+    CS9_rainab_A =-1
 
-    CS1_maintan_A =-1
+    CS1_maintan_A =0
     CS2_maintan_A =0
-    CS3_maintan_A =1
-    CS4_maintan_A =-1
+    CS3_maintan_A =-1
+    CS4_maintan_A =1
     CS5_maintan_A =0
     CS6_maintan_A =1
-    CS7_maintan_A =-1
-    CS8_maintan_A =0
-    CS9_maintan_A =1
+    CS7_maintan_A =1
+    CS8_maintan_A =-1
+    CS9_maintan_A =-1
 
     CS1_cost_A =-1
-    CS2_cost_A =-1
+    CS2_cost_A =1
     CS3_cost_A =-1
-    CS4_cost_A =0
+    CS4_cost_A =1
     CS5_cost_A =0
-    CS6_cost_A =0
-    CS7_cost_A =1
+    CS6_cost_A =2
+    CS7_cost_A =-1
     CS8_cost_A =1
-    CS9_cost_A =1
+    CS9_cost_A =-1
 
     CS1_location_B =1
     CS2_location_B = 0
-    CS3_location_B = -1
+    CS3_location_B = 0
     CS4_location_B =-1
     CS5_location_B =1
     CS6_location_B =1
     CS7_location_B =-1
-    CS8_location_B =0
+    CS8_location_B =-1
     CS9_location_B =0
 
-    CS1_rainab_B = 1
-    CS2_rainab_B = 1
+    CS1_rainab_B = 0
+    CS2_rainab_B = 0
     CS3_rainab_B = -1
-    CS4_rainab_B = 1
-    CS5_rainab_B = -1
+    CS4_rainab_B = -1
+    CS5_rainab_B = 1
     CS6_rainab_B = 0
-    CS7_rainab_B = 0
-    CS8_rainab_B = 0
-    CS9_rainab_B = -1
+    CS7_rainab_B = 1
+    CS8_rainab_B = -1
+    CS9_rainab_B = 1
 
-    CS1_maintan_B =-1
-    CS2_maintan_B =1
-    CS3_maintan_B =-1
-    CS4_maintan_B =0
-    CS5_maintan_B =1
+    CS1_maintan_B =1
+    CS2_maintan_B =-1
+    CS3_maintan_B =0
+    CS4_maintan_B =-1
+    CS5_maintan_B =-1
     CS6_maintan_B =0
-    CS7_maintan_B =1
-    CS8_maintan_B =-1
-    CS9_maintan_B =0
+    CS7_maintan_B =0
+    CS8_maintan_B =1
+    CS9_maintan_B =1
 
     CS1_cost_B = 1
     CS2_cost_B = -1
-    CS3_cost_B = -1
-    CS4_cost_B = 0
-    CS5_cost_B = 0
+    CS3_cost_B = 1
+    CS4_cost_B = -1
+    CS5_cost_B = 1
     CS6_cost_B = -1
-    CS7_cost_B = 1
+    CS7_cost_B = 2
     CS8_cost_B = 0
     CS9_cost_B = 1
 
@@ -136,9 +136,10 @@ class Constants(BaseConstants):
     runoff_level_3 = "75%"
 
 
-    level1_cost = 20
-    level2_cost = 25
-    level3_cost = 30
+    level1_cost = 10
+    level2_cost = 15
+    level3_cost = 20
+    level4_cost = 25
 
 
 
@@ -402,6 +403,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect,
     )
 
+
     Circoscrizioni_residente = models.IntegerField(
         choices=[[0, "A - Centro Storico "], [1, "B - S. Giuseppe, S. Chiara "], [2, "C - Piedicastello (Sud) "],
                  [3, "D - Piedicastello (Nord)   "], [4, "E - Mattarello  "], [5, "F - Gardolo  "], [6, "G - Oltrefersina  (Nord) "],
@@ -628,9 +630,9 @@ def creating_session(subsession: Subsession):
         for p in subsession.get_players():
             p.participant.accept = 0
             round_numbers = list(range(1, Constants.num_CE + 1 ))
-            random.shuffle(round_numbers)
+            #random.shuffle(round_numbers)
             p.participant.contador=1
-            p.participant.player_temp_AB = random.randint(1,2)
+            p.participant.player_temp_AB = 1
 
             p.participant.task_rounds = dict(zip(Constants.tasks, round_numbers))
             p.participant.num_players = subsession.session.num_participants
@@ -1051,9 +1053,6 @@ class Questionario_5(Page):
         def is_displayed(player: Player):
             return player.round_number ==Constants.num_CE  and player.participant.accept ==1
 
-
-
-
 class Questionario_6(Page):
     form_model = 'player'
     form_fields = ['affected_flooding',
@@ -1112,7 +1111,10 @@ class Questionario_10(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+        residente_trento = player.field_maybe_none("residente_trento")
+        domiciliato_trento = player.field_maybe_none("domiciliato_trento")
+        return player.round_number ==  Constants.num_CE \
+               and residente_trento == 1 and domiciliato_trento == 1 and player.participant.accept ==1
 
 
 class Questionario_11(Page):
@@ -1137,9 +1139,6 @@ class Questionario_12(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
-
-
-
 
 class Practice_CE(Page):
     form_model = 'player'
@@ -1214,7 +1213,6 @@ class Practice_payoff1(Page):
     def js_vars(player):
         return dict(prob_replace_correct = Constants.prob_replace,prob_not_replace_correct = Constants.prob_not_replace, prob_replace_guess = 99999, prob_not_replace_guess =99999)
 
-
 class Practice_payoff2(Page):
 
     @staticmethod
@@ -1281,8 +1279,6 @@ class Practice_payoff2(Page):
     def js_vars(player):
         return dict(Test_choices_A_prob_guess = 99999, Test_choices_B_prob_guess =99999, Test_choices_C_prob_guess =99999,
                     payoff_A_guess=99999,payoff_B_guess=99999, payoff_C_guess=99999  )
-
-
 
 class Practice_payoff3(Page):
 
@@ -1351,8 +1347,6 @@ class Practice_payoff3(Page):
         return dict(Test_choices_A_prob_guess = 99999, Test_choices_B_prob_guess =99999, Test_choices_C_prob_guess =99999,
                     payoff_A_guess=99999,payoff_B_guess=99999, payoff_C_guess=99999  )
 
-
-
 class Introduction(Page):
 
     @staticmethod
@@ -1379,9 +1373,6 @@ class Consent_2(Page):
     def before_next_page(player, timeout_happened):
         player.participant.accept = player.accept
 
-
-
-
 class Consent_3(Page):
     form_model = 'player'
     form_fields = ['futuro_studies']
@@ -1390,17 +1381,11 @@ class Consent_3(Page):
     def is_displayed(player: Player):
         return player.round_number == 1  and player.participant.accept ==1
 
-
 class Consent_4(Page):
 
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1  and player.participant.accept ==1 and player.futuro_studies == 1
-
-
-
-
-
 
 class Instruction_1(Page):
 
@@ -1424,7 +1409,6 @@ class Instruction_3(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
-
 
 class Instruction_4(Page):
 
@@ -1460,7 +1444,6 @@ class Instruction_7(Page):
         min_income = Constants.quadratic_score_A - Constants.quadratic_score_B
         return dict(max_income=max_income, min_income=min_income)
 
-
 class Instruction_8(Page):
 
     @staticmethod
@@ -1484,6 +1467,7 @@ class Instruction_11(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
+
 class Instruction_12_1(Page):
 
     @staticmethod
@@ -1507,6 +1491,7 @@ class Instruction_14(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
+
 class Instruction_15(Page):
 
     @staticmethod
@@ -1543,15 +1528,12 @@ class Instruction_20(Page):
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
 
-
 class Instruction_20_2(Page):
     form_model = 'player'
     form_fields = ['TARI']
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
-
-
 
 class Instruction_21(Page):
 
@@ -1570,8 +1552,6 @@ class Instruction_21(Page):
     @staticmethod
     def before_next_page(player, timeout_happened):
         player.participant.TARI= player.TARI
-
-        
 
 class Instruction_22(Page):
 
@@ -1606,7 +1586,6 @@ class Instruction_23_2(Page):
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
 
-
 class Instruction_24(Page):
 
     @staticmethod
@@ -1634,8 +1613,6 @@ class Instruction_25_2(Page):
         max_income = Constants.quadratic_score_A + Constants.quadratic_score_B
         min_income = Constants.quadratic_score_A - Constants.quadratic_score_B
         return dict(max_income=max_income, min_income=min_income, num_participants = player.participant.num_players-1)
-
-
 
 class Instruction_26_practice_PRED(Page):
     form_model = 'player'
@@ -1677,7 +1654,6 @@ class Instruction_26_practice_PRED(Page):
         if values['CE_pract_pred_A'] + values['CE_pract_pred_B'] + values['CE_pract_pred_C'] != (player.participant.num_players- 1):
           return 'Sum of predictions has to be equal to  '  + str(player.participant.num_players- 1)
 
-
 class Instruction_27(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -1707,8 +1683,6 @@ class Instruction_27(Page):
     @staticmethod
     def js_vars(player):
         return dict(number_players=player.participant.num_players, temp=0)
-
-
 
 class Instruction_27_2(Page):
     form_model = 'player'
@@ -1750,7 +1724,6 @@ class Instruction_27_2(Page):
         if values['CE_pract_pred_A'] + values['CE_pract_pred_B'] + values['CE_pract_pred_C'] != (player.participant.num_players- 1):
           return 'Sum of predictions has to be equal to  '  + str(player.participant.num_players- 1)
 
-
 class Instruction_28(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -1785,7 +1758,6 @@ class Instruction_31(Page):
                     listB=listB,
                     listC=listC)
 
-
 class Instruction_32(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -1801,7 +1773,6 @@ class Instruction_32_2(Page):
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
 
-
 class Instruction_33(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -1811,7 +1782,6 @@ class Instruction_33(Page):
         return dict(prob_replace=int(Constants.prob_replace*100),
                     prob_NOT_replace=int(Constants.prob_not_replace*100),
                     chosen_letter=Subsession.session.chosen_letter_2)
-
 
 class Instruction_33_2(Page):
     @staticmethod
@@ -1823,13 +1793,10 @@ class Instruction_33_2(Page):
                     prob_NOT_replace=int(Constants.prob_not_replace*100),
                     chosen_letter=Subsession.session.chosen_letter_2)
 
-
 class Instruction_34(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1 and player.participant.accept ==1
-
-
 
 class Instruction_35(Page):
     @staticmethod
@@ -1875,7 +1842,6 @@ class Instruction_38(Page):
 
         return dict(chosen_letter=Subsession.session.chosen_letter_2)
 
-
 class Instruction_39(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -1920,7 +1886,6 @@ class Instruction_39(Page):
                     AverageC=AverageC,listA_=Subsession.session.listA_2[0:leng],
                     random_prediction_A=random_prediction_A
                     )
-
 
 class Instruction_39_2(Page):
     @staticmethod
@@ -1979,7 +1944,6 @@ class Instruction_39_2(Page):
                     random_prediction_A=random_prediction_A,
                     chosen_letter=Subsession.session.chosen_letter_2)
 
-
 class Instruction_40(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -2036,9 +2000,6 @@ class Instruction_40(Page):
                     random_prediction_A=random_prediction_A,
                     chosen_letter=Subsession.session.chosen_letter_2)
 
-
-
-
 class CE1(Page):
     form_model = 'player'
     form_fields = ['CE1_choice']
@@ -2087,35 +2048,35 @@ class CE1(Page):
 
         else:
 
-            location_2 = (Constants.CS1_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS1_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS1_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS1_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS1_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS1_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS1_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS1_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS1_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS1_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS1_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS1_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS1_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS1_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS1_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS1_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS1_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS1_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS1_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS1_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS1_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS1_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS1_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS1_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS1_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS1_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS1_cost_A == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS1_cost_A == 1) * str(Constants.level3_cost )
 
-            cost_1 = (Constants.CS1_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS1_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS1_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS1_cost_B == 1) * str(Constants.level3_cost )
 
@@ -2127,7 +2088,8 @@ class CE1(Page):
         maintan_1 = maintan_1 ,
         maintan_2 = maintan_2 ,
         cost_1 = cost_1 ,
-        cost_2= cost_2 ,random_display_A_B=player.player_temp_AB)
+        cost_2= cost_2 ,
+        random_display_A_B=player.player_temp_AB)
 
     @staticmethod
     def before_next_page(player, timeout_happened):
@@ -2140,7 +2102,7 @@ class CE1(Page):
                 if player.CE1_choice==2:
                     player.CE1_choice=1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         player1 = player.in_round(player.participant.task_rounds['1'])
         player.participant.CE1_ALL = player1.CE1_choice
 
@@ -2194,35 +2156,35 @@ class CE2(Page):
 
         else:
 
-            location_2 = (Constants.CS2_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS2_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS2_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS2_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS2_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS2_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS2_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS2_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS2_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS2_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS2_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS2_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS2_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS2_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS2_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS2_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS2_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS2_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS2_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS2_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS2_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS2_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS2_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS2_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS2_cost_A == -1) * str(Constants.level1_cost) + \
+            cost_1 = (Constants.CS2_cost_A == -1) * str(Constants.level1_cost) + \
                      (Constants.CS2_cost_A == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS2_cost_A == 1) * str(Constants.level3_cost )
 
-            cost_1 = (Constants.CS2_cost_B == -1) * str(Constants.level1_cost) + \
+            cost_2 = (Constants.CS2_cost_B == -1) * str(Constants.level1_cost) + \
                      (Constants.CS2_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS2_cost_B == 1) * str(Constants.level3_cost)
 
@@ -2246,7 +2208,7 @@ class CE2(Page):
                 if player.CE2_choice == 2:
                     player.CE2_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         player2 = player.in_round(player.participant.task_rounds['2'])
         player.participant.CE2_ALL = player2.CE2_choice
 
@@ -2298,35 +2260,35 @@ class CE3(Page):
 
         else:
 
-            location_2 = (Constants.CS3_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS3_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS3_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS3_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS3_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS3_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS3_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS3_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS3_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS3_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS3_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS3_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS3_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS3_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS3_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS3_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS3_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS3_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS3_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS3_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS3_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS3_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS3_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS3_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS3_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS3_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS3_cost_A == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS3_cost_A == 1) * str(Constants.level3_cost)
 
-            cost_1 = (Constants.CS3_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS3_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS3_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS3_cost_B == 1) * str(Constants.level3_cost )
 
@@ -2350,7 +2312,7 @@ class CE3(Page):
                 if player.CE3_choice == 2:
                     player.CE3_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         player3 = player.in_round(player.participant.task_rounds['3'])
         player.participant.CE3_ALL = player3.CE3_choice
 
@@ -2402,35 +2364,35 @@ class CE4(Page):
 
         else:
 
-            location_2 = (Constants.CS4_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS4_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS4_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS4_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS4_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS4_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS4_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS4_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS4_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS4_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS4_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS4_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS4_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS4_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS4_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS4_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS4_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS4_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS4_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS4_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS4_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS4_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS4_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS4_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS4_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS4_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS4_cost_A == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS4_cost_A == 1) * str(Constants.level3_cost )
 
-            cost_1 = (Constants.CS4_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS4_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS4_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS4_cost_B == 1) * str(Constants.level3_cost )
 
@@ -2454,7 +2416,7 @@ class CE4(Page):
                 if player.CE4_choice == 2:
                     player.CE4_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         player4 = player.in_round(player.participant.task_rounds['4'])
         player.participant.CE4_ALL = player4.CE4_choice
 
@@ -2506,35 +2468,35 @@ class CE5(Page):
 
         else:
 
-            location_2 = (Constants.CS5_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS5_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS5_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS5_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS5_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS5_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS5_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS5_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS5_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS5_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS5_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS5_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS5_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS5_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS5_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS5_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS5_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS5_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS5_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS5_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS5_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS5_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS5_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS5_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS5_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS5_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS5_cost_A == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS5_cost_A == 1) * str(Constants.level3_cost )
 
-            cost_1 = (Constants.CS5_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS5_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS5_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS5_cost_B == 1) * str(Constants.level3_cost )
 
@@ -2558,7 +2520,7 @@ class CE5(Page):
                 if player.CE5_choice == 2:
                     player.CE5_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         player5 = player.in_round(player.participant.task_rounds['5'])
         player.participant.CE5_ALL = player5.CE5_choice
 
@@ -2602,45 +2564,50 @@ class CE6(Page):
 
             cost_1 = (Constants.CS6_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS6_cost_A == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS6_cost_A == 1) * str(Constants.level3_cost )
+                     (Constants.CS6_cost_A == 1) * str(Constants.level3_cost )+ \
+                     (Constants.CS6_cost_A == 2) * str(Constants.level4_cost)
 
             cost_2 = (Constants.CS6_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS6_cost_B == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS6_cost_B == 1) * str(Constants.level3_cost )
+                     (Constants.CS6_cost_B == 1) * str(Constants.level3_cost ) +\
+                     (Constants.CS6_cost_B == 2) * str(Constants.level4_cost)
 
         else:
 
-            location_2 = (Constants.CS6_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS6_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS6_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS6_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS6_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS6_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS6_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS6_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS6_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS6_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS6_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS6_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS6_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS6_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS6_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS6_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS6_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS6_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS6_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS6_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS6_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS6_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS6_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS6_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS6_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS6_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS6_cost_A == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS6_cost_A == 1) * str(Constants.level3_cost )
+                     (Constants.CS6_cost_A == 1) * str(Constants.level3_cost ) + \
+                     (Constants.CS6_cost_A == 2) * str(Constants.level4_cost)
 
-            cost_1 = (Constants.CS6_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS6_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS6_cost_B == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS6_cost_B == 1) * str(Constants.level3_cost )
+                     (Constants.CS6_cost_B == 1) * str(Constants.level3_cost )+\
+                    (Constants.CS6_cost_B == 2) * str(Constants.level4_cost)
+
 
         return dict(location_1=location_1,
                     location_2=location_2,
@@ -2662,7 +2629,7 @@ class CE6(Page):
                 if player.CE6_choice == 2:
                     player.CE6_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         player6 = player.in_round(player.participant.task_rounds['6'])
         player.participant.CE6_ALL = player6.CE6_choice
 
@@ -2706,45 +2673,50 @@ class CE7(Page):
 
             cost_1 = (Constants.CS7_cost_A == -1) * str(Constants.level1_cost) + \
                      (Constants.CS7_cost_A == 0) * str(Constants.level2_cost)+ \
-                     (Constants.CS7_cost_A == 1) * str(Constants.level3_cost )
+                     (Constants.CS7_cost_A == 1) * str(Constants.level3_cost )+ \
+                     (Constants.CS7_cost_A == 2) * str(Constants.level4_cost)
 
             cost_2 = (Constants.CS7_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS7_cost_B == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS7_cost_B == 1) * str(Constants.level3_cost)
+                     (Constants.CS7_cost_B == 1) * str(Constants.level3_cost)+ \
+                     (Constants.CS7_cost_B == 1) * str(Constants.level4_cost)
+
 
         else:
 
-            location_2 = (Constants.CS7_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS7_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS7_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS7_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS7_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS7_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS7_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS7_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS7_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS7_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS7_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS7_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS7_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS7_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS7_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS7_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS7_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS7_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS7_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS7_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS7_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS7_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS7_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS7_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS7_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS7_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS7_cost_A == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS7_cost_A == 1) * str(Constants.level3_cost )
+                     (Constants.CS7_cost_A == 1) * str(Constants.level3_cost )+ \
+                     (Constants.CS7_cost_A == 2) * str(Constants.level4_cost)
 
-            cost_1 = (Constants.CS7_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS7_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS7_cost_B == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS7_cost_B == 1) * str(Constants.level3_cost )
+                     (Constants.CS7_cost_B == 1) * str(Constants.level3_cost ) + \
+                     (Constants.CS7_cost_B == 2) * str(Constants.level4_cost)
 
         return dict(location_1=location_1,
                     location_2=location_2,
@@ -2766,7 +2738,7 @@ class CE7(Page):
                 if player.CE7_choice == 2:
                     player.CE7_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         player7 = player.in_round(player.participant.task_rounds['7'])
         player.participant.CE7_ALL = player7.CE7_choice
 
@@ -2818,35 +2790,35 @@ class CE8(Page):
 
         else:
 
-            location_2 = (Constants.CS8_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS8_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS8_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS8_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS8_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS8_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS8_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS8_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS8_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS8_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS8_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS8_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS8_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS8_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS8_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS8_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS8_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS8_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS8_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS8_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS8_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS8_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS8_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS8_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS8_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS8_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS8_cost_A == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS8_cost_A == 1) * str(Constants.level3_cost )
 
-            cost_1 = (Constants.CS8_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS8_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS8_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS8_cost_B == 1) * str(Constants.level3_cost )
 
@@ -2870,7 +2842,7 @@ class CE8(Page):
                 if player.CE8_choice == 2:
                     player.CE8_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         
         player8 = player.in_round(player.participant.task_rounds['8'])
         player.participant.CE8_ALL = player8.CE8_choice
@@ -2925,35 +2897,35 @@ class CE9(Page):
 
         else:
 
-            location_2 = (Constants.CS9_location_A == -1) * Constants.Location_level_1 + \
+            location_1 = (Constants.CS9_location_A == -1) * Constants.Location_level_1 + \
                          (Constants.CS9_location_A == 0) * Constants.Location_level_2 + \
                          (Constants.CS9_location_A == 1) * Constants.Location_level_3
 
-            location_1 = (Constants.CS9_location_B == -1) * Constants.Location_level_1 + \
+            location_2 = (Constants.CS9_location_B == -1) * Constants.Location_level_1 + \
                          (Constants.CS9_location_B == 0) * Constants.Location_level_2 + \
                          (Constants.CS9_location_B == 1) * Constants.Location_level_3
 
-            rainab_2 = (Constants.CS9_rainab_A == -1) * Constants.runoff_level_1 + \
+            rainab_1 = (Constants.CS9_rainab_A == -1) * Constants.runoff_level_1 + \
                        (Constants.CS9_rainab_A == 0) * Constants.runoff_level_2 + \
                        (Constants.CS9_rainab_A == 1) * Constants.runoff_level_3
 
-            rainab_1 = (Constants.CS9_rainab_B == -1) * Constants.runoff_level_1 + \
+            rainab_2 = (Constants.CS9_rainab_B == -1) * Constants.runoff_level_1 + \
                        (Constants.CS9_rainab_B == 0) * Constants.runoff_level_2 + \
                        (Constants.CS9_rainab_B == 1) * Constants.runoff_level_3
 
-            maintan_2 = (Constants.CS9_maintan_A == -1) * Constants.Maintenance_level_1 + \
+            maintan_1 = (Constants.CS9_maintan_A == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS9_maintan_A == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS9_maintan_A == 1) * Constants.Maintenance_level_3
 
-            maintan_1 = (Constants.CS9_maintan_B == -1) * Constants.Maintenance_level_1 + \
+            maintan_2 = (Constants.CS9_maintan_B == -1) * Constants.Maintenance_level_1 + \
                         (Constants.CS9_maintan_B == 0) * Constants.Maintenance_level_2 + \
                         (Constants.CS9_maintan_B == 1) * Constants.Maintenance_level_3
 
-            cost_2 = (Constants.CS9_cost_A == -1) * str(Constants.level1_cost ) + \
+            cost_1 = (Constants.CS9_cost_A == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS9_cost_A == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS9_cost_A == 1) * str(Constants.level3_cost )
 
-            cost_1 = (Constants.CS9_cost_B == -1) * str(Constants.level1_cost ) + \
+            cost_2 = (Constants.CS9_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS9_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS9_cost_B == 1) * str(Constants.level3_cost)
 
@@ -2977,12 +2949,18 @@ class CE9(Page):
                 if player.CE9_choice == 2:
                     player.CE9_choice = 1
 
-        player.participant.player_temp_AB = random.randint(1, 2)
+        player.participant.player_temp_AB = 1
         
         player9 = player.in_round(player.participant.task_rounds['9'])
         player.participant.CE9_ALL = player9.CE9_choice
 
+class remarks(Page):
 
+    @staticmethod
+    def is_displayed(player: Player):
+        participant = player.participant
+
+        return player.round_number ==Constants.num_CE
 
   
 class grazie(Page):
@@ -3405,42 +3383,53 @@ class Results(Page):
 
 page_sequence = [
     Introduction,
-       Instruction_1,
-       Instruction_2,
-Consent_1,
-Consent_2,
-Consent_3,
-Consent_4,
-            Instruction_3,
-        Instruction_4,
-          Instruction_5,
-         Instruction_8,
-           Instruction_9,
-            Instruction_10,
+    Instruction_1,
+    Instruction_2,
+    Consent_1,
+    Consent_2,
+    Consent_3,
+    Consent_4,
+    Instruction_3,
+    Instruction_4,
+    Instruction_5,
+    Instruction_8,
+    Instruction_9,
+    Instruction_10,
     Instruction_11,
-     Instruction_12_1,
-        Instruction_12_2,
- Instruction_13,
-      Instruction_14,
-         Instruction_15,
-      Instruction_16,
+    Instruction_12_1,
+    Instruction_12_2,
+    Instruction_13,
+    Instruction_14,
+    Instruction_15,
+    Instruction_16,
     Instruction_17,
-     Instruction_19,
- Instruction_20,
- Instruction_22,
-     Instruction_23_practice_CE,
-   Instruction_23_2,
-CE1, CE2, CE3,CE4, CE5, CE6,CE7, CE8, CE9,    questionario_base,
-     Questionario_1,
-Questionario_2,
-Questionario_3,
-Questionario_4,
-Questionario_5,
-     Questionario_6,
-      Questionario_7,
-     Questionario_8,
-      Questionario_9,
-      Questionario_10,
-     Questionario_11,
-Questionario_12,  grazie,
+    Instruction_19,
+    Instruction_20,
+    Instruction_22,
+    Instruction_23_practice_CE,
+    Instruction_23_2,
+    CE1,
+    CE2,
+    CE3,
+    CE4,
+    CE5,
+    CE6,
+    CE7,
+    CE8,
+    CE9,
+    questionario_base,
+    Questionario_1,
+    Questionario_2,
+    Questionario_3,
+    Questionario_4,
+    Questionario_5,
+    Questionario_6,
+    Questionario_7,
+    Questionario_8,
+    Questionario_9,
+    Questionario_10,
+    Questionario_11,
+    Questionario_12,
+    remarks,
+    grazie,
         ]
