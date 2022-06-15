@@ -42,12 +42,12 @@ input[type=radio]{
 
 <body style=" margin:0px;position:relative; bottom:70px">
 
-<h1> For example </h1>
+<h1> Ad esempio </h1>
 
 <p>
-   Assume that we randomly draw the ball with the number {{ Constants.random_practice_choice_sit }}.
+   Supponiamo che viene estratta casualmente la pallina con il numero {{ Constants.random_practice_choice_sit }}.
    </p> <p>
-    Then,  your preferences and predictions for the choice situation {{ Constants.random_practice_choice_sit }}  would determine your earnings
+    Allora,  le tue scelte e le tue previsioni per la scheda di scelta {{ Constants.random_practice_choice_sit }}  determineranno il tuo compenso aggiuntivo
 
 </p>
 
@@ -142,7 +142,7 @@ input[type=radio]{
 
                     {{ if Constants.random_practice_alternative  == 'A'}}
 
-        <th scope="row"> Your choice </th> <td style="text-align:center"> <input type="radio" id="A" checked="checked"   style= "width: 1.2em;
+        <th scope="row"> La tua scelta </th> <td style="text-align:center"> <input type="radio" id="A" checked="checked"   style= "width: 1.2em;
     height: 1.2em; border: 1px solid "/>
   </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
     height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
@@ -151,14 +151,14 @@ input[type=radio]{
       {{ else}}
 
        {{ if Constants.random_practice_alternative  == 'B'}}
-        <th scope="row"> Your choice </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+        <th scope="row"> La tua scelta </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
     height: 1.2em; border: 1px solid "/>
   </td> <td style="text-align:center"> <input type="radio" id="B"  checked="checked"   style= "width: 1.2em;
     height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
     height: 1.2em;" /> </td>
        </tr>
        {{ else}}
-       <th scope="row"> Your choice </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+       <th scope="row"> La tua scelta </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
     height: 1.2em; border: 1px solid "/>
   </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
     height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   checked="checked"   style= "width: 1.2em;
@@ -169,11 +169,11 @@ input[type=radio]{
              {{ endif}}
 
       <tr style="background-color: #F0E68C; height:10px;" >
-         <th scope="row" > Your predictions </th> <td style="text-align:center"> {{subsession.session.example_prediction_A}}  </td>
+         <th scope="row" > Le tue previsioni </th> <td style="text-align:center"> {{subsession.session.example_prediction_A}}  </td>
         <td style="text-align:center"> {{subsession.session.example_prediction_B}} </td> <td style="text-align:center"> {{subsession.session.example_prediction_C}} </td>
        </tr>
       <tr style="background-color: #F0E68C">
-         <th scope="row" > Your payoffs </th> <td style="text-align:center"> € {{subsession.session.example_prediction_payoff_A}} </td>
+         <th scope="row" > I tuoi compensi </th> <td style="text-align:center"> € {{subsession.session.example_prediction_payoff_A}} </td>
         <td style="text-align:center">€ {{ subsession.session.example_prediction_payoff_B}} </td> <td style="text-align:center" > € {{subsession.session.example_prediction_payoff_C}}  </td>
        </tr>
 </table>

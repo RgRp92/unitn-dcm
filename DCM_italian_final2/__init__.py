@@ -271,14 +271,14 @@ class Player(BasePlayer):
     )
 
     green_areas_frequency = models.IntegerField(
-        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Sempre"]],
+        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Molto spesso"]],
        widget = widgets.RadioSelect,
     )
 
 
 
     recreational_outdoor = models.IntegerField(
-        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Sempre"]],
+        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Molto spesso"]],
        widget = widgets.RadioSelect,
     )
 
@@ -302,13 +302,13 @@ class Player(BasePlayer):
 
 
     Consider_install_green_roof = models.IntegerField(
-        choices=[[0, "Si"], [1, "No"], [2,"non saprei"]],
+        choices=[[0, "Si"], [1, "No"], [2,"Non saprei"]],
                  widget = widgets.RadioSelect,
         blank=True
     )
 
     Consider_rent_green_roof = models.IntegerField(
-        choices=[[0, "Si"], [1, "No"], [2,"non saprei"]],
+        choices=[[0, "Si"], [1, "No"], [2,"Non saprei"]],
                  widget = widgets.RadioSelect,
         blank=True
     )
@@ -364,7 +364,7 @@ class Player(BasePlayer):
     anni_natto =models.IntegerField(
         label="Anno di nascita",
         min=1900,
-        max=2005)
+        max=2004)
     gender  = models.IntegerField(
         choices=[[0, "Femminile"], [1, "Maschile"], [2, "Altro"]],
         widget = widgets.RadioSelect )
@@ -499,7 +499,7 @@ class Player(BasePlayer):
     Campo_lavoro_altro = models.StringField( blank=True  )
 
     reddito  = models.IntegerField(
-        choices=[[0, "Nessuno, non ricevo reddito "], [1, "Meno di € 9,999"], [2, "Tra i € 10.000 e i € 19.999"],
+        choices=[[0, "Nessuno, non percepisco reddito "], [1, "Meno di € 9,999"], [2, "Tra i € 10.000 e i € 19.999"],
                  [3, "Tra i € 20.000 e i € 29.999"],
                  [4, "Tra i € 30.000 e i € 39.999"], [5, "Tra € 40.000 e i € 59.999"],
                  [6, "Superiore ai € 60.000"]],
@@ -2688,7 +2688,7 @@ class CE7(Page):
             cost_2 = (Constants.CS7_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS7_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS7_cost_B == 1) * str(Constants.level3_cost)+ \
-                     (Constants.CS7_cost_B == 1) * str(Constants.level4_cost)
+                     (Constants.CS7_cost_B == 2) * str(Constants.level4_cost)
 
 
         else:

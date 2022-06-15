@@ -271,14 +271,14 @@ class Player(BasePlayer):
     )
 
     green_areas_frequency = models.IntegerField(
-        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Sempre"]],
+        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Molto spesso"]],
        widget = widgets.RadioSelect,
     )
 
 
 
     recreational_outdoor = models.IntegerField(
-        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Sempre"]],
+        choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Molto spesso"]],
        widget = widgets.RadioSelect,
     )
 
@@ -302,13 +302,13 @@ class Player(BasePlayer):
 
 
     Consider_install_green_roof = models.IntegerField(
-        choices=[[0, "Si"], [1, "No"], [2,"non saprei"]],
+        choices=[[0, "Si"], [1, "No"], [2,"Non saprei"]],
                  widget = widgets.RadioSelect,
         blank=True
     )
 
     Consider_rent_green_roof = models.IntegerField(
-        choices=[[0, "Si"], [1, "No"], [2,"non saprei"]],
+        choices=[[0, "Si"], [1, "No"], [2,"Non saprei"]],
                  widget = widgets.RadioSelect,
         blank=True
     )
@@ -364,7 +364,7 @@ class Player(BasePlayer):
     anni_natto =models.IntegerField(
         label="Anno di nascita",
         min=1900,
-        max=2005)
+        max=2004)
     gender  = models.IntegerField(
         choices=[[0, "Femminile"], [1, "Maschile"], [2, "Altro"]],
         widget = widgets.RadioSelect )
@@ -499,7 +499,7 @@ class Player(BasePlayer):
     Campo_lavoro_altro = models.StringField( blank=True  )
 
     reddito  = models.IntegerField(
-        choices=[[0, "Nessuno, non ricevo reddito "], [1, "Meno di € 9,999"], [2, "Tra i € 10.000 e i € 19.999"],
+        choices=[[0, "Nessuno, non percepisco reddito "], [1, "Meno di € 9,999"], [2, "Tra i € 10.000 e i € 19.999"],
                  [3, "Tra i € 20.000 e i € 29.999"],
                  [4, "Tra i € 30.000 e i € 39.999"], [5, "Tra € 40.000 e i € 59.999"],
                  [6, "Superiore ai € 60.000"]],
@@ -1546,8 +1546,8 @@ class Instruction_21(Page):
         a =  Constants.level1_cost*player.TARI/100
         b = Constants.level2_cost * player.TARI / 100
         c = Constants.level3_cost * player.TARI / 100
-       # d = Constants.level4_cost * player.TARI / 100
-        return dict(a=a, b=b,c=c)
+        d = Constants.level4_cost * player.TARI / 100
+        return dict(a=a, b=b,c=c,d=d)
 
     @staticmethod
     def before_next_page(player, timeout_happened):
@@ -2106,9 +2106,6 @@ class CE1(Page):
         player1 = player.in_round(player.participant.task_rounds['1'])
         player.participant.CE1_ALL = player1.CE1_choice
 
-
-
-
 class CE2(Page):
     form_model = 'player'
     form_fields = ['CE2_choice']
@@ -2211,7 +2208,6 @@ class CE2(Page):
         player.participant.player_temp_AB = 1
         player2 = player.in_round(player.participant.task_rounds['2'])
         player.participant.CE2_ALL = player2.CE2_choice
-
 
 class CE3(Page):
     form_model = 'player'
@@ -2316,7 +2312,6 @@ class CE3(Page):
         player3 = player.in_round(player.participant.task_rounds['3'])
         player.participant.CE3_ALL = player3.CE3_choice
 
-
 class CE4(Page):
     form_model = 'player'
     form_fields = ['CE4_choice']
@@ -2420,7 +2415,6 @@ class CE4(Page):
         player4 = player.in_round(player.participant.task_rounds['4'])
         player.participant.CE4_ALL = player4.CE4_choice
 
-
 class CE5(Page):
     form_model = 'player'
     form_fields = ['CE5_choice']
@@ -2523,7 +2517,6 @@ class CE5(Page):
         player.participant.player_temp_AB = 1
         player5 = player.in_round(player.participant.task_rounds['5'])
         player.participant.CE5_ALL = player5.CE5_choice
-
 
 class CE6(Page):
     form_model = 'player'
@@ -2633,7 +2626,6 @@ class CE6(Page):
         player6 = player.in_round(player.participant.task_rounds['6'])
         player.participant.CE6_ALL = player6.CE6_choice
 
-
 class CE7(Page):
     form_model = 'player'
     form_fields = ['CE7_choice']
@@ -2679,7 +2671,7 @@ class CE7(Page):
             cost_2 = (Constants.CS7_cost_B == -1) * str(Constants.level1_cost ) + \
                      (Constants.CS7_cost_B == 0) * str(Constants.level2_cost ) + \
                      (Constants.CS7_cost_B == 1) * str(Constants.level3_cost)+ \
-                     (Constants.CS7_cost_B == 1) * str(Constants.level4_cost)
+                     (Constants.CS7_cost_B == 2) * str(Constants.level4_cost)
 
 
         else:
@@ -2741,7 +2733,6 @@ class CE7(Page):
         player.participant.player_temp_AB = 1
         player7 = player.in_round(player.participant.task_rounds['7'])
         player.participant.CE7_ALL = player7.CE7_choice
-
 
 class CE8(Page):
     form_model = 'player'
@@ -2846,9 +2837,6 @@ class CE8(Page):
         
         player8 = player.in_round(player.participant.task_rounds['8'])
         player.participant.CE8_ALL = player8.CE8_choice
-
-
-
 
 class CE9(Page):
     form_model = 'player'
@@ -2962,7 +2950,6 @@ class remarks(Page):
 
         return player.round_number ==Constants.num_CE
 
-  
 class grazie(Page):
 
     @staticmethod
@@ -2971,13 +2958,11 @@ class grazie(Page):
 
         return player.round_number ==Constants.num_CE
 
-
 class Wait_CE(WaitPage):
     after_all_players_arrive = set_CE
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number ==  Constants.num_CE
-
 
 class Pred_CE1(Page):
     form_model = 'player'
@@ -3044,7 +3029,6 @@ class Pred_CE2(Page):
         print('values is', values)
         if values['CE2_pred_A'] + values['CE2_pred_B'] + values['CE2_pred_C'] !=  (player.participant.num_players- 1):
           return 'Sum of predictions has to be equal to  '  +  str(player.participant.num_players- 1)
-
 
 class Pred_CE3(Page):
     form_model = 'player'
@@ -3151,7 +3135,6 @@ class Pred_CE5(Page):
         if values['CE5_pred_A'] + values['CE5_pred_B'] + values['CE5_pred_C'] !=  (player.participant.num_players- 1):
           return 'Sum of predictions has to be equal to  '  +  str(player.participant.num_players - 1)
 
-
 class Pred_CE6(Page):
     form_model = 'player'
     form_fields = ['CE6_pred_A', 'CE6_pred_B', 'CE6_pred_C']
@@ -3257,7 +3240,6 @@ class Pred_CE8(Page):
         if values['CE8_pred_A'] + values['CE8_pred_B'] + values['CE8_pred_C'] !=  (player.participant.num_players- 1):
           return 'Sum of predictions has to be equal to  '  +  str(player.participant.num_players- 1)
 
-
 class Pred_CE9(Page):
     form_model = 'player'
     form_fields = ['CE9_pred_A', 'CE9_pred_B', 'CE9_pred_C']
@@ -3303,12 +3285,6 @@ class Wait_CE2(WaitPage):
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number ==  Constants.num_CE*2
-
-
-
-
-
-
 
 class Show_bindingsit(Page):
     @staticmethod

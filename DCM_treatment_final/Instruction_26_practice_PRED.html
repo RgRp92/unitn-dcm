@@ -46,10 +46,10 @@ input[type=radio]{
 -->
 
 <h1>
-An example
+Un esempio
 </h1>
 
-<p> How many people do you think choose each option?
+<p> Quanti partecipanti secondo te hanno scelto ciascuna opzione (A,B e C)?
 </p>
 
 
@@ -88,13 +88,13 @@ An example
     </tr>
 
     <tr style="background-color: #F0E68C">
-    <th scope="row"> Your predictions </th>
+    <th scope="row"> Le tue previsioni </th>
 
-                 <td > <input  id="CE_pract_pred_A" type="number" name="CE_pract_pred_A" value= "0" min="0" step="1" style="text-align:center;height:25px; width:50px; "> (Out of {{num_participants}})</td>
+                 <td > <input  id="CE_pract_pred_A" type="number" name="CE_pract_pred_A" value= "0" min="0" step="1" style="text-align:center;height:25px; width:50px; "> (su {{num_participants}})</td>
 
-                 <td > <input  id="CE_pract_pred_B" type="number" name="CE_pract_pred_B" value= "0"  min="0" step="1" style="text-align:center;height:25px; width:50px; ">(Out of {{num_participants}})</td>
+                 <td > <input  id="CE_pract_pred_B" type="number" name="CE_pract_pred_B" value= "0"  min="0" step="1" style="text-align:center;height:25px; width:50px; ">(su {{num_participants}})</td>
 
-                 <td>  <input  id="CE_pract_pred_C" type="number" name="CE_pract_pred_C"  value= "0"  min="0" step="1"  style="text-align:center;height:25px; width:50px; ">(Out of {{num_participants}})</td>
+                 <td>  <input  id="CE_pract_pred_C" type="number" name="CE_pract_pred_C"  value= "0"  min="0" step="1"  style="text-align:center;height:25px; width:50px; ">(su {{num_participants}})</td>
 </tr>
 
 
@@ -160,12 +160,12 @@ An example
   function checkSubmit() {
 
                 if (!isValid) return;
-            var myText = "Sum of predictions has to be equal to  ";
+            var myText = "La somma delle tue previsioni deve essere uguale a   ";
             var num_pred = parseFloat(num_participants) -1
             var text = myText.concat(num_pred.toString());
 
             if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value) ==0) {
-               alert ("In each column you should write the number of people you think that choose each option");
+               alert ("In ciascuna cella in basso devi scrivere il numero di persone che pensi hanno scelto quella Opzione");
             }
            else {
             if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value)  != parseFloat(num_pred)) {

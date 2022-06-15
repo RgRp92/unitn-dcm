@@ -43,9 +43,9 @@ input[type=radio]{
 
 <body style=" margin:0px;position:relative; bottom:50px">
 
-<h1 style="width:100%;"> Now try it by yourself!   </h1 >
+<h1 style="width:100%;"> Ora prova da solo  </h1 >
 
-<p >  How many people do you think choose each option? </p>
+<p >  Quanti partecipanti secondo te hanno scelto ciascuna opzione (A,B e C)? </p>
 
 
 
@@ -88,7 +88,7 @@ input[type=radio]{
 
 
     <tr style="background-color: #F0E68C">
-      <th> Your Predictions </th>
+      <th> Le tue previsioni </th>
                       <td > <input  id="CE_pract_pred_A" type="number" name="CE_pract_pred_A" value= "0" min="0" step="1" style="text-align:center;height:25px; width:50px; "> (Out of {{num_participants}})</td>
 
                  <td > <input  id="CE_pract_pred_B" type="number" name="CE_pract_pred_B" value= "0"  min="0" step="1" style="text-align:center;height:25px; width:50px; ">(Out of {{num_participants}})</td>
@@ -99,7 +99,7 @@ input[type=radio]{
 
               <tr style="background-color: #F0E68C">
 
-      <th> <button type="button" onclick = "sendValue()" > Check your Payoff </button> </th>
+      <th> <button type="button" onclick = "sendValue()" > Controlla i tuoi compensi </button> </th>
          <td id="A" > </td>
          <td id="B" > </td>
           <td id="C"> </td>
@@ -167,12 +167,12 @@ input[type=radio]{
   function checkSubmit() {
 
           //   if (!isValid) return;
-          //  var myText = "Sum of predictions has to be equal to  ";
+          //  var myText = "La somma delle tue previsioni deve essere uguale a  ";
           //  var num_pred = parseFloat(num_participants) -1
            // var text = myText.concat(num_pred.toString());
 
            // if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value) ==0) {
-            //   alert ("In each column you should write the number of people you think that choose each option");
+            //   alert ("In ciascuna cella in basso devi scrivere il numero di persone che pensi hanno scelto quella Opzione");
           //  }
           // else {
            // if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value)  != parseFloat(num_pred)) {
@@ -180,7 +180,7 @@ input[type=radio]{
           //  }
            // else {
               // if( js_vars.tempA != parseFloat(fieldA.value) || js_vars.tempB != parseFloat(fieldB.value) || js_vars.tempC != parseFloat(fieldC.value)) {
-              //   alert ("Please check your payoff before submitting the form");
+              //   alert ("Per favore controlla i tuoi compensi prima di procedere");
               //   }
               // else {
                   //   if(confirm("Are you sure you want to continue?")) {

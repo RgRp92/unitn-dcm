@@ -63,9 +63,9 @@ Scheda di scelta {{player.participant.contador}}
 
       <tr>
 
-    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Opzione A</th>
-          <th scope="col" style="width:20%;text-align:center" >Opzione B </th>
-           <th scope="col" style="width:20%;text-align:center" >Opzione C <br> (Nessun progetto)</th>
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
     </tr>
 
     <tr>
@@ -87,7 +87,7 @@ Scheda di scelta {{player.participant.contador}}
     </tr>
 
     <tr style="background-color: #F0E68C">
-  <th scope="row"> Seleziona la tua opzione preferita  </th>
+  <th scope="row"> Io scelgo il progetto  </th>
 
         {{ for choice in form.CE2_choice}}
              {{ if forloop.counter == 1}}
@@ -114,7 +114,7 @@ Scheda di scelta {{player.participant.contador}}
 
 </body>
 <p style="display: none;" id="choice">none</p>
-<button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Scegli una alternativa e clicca qui</button>
 
 <script>
 
