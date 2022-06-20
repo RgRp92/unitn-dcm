@@ -345,12 +345,8 @@ class Player(BasePlayer):
 
     # Climate change experience and expectation
 
-    affected_flooding = models.IntegerField(
-        choices=[[0, "Si"], [1, "No"]],
-        widget=widgets.RadioSelect,
-    )
 
-    lik_severe_flood = make_likert_scale_5("severe_flood")
+
     lik_mild_flood = make_likert_scale_5("mild_flood")
     serious_problem = make_likert_scale_5("serious_prob")
 
@@ -937,8 +933,7 @@ class Questionario_5(Page):
 
 class Questionario_6(Page):
     form_model = 'player'
-    form_fields = ['affected_flooding',
-                   'lik_severe_flood',
+    form_fields = [
                    'lik_mild_flood',
                    'serious_problem']
     @staticmethod
