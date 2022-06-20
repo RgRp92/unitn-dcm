@@ -495,7 +495,7 @@ class Player(BasePlayer):
                  [6, "Superiore ai € 119.000"]],
         widget=widgets.RadioSelect)
 
-    household_size = models.IntegerField(
+    house_size = models.IntegerField(
         label="",
         min=0,
         max=1000)
