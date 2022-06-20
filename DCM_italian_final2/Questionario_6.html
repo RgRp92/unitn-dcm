@@ -58,7 +58,7 @@ table{
 
     <tr >
         {{ for lik_mild_flood in form.lik_mild_flood}}
-                 <th onclick="clicked3(event)" style="text-align:center;background-color: #C6DEFF">
+                 <th onclick="clicked1(event)" style="text-align:center;background-color: #C6DEFF">
                      {{ lik_mild_flood }} {{ lik_mild_flood.label }}</th>
       {{ endfor }}
 
@@ -91,7 +91,7 @@ table{
 
     <tr >
         {{ for serious_problem in form.serious_problem}}
-                 <th onclick="clicked4(event)" style="text-align:center;background-color: #C6DEFF">
+                 <th onclick="clicked2(event)" style="text-align:center;background-color: #C6DEFF">
                      {{ serious_problem }} {{ serious_problem.label }}</th>
       {{ endfor }}
 
@@ -126,15 +126,13 @@ table{
 <script>
    let choice1 = document.getElementById('choice1');
    let choice2 = document.getElementById('choice2');
-   let choice3 = document.getElementById('choice3');
-   let choice4 = document.getElementById('choice4');
+
 
    function checkSubmit() {
 
             if( choice1.innerHTML == "0" ||
-               choice2.innerHTML == "0" ||
-                choice3.innerHTML == "0" ||
-                choice4.innerHTML == "0" ) {
+
+                choice2.innerHTML == "0" ) {
                 alert("Rispondere a tutte le domande prima di continuare");
               }
               else {
@@ -150,12 +148,7 @@ function clicked1(e){
 function clicked2(e){
                choice2.innerHTML ="1"
 }
-function clicked3(e){
-               choice3.innerHTML ="1";
-}
-function clicked4(e){
-               choice4.innerHTML ="1";
-}
+
 
 
 
