@@ -35,48 +35,16 @@ table{
 
 
 <ol start="11">
-<li>La tua famiglia è mai stata colpita da un'alluvione?  </li>
-
-
-   <span onclick="clicked1(event)" style="font-size:1.2em">  {{  form.affected_flooding}} </span>
-
-  <br>
-<li>Con quale probabilità un'alluvione simile a quella avvenuta nel  '66 potrebbe colpire Trento nel prossimo decennio?
-   </li>
-
-  <br>
-  <table  style="width:80%" >
-
-      <tr style="background-color: #ADDFFF" >
-          <th style="width:20%;text-align:center">  Molto bassa	  </th>
-          <th style="width:20%;text-align:center">  Bassa  </th>
-           <th style="width:20%;;text-align:center">  Media  </th>
-          <th style="width:20%;;text-align:center"> Alta   </th>
-          <th style="width:20%;;text-align:center"> Molto alta   </th>
-
-    </tr>
-
-    <tr >
-        {{ for lik_severe_flood in form.lik_severe_flood}}
-                 <th onclick="clicked2(event)" style="text-align:center;background-color: #C6DEFF">
-                     {{ lik_severe_flood }} {{ lik_severe_flood.label }}</th>
-      {{ endfor }}
-
- </tr>
-</table>
-
-   <img src= "{{static 'alluvione_66_1.jpg' }}" style="width:28%;  position:relative; left:100px; top: 8px;"/>
-<img src= "{{static 'alluvione_66_2.jpg' }}" style="width:30%;  position:relative; left:120px;   top: 8px; " />
-
-   <br>
-   <br>
-      <br>
-   <br>
 
 <li>Con quale probabilità problematiche simili a quelle in foto potrebbero verificarsi a Trento nel prossimo decennio?
    </li>
+    <br>
 
+    <img src= "{{static 'runoff_1.jpeg' }}" style="width:30%;  position:relative; left:100px; top: 8px;"/>
+<img src= "{{static 'runoff_2.jpg' }}" style="width:30%;  position:relative;  left:120px;   top: 8px;" />
   <br>
+    <br>
+    <br>
   <table  style="width:80%" >
 
       <tr style="background-color: #ADDFFF" >
@@ -97,8 +65,7 @@ table{
  </tr>
 </table>
 
-<img src= "{{static 'runoff_1.jpeg' }}" style="width:30%;  position:relative; left:100px; top: 8px;"/>
-<img src= "{{static 'runoff_2.jpg' }}" style="width:30%;  position:relative;  left:120px;   top: 8px;" />
+
 
    <br>
    <br>

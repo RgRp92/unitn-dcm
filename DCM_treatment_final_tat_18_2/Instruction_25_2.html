@@ -24,14 +24,21 @@ li {
 
 
 
-<p> Ci sono altri {{num_participants}} partecipanti alla sessione, escludendo te stesso </p>
+<p> {{if num_participants != 1}} Ci sono altri {{num_participants}} partecipanti alla sessione, escludendo te stesso
 
-<p> Ti verrà chiesto di  <b> prevedere il numero di partecipanti  </b>
+    Ti verrà chiesto di  <b> prevedere il numero di partecipanti  </b>
     (su {{num_participants}}) che <b> scelgono ciascuna alternativa </b> (Progetto A, Progetto B and Nessun progetto)
+    in ciascuna delle {{Constants.num_CE}} situazioni di scelta presentate nella  <b> sezione delle preferenze </b></p>
+
+{{else}}
+<p>
+C'è {{num_participants}} altro partecipante alla sessione, escludendo te stesso </p>
+
+<p> Ti verrà chiesto di prevedere quale alternativa <b>
+    (Progetto A, Progetto B and Nessun progetto) </b> l'altro partecipante sceglierà
     in ciascuna delle {{Constants.num_CE}} situazioni di scelta presentate nella  <b> sezione delle preferenze </b>
+{{ endif}}
 </p>
-
-
 <br>
 <br>
 
@@ -43,7 +50,6 @@ li {
 </body>
 
 
-    {{ next_button }}
 
 
 

@@ -41,85 +41,85 @@ class Constants(BaseConstants):
     prob_not_replace = 0.25
     max_num_try = 5 # Maximum number of tries practice test
 
-    CS1_location_A = 0
-    CS2_location_A = 1
-    CS3_location_A = -1
-    CS4_location_A = -1
+    CS9_location_A = 0
+    CS8_location_A = 1
+    CS7_location_A = -1
+    CS6_location_A = -1
     CS5_location_A = -1
-    CS6_location_A = 0
-    CS7_location_A = 1
-    CS8_location_A = 0
-    CS9_location_A = 1
+    CS4_location_A = 0
+    CS3_location_A = 1
+    CS2_location_A = 0
+    CS1_location_A = 1
 
-    CS1_rainab_A = -1
-    CS2_rainab_A = 1
-    CS3_rainab_A = 1
-    CS4_rainab_A = 0
-    CS5_rainab_A = 0
-    CS6_rainab_A = 1
-    CS7_rainab_A = -1
-    CS8_rainab_A = 0
     CS9_rainab_A = -1
+    CS8_rainab_A = 1
+    CS7_rainab_A = 1
+    CS6_rainab_A = 0
+    CS5_rainab_A = 0
+    CS4_rainab_A = 1
+    CS3_rainab_A = -1
+    CS2_rainab_A = 0
+    CS1_rainab_A = -1
 
-    CS1_maintan_A = 0
-    CS2_maintan_A = 0
-    CS3_maintan_A = -1
-    CS4_maintan_A = 1
-    CS5_maintan_A = 0
+    CS9_maintan_A = 0
+    CS8_maintan_A = 0
+    CS7_maintan_A = -1
     CS6_maintan_A = 1
-    CS7_maintan_A = 1
-    CS8_maintan_A = -1
-    CS9_maintan_A = -1
+    CS5_maintan_A = 0
+    CS4_maintan_A = 1
+    CS3_maintan_A = 1
+    CS2_maintan_A = -1
+    CS1_maintan_A = -1
 
-    CS1_cost_A = -1
-    CS2_cost_A = 1
-    CS3_cost_A = -1
-    CS4_cost_A = 1
-    CS5_cost_A = 0
-    CS6_cost_A = 2
-    CS7_cost_A = -1
-    CS8_cost_A = 1
     CS9_cost_A = -1
+    CS8_cost_A = 1
+    CS7_cost_A = -1
+    CS6_cost_A = 1
+    CS5_cost_A = 0
+    CS4_cost_A = 2
+    CS3_cost_A = -1
+    CS2_cost_A = 1
+    CS1_cost_A = -1
 
-    CS1_location_B = 1
-    CS2_location_B = 0
-    CS3_location_B = 0
-    CS4_location_B = -1
+    CS9_location_B = 1
+    CS8_location_B = 0
+    CS7_location_B = 0
+    CS6_location_B = -1
     CS5_location_B = 1
-    CS6_location_B = 1
-    CS7_location_B = -1
-    CS8_location_B = -1
-    CS9_location_B = 0
+    CS4_location_B = 1
+    CS3_location_B = -1
+    CS2_location_B = -1
+    CS1_location_B = 0
 
-    CS1_rainab_B = 0
-    CS2_rainab_B = 0
-    CS3_rainab_B = -1
-    CS4_rainab_B = -1
+    CS9_rainab_B = 0
+    CS8_rainab_B = 0
+    CS7_rainab_B = -1
+    CS6_rainab_B = -1
     CS5_rainab_B = 1
-    CS6_rainab_B = 0
-    CS7_rainab_B = 1
-    CS8_rainab_B = -1
-    CS9_rainab_B = 1
+    CS4_rainab_B = 0
+    CS3_rainab_B = 1
+    CS2_rainab_B = -1
+    CS1_rainab_B = 1
 
-    CS1_maintan_B = 1
-    CS2_maintan_B = -1
-    CS3_maintan_B = 0
-    CS4_maintan_B = -1
-    CS5_maintan_B = -1
-    CS6_maintan_B = 0
-    CS7_maintan_B = 0
-    CS8_maintan_B = 1
     CS9_maintan_B = 1
+    CS8_maintan_B = -1
+    CS7_maintan_B = 0
+    CS6_maintan_B = -1
+    CS5_maintan_B = -1
+    CS4_maintan_B = 0
+    CS3_maintan_B = 0
+    CS2_maintan_B = 1
+    CS1_maintan_B = 1
 
-    CS1_cost_B = 1
-    CS2_cost_B = -1
-    CS3_cost_B = 1
-    CS4_cost_B = -1
-    CS5_cost_B = 1
-    CS6_cost_B = -1
-    CS7_cost_B = 2
-    CS8_cost_B = 0
     CS9_cost_B = 1
+    CS8_cost_B = -1
+    CS7_cost_B = 1
+    CS6_cost_B = -1
+    CS5_cost_B = 1
+    CS4_cost_B = -1
+    CS3_cost_B = 2
+    CS2_cost_B = 0
+    CS1_cost_B = 1
 
     Location_level_1 = "Priorità  nel Centro città"
     Location_level_2 = "Priorità nelle Periferie"
@@ -137,10 +137,6 @@ class Constants(BaseConstants):
     level2_cost = 15
     level3_cost = 20
     level4_cost = 25
-
-
-
-
 
 
 class Group(BaseGroup):
@@ -1655,7 +1651,7 @@ class Introduction(Page):
 class Consent_1(Page):
     @staticmethod
     def is_displayed(player: Player):
-        return
+        return player.round_number == 1
 
 
 class Consent_2(Page):
@@ -1702,7 +1698,7 @@ class Instruction_1(Page):
 class Instruction_2(Page):
     @staticmethod
     def is_displayed(player: Player):
-        return
+        return player.participant.accept == 1
 
 class Instruction_3(Page):
 
@@ -1823,6 +1819,7 @@ class Instruction_20(Page):
     @staticmethod
     def is_displayed(player: Player):
         return  player.participant.accept ==1
+
 
 
 class Instruction_22(Page):
@@ -5140,6 +5137,7 @@ page_sequence = [
     Instruction_16,
     Instruction_17,
     Instruction_19,
+    Instruction_20,
     Instruction_22,
     Instruction_23_practice_CE,
     Instruction_24,
@@ -5174,6 +5172,7 @@ page_sequence = [
     Practice_payoff_not_replaced,
     Practice_payoff_replaced,
     Test_1,
+    Instruction_23_2,
     CE1,
     CE2,
     CE3,
@@ -5217,5 +5216,4 @@ page_sequence = [
     remarks,
     Compenso,
     grazie,
-
         ]

@@ -47,7 +47,7 @@ input[type=radio]{
 <body style=" margin:0px;position:relative; bottom:50px">
 
 
-<p> Your payoff will equal to  <b>
+<p> Il tuo compenso sarà uguale a  <b>
 {{ if random_choice_practice == 'A' }}
 €{{player.participant.payoff_practice_A }}
     {{ else}}
@@ -179,9 +179,7 @@ input[type=radio]{
 
 
 
-<br>
-<br>
-<br>
+
 
 </body>
 
@@ -194,7 +192,10 @@ input[type=radio]{
 
 
 
-  {{ next_button }}
+<br>
 
+<button style="position:relative; left:69%" name="btn_submit" value="True" class="btn btn-primary btn-large"  >
+                  <span style="font-size:12pt">Clicca qui per procedere</span>
+             </button>
 
 {{ endblock }}

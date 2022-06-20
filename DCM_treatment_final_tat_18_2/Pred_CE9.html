@@ -148,7 +148,7 @@ Scheda di scelta {{player.participant.contador}}
 
   function sendValue() {
 
-    var myText = "Sum of predictions has to be equal to  ";
+    var myText = "La somma delle previsioni deve essere uguale a  ";
     var num_pred = parseFloat(num_participants) -1
     var text = myText.concat(num_pred.toString());
 
@@ -173,7 +173,7 @@ Scheda di scelta {{player.participant.contador}}
             var text = myText.concat(num_pred.toString());
 
             if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value) ==0) {
-               alert ("In each column you should write the number of people you think that choose each option");
+               alert ("In ciascuna colonna scrivi le predizioni per ciascuna alternativa");
             }
           else {
             if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value)  != parseFloat(num_pred)) {
@@ -181,7 +181,7 @@ Scheda di scelta {{player.participant.contador}}
             }
            else {
                if( js_vars.tempA != parseFloat(fieldA.value) || js_vars.tempB != parseFloat(fieldB.value) || js_vars.tempC != parseFloat(fieldC.value)) {
-                 alert ("Please check your payoff before submitting the form");
+                 alert ("Per favore controlla i compensi prima di procedere");
                 }
               else {
                 //     if(confirm("Are you sure you want to continue?")) {

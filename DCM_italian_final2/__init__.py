@@ -264,14 +264,7 @@ class Player(BasePlayer):
     email = models.StringField(blank=True)
     numero_di_cellulare = models.StringField(blank=True)
     nato_a = models.StringField(blank=True)
-    mesi_di_nascita = models.IntegerField(
-        choices=[[1, "Gennaio"], [2, "Febbraio"], [3, "Marzo"], [4, "Aprile"], [5, "Maggio"],
-                 [6, "Giugno"], [7, "Luglio"], [8, "Agosto"], [9, "Settembre"], [10, "Ottobre"], [11, "Novembre"],
-                 [12, "Dicembre"]], blank=True)
-    giorno_di_nascita_30 = models.IntegerField(
-        choices=list(range(1, 30)), blank=True)
-
-    anni_di_nascita = models.IntegerField(choices=list(range(1920, 2005)), blank=True)
+    anno_di_nascita = models.IntegerField(choices=list(range(1920, 2005)), blank=True)
 
 
     player_temp_AB =  models.IntegerField(default=0)
@@ -378,26 +371,11 @@ class Player(BasePlayer):
         choices=[[0, "Femminile"], [1, "Maschile"], [2, "Altro"]],
         widget = widgets.RadioSelect )
 
-    person_14_less = models.IntegerField(
-        label="Ragazzi di età inferiore ai 14 anni",
+    household_n = models.IntegerField(
+        label="",
         min=0,
-        max=30)
-    person_15_19 = models.IntegerField(
-        label="Adolescenti tra i 15 e i 19 anni",
-        min=0,
-        max=30)
-    person_20_40 = models.IntegerField(
-        label="Adulti tra i 20 e i 40 anni",
-        min=0,
-        max=30)
-    person_41_65 = models.IntegerField(
-        label="Adulti tra i 41 e i 65 anni",
-        min=0,
-        max=30)
-    person_65 = models.IntegerField(
-        label="Adulti di età superiore ai 66 anni",
-        min=0,
-        max=30)
+        max=10)
+
 
     Education = models.IntegerField(
         choices=[[0, "Nessuno studio formale"], [1, "Scuola elementare"], [2, "Scuola secondaria"],  [3, "Scuola superiore"],
@@ -513,6 +491,8 @@ class Player(BasePlayer):
                  [4, "Tra i € 30.000 e i € 39.999"], [5, "Tra € 40.000 e i € 59.999"],
                  [6, "Superiore ai € 60.000"]],
         widget=widgets.RadioSelect)
+
+    house_size = models.FloatField(label="")
 
     TARI = models.FloatField(
         label="TAX",
@@ -893,7 +873,7 @@ class Questionario_1 (Page):
     # Behavioural question
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number == Constants.num_CE  and player.participant.accept ==1
+        return player.round_number == 1  and player.participant.accept ==1
 
 ###Riks meassurements
 
@@ -907,7 +887,7 @@ class Questionario_2(Page):
                        'R5']
         @staticmethod
         def is_displayed(player: Player):
-            return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+            return player.round_number ==  1  and player.participant.accept ==1
 # Nature relatedness
 class Questionario_3(Page):
             form_model = 'player'
@@ -920,7 +900,7 @@ class Questionario_3(Page):
 
             @staticmethod
             def is_displayed(player: Player):
-                return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+                return player.round_number ==  1  and player.participant.accept ==1
 
 #sense of place
 class Questionario_4(Page):
@@ -933,7 +913,7 @@ class Questionario_4(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number ==Constants.num_CE  and player.participant.accept ==1
+        return player.round_number ==1  and player.participant.accept ==1
 
 # Green roofs aesthetics  # Green roofs services
 class Questionario_5(Page):
@@ -948,7 +928,7 @@ class Questionario_5(Page):
 
         @staticmethod
         def is_displayed(player: Player):
-            return player.round_number ==Constants.num_CE  and player.participant.accept ==1
+            return player.round_number ==1  and player.participant.accept ==1
 
 class Questionario_6(Page):
     form_model = 'player'
@@ -958,22 +938,18 @@ class Questionario_6(Page):
                    'serious_problem']
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+        return player.round_number ==  1  and player.participant.accept ==1
 
 class Questionario_7(Page):
     form_model = 'player'
     form_fields = ['anni_natto',
                    'gender',
-                   'person_14_less',
-                   'person_15_19',
-                   'person_20_40',
-                   'person_41_65',
-                   'person_65',
+                   'household_n',
                    'Education']
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+        return player.round_number == 1  and player.participant.accept ==1
 
 
 class Questionario_8(Page):
@@ -985,7 +961,7 @@ class Questionario_8(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+        return player.round_number ==  1  and player.participant.accept ==1
 
 
 class Questionario_9(Page):
@@ -997,7 +973,7 @@ class Questionario_9(Page):
     @staticmethod
     def is_displayed(player: Player):
         residente_trento = player.field_maybe_none("residente_trento")
-        return   player.round_number ==Constants.num_CE and residente_trento == 1    and player.participant.accept ==1
+        return   player.round_number ==1 and residente_trento == 1    and player.participant.accept ==1
 
 
 class Questionario_10(Page):
@@ -1010,7 +986,7 @@ class Questionario_10(Page):
     def is_displayed(player: Player):
         residente_trento = player.field_maybe_none("residente_trento")
         domiciliato_trento = player.field_maybe_none("domiciliato_trento")
-        return player.round_number ==  Constants.num_CE \
+        return player.round_number ==  1 \
                and residente_trento == 1 and domiciliato_trento == 1 and player.participant.accept ==1
 
 
@@ -1022,7 +998,7 @@ class Questionario_11(Page):
 
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+        return player.round_number ==  1  and player.participant.accept ==1
 
 
 class Questionario_12(Page):
@@ -1032,10 +1008,12 @@ class Questionario_12(Page):
                      'Campo_lavoro',
                      'Campo_lavoro_altro',
                      'reddito',
-                     'TARI']
+                     'TARI',
+                     'house_size']
     @staticmethod
     def is_displayed(player: Player):
-        return player.round_number ==  Constants.num_CE  and player.participant.accept ==1
+        return player.round_number ==  1  and player.participant.accept ==1
+
 
 class Practice_CE(Page):
     form_model = 'player'
@@ -1279,7 +1257,9 @@ class Consent_3(Page):
         return player.round_number == 1  and player.participant.accept ==1
 
 class Consent_4(Page):
-
+    form_model = 'player'
+    form_fields = ['nome', 'cognome','email',
+                   'numero_di_cellulare','anno_di_nascita']
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1  and player.participant.accept ==1 and player.futuro_studies == 1

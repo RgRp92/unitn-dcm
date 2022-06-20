@@ -290,9 +290,21 @@ class Player(BasePlayer):
     CE9_pred_B = make_field_prediction("CE9_B")
     CE9_pred_C = make_field_prediction("CE9_C")
 
+    ## INFORMATIVA PER IL TRATTAMENTO NELL’AMBITO DEL RECLUTAMENTO DEI PARTECIPANTI ALLA RICERCA
 
-    ##tari
+    nome = models.StringField(blank=True)
+    cognome = models.StringField(blank=True)
+    email = models.StringField(blank=True)
+    numero_di_cellulare = models.StringField(blank=True)
+    nato_a = models.StringField(blank=True)
+    mesi_di_nascita = models.IntegerField(
+        choices=[[1, "Gennaio"], [2, "Febbraio"], [3, "Marzo"], [4, "Aprile"], [5, "Maggio"],
+                 [6, "Giugno"], [7, "Luglio"], [8, "Agosto"], [9, "Settembre"], [10, "Ottobre"], [11, "Novembre"],
+                 [12, "Dicembre"]], blank=True)
+    giorno_di_nascita_30 = models.IntegerField(
+        choices=list(range(1, 30)), blank=True)
 
+    anni_di_nascita = models.IntegerField(choices=list(range(1920, 2005)), blank=True)
 
 
     ##Questionnario
@@ -1655,7 +1667,7 @@ class Introduction(Page):
 class Consent_1(Page):
     @staticmethod
     def is_displayed(player: Player):
-        return
+        return player.round_number == 1
 
 
 class Consent_2(Page):
@@ -5176,6 +5188,7 @@ page_sequence = [
     Practice_payoff_not_replaced,
     Practice_payoff_replaced,
     Test_1,
+    Instruction_23_2,
     CE1,
     CE2,
     CE3,

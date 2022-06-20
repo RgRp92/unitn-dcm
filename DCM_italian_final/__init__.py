@@ -263,15 +263,7 @@ class Player(BasePlayer):
     cognome = models.StringField(        blank=True)
     email = models.StringField(        blank=True)
     numero_di_cellulare = models.StringField(blank=True)
-    nato_a = models.StringField(        blank=True)
-    mesi_di_nascita = models.IntegerField(
-        choices=[[1, "Gennaio"], [2, "Febbraio"], [3, "Marzo"], [4, "Aprile"], [5, "Maggio"],
-        [6, "Giugno"], [7, "Luglio"], [8, "Agosto"], [9, "Settembre"], [10, "Ottobre"], [11, "Novembre"],
-        [12, "Dicembre"]],blank = True)
-    giorno_di_nascita_30 = models.IntegerField(
-    choices = list(range(1, 30)),blank = True)
-
-    anni_di_nascita = models.IntegerField(choices = list(range(1920, 2005)),blank = True   )
+    anno_di_nascita = models.IntegerField(choices = list(range(1920, 2005)),blank = True   )
 
 
 
@@ -382,26 +374,11 @@ class Player(BasePlayer):
         choices=[[0, "Femminile"], [1, "Maschile"], [2, "Altro"]],
         widget = widgets.RadioSelect )
 
-    person_14_less = models.IntegerField(
-        label="Ragazzi di età inferiore ai 14 anni",
+    household_n = models.IntegerField(
+        label="",
         min=0,
-        max=30)
-    person_15_19 = models.IntegerField(
-        label="Adolescenti tra i 15 e i 19 anni",
-        min=0,
-        max=30)
-    person_20_40 = models.IntegerField(
-        label="Adulti tra i 20 e i 40 anni",
-        min=0,
-        max=30)
-    person_41_65 = models.IntegerField(
-        label="Adulti tra i 41 e i 65 anni",
-        min=0,
-        max=30)
-    person_65 = models.IntegerField(
-        label="Adulti di età superiore ai 66 anni",
-        min=0,
-        max=30)
+        max=10)
+
 
     Education = models.IntegerField(
         choices=[[0, "Nessuno studio formale"], [1, "Scuola elementare"], [2, "Scuola secondaria"],  [3, "Scuola superiore"],
@@ -514,9 +491,11 @@ class Player(BasePlayer):
     reddito  = models.IntegerField(
         choices=[[0, "Nessuno, non percepisco reddito "], [1, "Meno di € 19,999"], [2, "Tra i € 20.000 e i € 39.999"],
                  [3, "Tra i € 40.000 e i € 69.999"],
-                 [4, "Tra i € 70.000 e i € 99.999"], [5, "Tra € 100.000 e i € 199.999"],
-                 [6, "Superiore ai € 120.000"]],
+                 [4, "Tra i € 70.000 e i € 99.999"], [5, "Tra € 100.000 e i € 119.999"],
+                 [6, "Superiore ai € 119.000"]],
         widget=widgets.RadioSelect)
+
+    house_size = models.FloatField(label="")
 
     TARI = models.FloatField(
         label="TAX",
@@ -967,11 +946,7 @@ class Questionario_7(Page):
     form_model = 'player'
     form_fields = ['anni_natto',
                    'gender',
-                   'person_14_less',
-                   'person_15_19',
-                   'person_20_40',
-                   'person_41_65',
-                   'person_65',
+                   'household_n',
                    'Education']
 
     @staticmethod
@@ -1035,7 +1010,8 @@ class Questionario_12(Page):
                      'Campo_lavoro',
                      'Campo_lavoro_altro',
                      'reddito',
-                     'TARI']
+                     'TARI',
+                     'house_size']
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number ==  1  and player.participant.accept ==1
@@ -1282,8 +1258,7 @@ class Consent_3(Page):
 class Consent_4(Page):
     form_model = 'player'
     form_fields = ['nome', 'cognome','email',
-                   'numero_di_cellulare','nato_a',
-                   'mesi_di_nascita','giorno_di_nascita_30', 'anni_di_nascita']
+                   'numero_di_cellulare','anno_di_nascita']
     @staticmethod
     def is_displayed(player: Player):
         return player.round_number == 1  and player.participant.accept ==1 and player.futuro_studies == 1
