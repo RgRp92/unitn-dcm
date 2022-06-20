@@ -383,7 +383,6 @@ PARTICIPANT_FIELDS = [
     'TARI',
     'choice_binding_sit'
     'anno_di_nascita',
-    'house_size',
     'household_n'
 ]
 
