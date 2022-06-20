@@ -1,0 +1,59 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1>Ad esempio</h1>
+<br>
+ <p>
+    Supponiamo che la freccia cada <b> nell' area viola </b>:
+</p>
+
+
+ <img src= "{{static 'spinning_wheel_75.jpeg' }}" style="width:40%; position:relative; left:550px; bottom:30px" />
+
+ <div style="width:35%; position:relative;width:60%; bottom:360px" >
+<p > <b> Quindi, Le tue predizioni SARANNO sostituite</b> da:  </p>
+
+     <br>
+   <p > Le <b> predizioni degli altri intervistati nella sessione </b>
+        che <b>hanno scelto la tua stessa opzione</b>  nella situazione di scelta vincolante <b> nella sezione delle preferenze</b>.
+ </p>
+     <br>
+    <p align="center"> Come viene determinato il tuo guadagno in pratica?
+ </p>
+    <p align="center">  Vediamo insieme!
+ </p>
+
+
+</div>
+<br>
+<br>
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

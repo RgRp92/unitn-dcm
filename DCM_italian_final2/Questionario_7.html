@@ -75,18 +75,18 @@ margin-top:10px;
 
 
 
-<p style="display: none;" id="choice1">0</p>
-<p style="display: none;" id="choice2">0</p>
-<p style="display: none;" id="choice3">0</p>
-<p style="display: none;" id="choice4">0</p>
+<p style="display: none;"  id="choice1">0</p>
+<p style="display: none;"  id="choice2">0</p>
+<p style="display: none;"  id="choice3">0</p>
+<p style="display: none;"  id="choice4">0</p>
 
-<p style="display: none;" id="choice5">0</p>
-<p style="display: none;" id="choice6">0</p>
-<p style="display: none;" id="choice7">0</p>
-<p style="display: none;" id="choice8">0</p>
+<p style="display: none;"  id="choice5">0</p>
+<p style="display: none;"  id="choice6">0</p>
+<p style="display: none;"  id="choice7">0</p>
+<p style="display: none;"  id="choice8">0</p>
 
 
-<button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+<button style="position: relative; left:90%" type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
 
 
 </body>
@@ -118,7 +118,7 @@ margin-top:10px;
    function checkSubmit() {
 
           if( choice1.innerHTML == "0" ||
-            choice2.innerHTML == "0" ||
+           choice2.innerHTML == "0" ||
             choice3.innerHTML == "0" ||
             choice4.innerHTML == "0" ||
             choice5.innerHTML == "0" ||
@@ -140,7 +140,7 @@ margin-top:10px;
 
 function clicked1(e){
               choice1.innerHTML ="1"
-              if (anni_natto.value <1929 || anni_natto.value>2005) {
+              if (anni_natto.value <1929 || anni_natto.value>2004) {
               alert("inserire un anno di nascita valido (maggiore di 1920 e meno di 2005")
                anni_natto.style.backgroundColor ="rgba(221,0,0,0.3)";
                } else {

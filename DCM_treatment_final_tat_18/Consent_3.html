@@ -1,0 +1,64 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 2em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<br>
+<h1>
+DESIDERI  PARTCIPARE A STUDI FUTURI SIMILI A QUELLO A CUI STAI PARTECIPANDO ORA?
+</h1>
+
+<br>
+    <span onclick="clicked1(event)" style=" font-size: 1.8em">     {{form.futuro_studies}} </span>
+<br>
+ <button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+
+</body>
+
+<p style="display: none;" id="choice">none</p>
+
+
+<script>
+
+   let choice = document.getElementById('choice');
+
+   function checkSubmit() {
+       if( choice.innerHTML == "none" ) {
+           alert("Per favore selezionate un'opzione (Si o No)");
+        }
+       else {
+                form.submit();
+       }
+  }
+
+
+function clicked1(e){
+               choice.innerHTML="1";
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}
+
+

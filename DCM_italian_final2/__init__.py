@@ -35,7 +35,7 @@ class Constants(BaseConstants):
     ###practice test####
     random_practice_choice_sit = random.randint(1, num_CE)
     random_practice_alternative = random.choice(['A','B','C'])
-    num_rounds = num_CE*2
+    num_rounds = 1
     quadratic_score_A = 5
     quadratic_score_B = 5
     prob_replace = 0.75
@@ -257,18 +257,27 @@ class Player(BasePlayer):
     CE9_pred_B = make_field_prediction("CE9_B")
     CE9_pred_C = make_field_prediction("CE9_C")
 
+    ## INFORMATIVA PER IL TRATTAMENTO NELL’AMBITO DEL RECLUTAMENTO DEI PARTECIPANTI ALLA RICERCA
 
-    ##tari
+    nome = models.StringField(blank=True)
+    cognome = models.StringField(blank=True)
+    email = models.StringField(blank=True)
+    numero_di_cellulare = models.StringField(blank=True)
+    nato_a = models.StringField(blank=True)
+    mesi_di_nascita = models.IntegerField(
+        choices=[[1, "Gennaio"], [2, "Febbraio"], [3, "Marzo"], [4, "Aprile"], [5, "Maggio"],
+                 [6, "Giugno"], [7, "Luglio"], [8, "Agosto"], [9, "Settembre"], [10, "Ottobre"], [11, "Novembre"],
+                 [12, "Dicembre"]], blank=True)
+    giorno_di_nascita_30 = models.IntegerField(
+        choices=list(range(1, 30)), blank=True)
 
+    anni_di_nascita = models.IntegerField(choices=list(range(1920, 2005)), blank=True)
 
 
     player_temp_AB =  models.IntegerField(default=0)
     ##Questionnario
     #Behavioural question
-    Member_env_group = models.IntegerField(
-        choices=[[0,"Si"],[1,"No"]],
-        widget=widgets.RadioSelect,
-    )
+    Member_env_group = models.IntegerField(choices=[[0,"Si"],[1,"No"]],widget=widgets.RadioSelect,)
 
     green_areas_frequency = models.IntegerField(
         choices=[[0, "Quasi mai"], [1, "Raramente"], [2, "A volte "], [3, "Spesso"], [4, "Molto spesso"]],
@@ -513,118 +522,6 @@ class Player(BasePlayer):
 #FUNCTION
 def creating_session(subsession: Subsession):
     if subsession.round_number == 1:
-        subsession.session.other_part = subsession.session.num_participants-1
-        subsession.session.random_prediction_A = random.randint(0, subsession.session.num_participants - 1)
-
-        if subsession.session.random_prediction_A < (subsession.session.num_participants - 1):
-            subsession.session.random_prediction_B = random.randint(0, subsession.session.num_participants - 1 - subsession.session.random_prediction_A)
-
-        else:
-            subsession.session.random_prediction_B = 0
-
-
-
-        subsession.session.random_prediction_C = subsession.session.num_participants- 1 - subsession.session.random_prediction_A - subsession.session.random_prediction_B
-        subsession.session.random_prediction_A_2 = random.randint(
-            int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-            int(round((subsession.session.num_participants - 1) * 0.4, 0)))
-        subsession.session.random_prediction_B_2 = random.randint(
-            int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-            (int(round((subsession.session.num_participants - 1) * 0.4, 0))))
-        subsession.session.random_prediction_C_2 = subsession.session.num_participants - 1 - subsession.session.random_prediction_A_2 - subsession.session.random_prediction_B_2
-        subsession.session.random_ball_not_replaced = random.randint(0,Constants.prob_not_replace*100)
-        subsession.session.random_ball_replaced = random.randint(Constants.prob_not_replace*100,100)
-        if subsession.session.random_prediction_C_2 < 0:
-            subsession.session.random_prediction_C_2 = 0
-
-        list_choices_A_temp = " ".join(['A'] * (subsession.session.random_prediction_A_2 ))
-        list_choices_B_temp = " ".join(['B'] * (subsession.session.random_prediction_B_2 ))
-        list_choices_C_temp = " ".join(['C'] * (subsession.session.random_prediction_C_2 ))
-
-
-
-        choices_str = list_choices_A_temp  + ' ' +      list_choices_B_temp + ' ' +  list_choices_C_temp
-        list_choices = choices_str.split()
-
-        subsession.session.chosen_letter_2 = random.choice(list_choices)
-        listA_2 = []
-        rnd = random.sample(list(range(1,subsession.session.num_participants)), subsession.session.num_participants-1)
-        example_prediction_average_A = []
-        example_prediction_average_B = []
-        example_prediction_average_C = []
-        for i in range(0, subsession.session.num_participants -1):
-            n_t = int(rnd[i])
-            if i == subsession.session.random_prediction_A_2 - 1:
-                n = str(n_t) + "."
-            else:
-                n = str(n_t) + ","
-            listA_2.append(n)
-
-            example_prediction_average_A_temp = random.randint(
-                int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-                int(round((subsession.session.num_participants - 1) * 0.7, 0)))
-
-            example_prediction_average_B_temp = random.randint(
-                int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-                (int(round((subsession.session.num_participants - 1) * 0.7, 0))))
-            if example_prediction_average_B_temp + example_prediction_average_A_temp >= subsession.session.num_participants - 1:
-                example_prediction_average_B_temp= subsession.session.num_participants - 1 - example_prediction_average_A_temp
-                example_prediction_average_C_temp = 0
-            else:
-                example_prediction_average_C_temp =  subsession.session.num_participants - 1 - example_prediction_average_A_temp - example_prediction_average_B_temp
-
-            example_prediction_average_A.append(example_prediction_average_A_temp)
-            example_prediction_average_B.append(example_prediction_average_B_temp)
-            example_prediction_average_C.append(example_prediction_average_C_temp)
-
-        subsession.session.example_prediction_average_A= example_prediction_average_A
-        subsession.session.example_prediction_average_B = example_prediction_average_B
-        subsession.session.example_prediction_average_C = example_prediction_average_C
-        subsession.session.listA_2 = listA_2
-
-        example_prediction_average_A_temp = random.randint(
-            int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-            int(round((subsession.session.num_participants - 1) * 0.7, 0)))
-
-        example_prediction_average_B_temp = random.randint(
-            int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-            (int(round((subsession.session.num_participants - 1) * 0.7, 0))))
-        if example_prediction_average_B_temp + example_prediction_average_A_temp >= subsession.session.num_participants - 1:
-            example_prediction_average_B_temp = subsession.session.num_participants - 1 - example_prediction_average_A_temp
-            example_prediction_average_C_temp = 0
-        else:
-            example_prediction_average_C_temp = subsession.session.num_participants - 1 - example_prediction_average_A_temp - example_prediction_average_B_temp
-
-        example_prediction_average_A.append(example_prediction_average_A_temp)
-        example_prediction_average_B.append(example_prediction_average_B_temp)
-        example_prediction_average_C.append(example_prediction_average_C_temp)
-
-
-
-        subsession.session.example_prediction_A = random.randint(
-           int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-           int(round((subsession.session.num_participants - 1) * 0.7, 0)))
-
-        subsession.session.example_prediction_B = random.randint(
-           int(round((subsession.session.num_participants - 1) * 0.2, 0)),
-           (int(round((subsession.session.num_participants - 1) * 0.7, 0))))
-        if subsession.session.example_prediction_B + subsession.session.example_prediction_A >= subsession.session.num_participants - 1:
-           subsession.session.example_prediction_B = subsession.session.num_participants - 1 -subsession.session.example_prediction_A
-           subsession.session.example_prediction_C= 0
-        else:
-           subsession.session.example_prediction_C = subsession.session.num_participants - 1 - subsession.session.example_prediction_A -subsession.session.example_prediction_B
-
-        Pred_A_temp =  subsession.session.example_prediction_A / (subsession.session.num_participants - 1)
-        Pred_B_temp = subsession.session.example_prediction_B  / (subsession.session.num_participants - 1)
-        Pred_C_temp = subsession.session.example_prediction_C / (subsession.session.num_participants - 1)
-        factor1_temp = Pred_A_temp * Pred_A_temp + Pred_B_temp * Pred_B_temp + Pred_C_temp * Pred_C_temp
-        subsession.session.example_prediction_payoff_A = round(
-            Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_A_temp - factor1_temp), 1)
-        subsession.session.example_prediction_payoff_B = round(
-            Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_B_temp - factor1_temp), 1)
-        subsession.session.example_prediction_payoff_C = round(
-            Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_C_temp - factor1_temp), 1)
-
 
 
         for p in subsession.get_players():
@@ -641,35 +538,35 @@ def creating_session(subsession: Subsession):
             p.participant.group_pre_C = 0
             p.participant.group_elec =0
             p.participant.random_choice = 0
-            p.participant.Test_choices_A = random.randint(0, subsession.session.other_part)
-            p.participant.Test_choices_B = random.randint(0,subsession.session.other_part - p.participant.Test_choices_A)
-            p.participant.Test_choices_C = subsession.session.other_part -p.participant.Test_choices_B - p.participant.Test_choices_A
-            p.participant.Test_choices_A_pred = round(random.random()*subsession.session.other_part,1)
-            p.participant.Test_choices_B_pred = round(random.random()*(subsession.session.other_part-p.participant.Test_choices_A_pred),1)
-            p.participant.Test_choices_C_pred = subsession.session.other_part - p.participant.Test_choices_A_pred - p.participant.Test_choices_B_pred
+            #p.participant.Test_choices_A = random.randint(0, subsession.session.other_part)
+            #p.participant.Test_choices_B = random.randint(0,subsession.session.other_part - p.participant.Test_choices_A)
+            #p.participant.Test_choices_C = subsession.session.other_part -p.participant.Test_choices_B - p.participant.Test_choices_A
+            #p.participant.Test_choices_A_pred = round(random.random()*subsession.session.other_part,1)
+            #p.participant.Test_choices_B_pred = round(random.random()*(subsession.session.other_part-p.participant.Test_choices_A_pred),1)
+            #p.participant.Test_choices_C_pred = subsession.session.other_part - p.participant.Test_choices_A_pred - p.participant.Test_choices_B_pred
 
-            Pred_A = p.participant.Test_choices_A_pred/ subsession.session.other_part
-            Pred_B =  p.participant.Test_choices_B_pred / subsession.session.other_part
-            Pred_C =  p.participant.Test_choices_C_pred  / subsession.session.other_part
-            factor1 = Pred_A * Pred_A + Pred_B * Pred_B + Pred_C * Pred_C
-            p.participant.Test_payoff_a_pred = round(Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_A - factor1),1)
-            p.participant.Test_payoff_b_pred = round(Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_B - factor1),1)
-            p.participant.Test_payoff_c_pred = round(Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_C - factor1),1)
+            #Pred_A = p.participant.Test_choices_A_pred/ subsession.session.other_part
+            #Pred_B =  p.participant.Test_choices_B_pred / subsession.session.other_part
+            #Pred_C =  p.participant.Test_choices_C_pred  / subsession.session.other_part
+            #factor1 = Pred_A * Pred_A + Pred_B * Pred_B + Pred_C * Pred_C
+            #p.participant.Test_payoff_a_pred = round(Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_A - factor1),1)
+            #p.participant.Test_payoff_b_pred = round(Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_B - factor1),1)
+            #p.participant.Test_payoff_c_pred = round(Constants.quadratic_score_A + Constants.quadratic_score_B * (2 * Pred_C - factor1),1)
 
-            p.participant.num_prob_replace = 1
-            p.participant.num_prob_not_replace = 1
-            p.participant.num_Test_choices_A_prob = 1
-            p.participant.num_Test_choices_B_prob = 1
-            p.participant.num_Test_choices_C_prob= 1
-            p.participant.num_payoff_A_guess= 1
-            p.participant.num_payoff_B_guess= 1
-            p.participant.num_payoff_C_guess= 1
-            p.participant.num_Test_choices_A_pred = 1
-            p.participant.num_Test_choices_B_pred = 1
-            p.participant.num_Test_choices_C_pred = 1
-            p.participant.num_Test_payoff_a_pred = 1
-            p.participant.num_Test_payoff_b_pred = 1
-            p.participant.num_Test_payoff_c_pred = 1
+            #p.participant.num_prob_replace = 1
+            #p.participant.num_prob_not_replace = 1
+            #p.participant.num_Test_choices_A_prob = 1
+            #p.participant.num_Test_choices_B_prob = 1
+            #p.participant.num_Test_choices_C_prob= 1
+            #p.participant.num_payoff_A_guess= 1
+            #p.participant.num_payoff_B_guess= 1
+            #p.participant.num_payoff_C_guess= 1
+            #p.participant.num_Test_choices_A_pred = 1
+            #p.participant.num_Test_choices_B_pred = 1
+            #p.participant.num_Test_choices_C_pred = 1
+            #p.participant.num_Test_payoff_a_pred = 1
+            #p.participant.num_Test_payoff_b_pred = 1
+            #p.participant.num_Test_payoff_c_pred = 1
 
         for w in subsession.get_groups():
             w.binding_sit = random.randint(1,subsession.session.num_participants)
@@ -2007,7 +1904,7 @@ class CE1(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == participant.task_rounds['1'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2102,9 +1999,9 @@ class CE1(Page):
                 if player.CE1_choice==2:
                     player.CE1_choice=1
 
-        player.participant.player_temp_AB = 1
-        player1 = player.in_round(player.participant.task_rounds['1'])
-        player.participant.CE1_ALL = player1.CE1_choice
+        #player.participant.player_temp_AB = 1
+        #player1 = player.in_round(player.participant.task_rounds['1'])
+        #player.participant.CE1_ALL = player1.CE1_choice
 
 
 
@@ -2116,7 +2013,7 @@ class CE2(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number == participant.task_rounds['2'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2208,9 +2105,9 @@ class CE2(Page):
                 if player.CE2_choice == 2:
                     player.CE2_choice = 1
 
-        player.participant.player_temp_AB = 1
-        player2 = player.in_round(player.participant.task_rounds['2'])
-        player.participant.CE2_ALL = player2.CE2_choice
+        #player.participant.player_temp_AB = 1
+        #player2 = player.in_round(player.participant.task_rounds['2'])
+        #player.participant.CE2_ALL = player2.CE2_choice
 
 
 class CE3(Page):
@@ -2220,7 +2117,7 @@ class CE3(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number == participant.task_rounds['3'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2316,9 +2213,9 @@ class CE3(Page):
                 if player.CE3_choice == 2:
                     player.CE3_choice = 1
 
-        player.participant.player_temp_AB = 1
-        player3 = player.in_round(player.participant.task_rounds['3'])
-        player.participant.CE3_ALL = player3.CE3_choice
+        #player.participant.player_temp_AB = 1
+        #player3 = player.in_round(player.participant.task_rounds['3'])
+        #player.participant.CE3_ALL = player3.CE3_choice
 
 
 class CE4(Page):
@@ -2328,7 +2225,7 @@ class CE4(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == participant.task_rounds['4'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2425,9 +2322,9 @@ class CE4(Page):
                 if player.CE4_choice == 2:
                     player.CE4_choice = 1
 
-        player.participant.player_temp_AB = 1
-        player4 = player.in_round(player.participant.task_rounds['4'])
-        player.participant.CE4_ALL = player4.CE4_choice
+        #player.participant.player_temp_AB = 1
+        #player4 = player.in_round(player.participant.task_rounds['4'])
+        #player.participant.CE4_ALL = player4.CE4_choice
 
 
 class CE5(Page):
@@ -2437,7 +2334,7 @@ class CE5(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number == participant.task_rounds['5'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2529,9 +2426,9 @@ class CE5(Page):
                 if player.CE5_choice == 2:
                     player.CE5_choice = 1
 
-        player.participant.player_temp_AB = 1
-        player5 = player.in_round(player.participant.task_rounds['5'])
-        player.participant.CE5_ALL = player5.CE5_choice
+        #player.participant.player_temp_AB = 1
+        #player5 = player.in_round(player.participant.task_rounds['5'])
+        #player.participant.CE5_ALL = player5.CE5_choice
 
 
 class CE6(Page):
@@ -2541,7 +2438,7 @@ class CE6(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number == participant.task_rounds['6'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2638,9 +2535,9 @@ class CE6(Page):
                 if player.CE6_choice == 2:
                     player.CE6_choice = 1
 
-        player.participant.player_temp_AB = 1
-        player6 = player.in_round(player.participant.task_rounds['6'])
-        player.participant.CE6_ALL = player6.CE6_choice
+        #player.participant.player_temp_AB = 1
+        #player6 = player.in_round(player.participant.task_rounds['6'])
+        #player.participant.CE6_ALL = player6.CE6_choice
 
 
 class CE7(Page):
@@ -2650,7 +2547,7 @@ class CE7(Page):
     @staticmethod
     def is_displayed(player: Player):
         participant = player.participant
-        return player.round_number == participant.task_rounds['7'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2747,9 +2644,9 @@ class CE7(Page):
                 if player.CE7_choice == 2:
                     player.CE7_choice = 1
 
-        player.participant.player_temp_AB = 1
-        player7 = player.in_round(player.participant.task_rounds['7'])
-        player.participant.CE7_ALL = player7.CE7_choice
+        #player.participant.player_temp_AB = 1
+        #player7 = player.in_round(player.participant.task_rounds['7'])
+        #player.participant.CE7_ALL = player7.CE7_choice
 
 
 class CE8(Page):
@@ -2759,7 +2656,7 @@ class CE8(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number == participant.task_rounds['8'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2851,10 +2748,10 @@ class CE8(Page):
                 if player.CE8_choice == 2:
                     player.CE8_choice = 1
 
-        player.participant.player_temp_AB = 1
+        #player.participant.player_temp_AB = 1
         
-        player8 = player.in_round(player.participant.task_rounds['8'])
-        player.participant.CE8_ALL = player8.CE8_choice
+        #player8 = player.in_round(player.participant.task_rounds['8'])
+        #player.participant.CE8_ALL = player8.CE8_choice
 
 
 
@@ -2866,7 +2763,7 @@ class CE9(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number == participant.task_rounds['9'] and player.participant.accept ==1
+        return player.round_number == 1 and player.participant.accept ==1
 
     @staticmethod
     def vars_for_template(player):
@@ -2958,10 +2855,10 @@ class CE9(Page):
                 if player.CE9_choice == 2:
                     player.CE9_choice = 1
 
-        player.participant.player_temp_AB = 1
+        #player.participant.player_temp_AB = 1
         
-        player9 = player.in_round(player.participant.task_rounds['9'])
-        player.participant.CE9_ALL = player9.CE9_choice
+        #player9 = player.in_round(player.participant.task_rounds['9'])
+        #player.participant.CE9_ALL = player9.CE9_choice
 
 class remarks(Page):
 
@@ -2969,7 +2866,7 @@ class remarks(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number ==Constants.num_CE
+        return player.round_number ==1
 
   
 class grazie(Page):
@@ -2978,7 +2875,7 @@ class grazie(Page):
     def is_displayed(player: Player):
         participant = player.participant
 
-        return player.round_number ==Constants.num_CE
+        return player.round_number ==1
 
 
 class Wait_CE(WaitPage):
@@ -3406,7 +3303,7 @@ page_sequence = [
     Instruction_10,
     Instruction_11,
     Instruction_12_1,
-    Instruction_12_2,
+    #Instruction_12_2,
     Instruction_13,
     Instruction_14,
     Instruction_15,

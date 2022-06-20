@@ -1,0 +1,36 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+
+}
+
+p {
+  font-size: 1.5em;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;"> Informazioni preliminari </h1 >
+
+<br>
+<p>
+Questo è uno studio finanziato dall'<b>Università di Trento</b>
+</p><p>
+Alla fine dello studio, riceverai un compenso monetario di  <b>€15</b>. Questo è il nostro modo di ringraziarti per aver partecipato allo studio.
+</p>
+<p>
+Inoltre, potrai guadagnare un <b>compenso aggiuntivo</b>a seconda delle decisioni che prendereai durante lo studio.
+   Puoi guadagnare un <b>minimo di €{{min_income}}</b> e un <b>massimo di €{{max_income}}</b>.
+</p>
+
+</body>
+
+  <button name="btn_submit" value="True" class="btn btn-primary btn-large" >
+                  <span style="font-size:12pt">Avanti</span>
+             </button>
+{{ endblock }}

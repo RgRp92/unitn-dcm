@@ -1,0 +1,200 @@
+{{ block content }}
+<style>
+
+li {
+  font-size: 1.5em;
+
+}
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+td, th,tr{
+   padding: 2.5px;
+   margin: 0;
+
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p> Dopo aver inserito le tue predizioni, puoi fare clic sul pulsante <b> “Controlla compensi monetario” </b>
+    per visualizzare il compenso monetario che otterresti <b> in base alle tue predizioni </b></p>
+
+
+
+
+
+
+  <div style="width:70%; position:relative; left:20%; top:10px">
+
+  <table  align="center"   >
+
+      <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b>Esempio di scheda di scelta   </b> </th>
+    </tr>
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Opzione B </th>
+           <th scope="col" style="width:20%;text-align:center" > Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Equamente  distribuito tra centro citta’ e periferia  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level2_cost }} </td>
+        <td> €{{Constants.level1_cost }}   </td> <td>
+      </td>
+    </tr>
+
+    <tr style="background-color: #F0E68C">
+  <th scope="row"> Le tue previsioni </th>
+
+                 <td >  {{player.CE_pract_pred_A}}  (su {{num_participants}})</td>
+
+                 <td >  {{player.CE_pract_pred_B}}  (su {{num_participants}})</td>
+
+                 <td>   {{player.CE_pract_pred_C}}  (su {{num_participants}})</td>
+
+</tr>
+
+
+              <tr style="background-color: #F0E68C">
+
+      <th> <button type="button" onclick = "sendValue()" > Controlla compensi monetari </button> </th>
+         <td id="A" > </td>
+         <td id="B" > </td>
+          <td id="C"> </td>
+</tr>
+
+
+
+
+</table>
+
+
+  </div>
+
+<br>
+<br>
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Dopo aver controllato i compensi clicca qui</button>
+
+
+
+
+
+
+
+</body>
+
+<script>
+
+
+
+    let payoff_a = document.getElementById('A');
+    let payoff_b = document.getElementById('B');
+    let payoff_c = document.getElementById('C');
+
+    let num_participants = js_vars.number_players;
+
+    let form = document.getElementById('form');
+    let isValid = form.reportValidity();
+
+ function liveRecv(data) {
+      payoff_a.innerHTML =  '€ '.concat(data.payoff_a.toFixed(2).toString())
+      payoff_b.innerHTML =  '€ '.concat(data.payoff_b.toFixed(2).toString())
+      payoff_c.innerHTML =  '€ '.concat(data.payoff_c.toFixed(2).toString())
+}
+
+  function sendValue() {
+
+    var myText = "La somma delle predizioni deve essere uguale a  ";
+    var num_pred = parseFloat(num_participants) -1
+    var text = myText.concat(num_pred.toString());
+
+     liveSend( { 'clicked_button' : 1});
+       js_vars.temp =1;
+  }
+
+
+
+  function checkSubmit() {
+
+                if (!isValid) return;
+            var myText = "La somma delle predizioni deve essere uguale a  ";
+            var num_pred = parseFloat(num_participants) -1
+            var text = myText.concat(num_pred.toString());
+
+
+               if( js_vars.temp == 0) {
+                 alert ("Per favore clicca su controlla compensi monetari prima di procedere");
+                 }
+               else {
+            //      var text = "According to your predictions, your potential payoffs can be: \n -";
+              //     var text = text.concat(payoff_a.innerHTML);
+                //   var text = text.concat("€  or ");
+                  // var text = text.concat(payoff_b.innerHTML);
+                  // var text = text.concat("€  or  ");
+                 //  var text = text.concat(payoff_c.innerHTML);
+                //   var text = text.concat("€.");
+
+                  // if(confirm(text)) {
+                    form.submit();
+                  //  }
+
+
+
+            }
+  }
+
+
+
+
+</script>
+
+
+
+
+
+{{ endblock }}

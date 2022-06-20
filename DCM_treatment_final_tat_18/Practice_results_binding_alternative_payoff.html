@@ -1,0 +1,166 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+    margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+td, th,tr{
+   padding: 0;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+ <p >Nella scheda di scelta vincolante nella sezione delle preferenze, escluso te:</p>
+
+
+<div style="position:relative; bottom:20px" >
+<ul style="position:relative; top:30px" >
+    <li><b> {{random_prediction_A}} </b> {% if random_prediction_A == 1 %}partecipante ha
+    {% elif random_prediction_A != 1 %} partecipanti hanno {%endif%}<b> scelto il Progetto A </b></li>
+  <li><b> {{random_prediction_B}}</b> {% if random_prediction_B == 1 %}partecipante ha
+    {% elif random_prediction_B != 1 %} partecipanti hanno {%endif%} <b> scelto il Progetto B</b></li>
+    <li><b> {{random_prediction_C}}</b> {% if random_prediction_C == 1 %}partecipante ha
+    {% elif random_prediction_C != 1 %} partecipanti hanno{%endif%} <b>  scelto Nessun progetto</b></li>
+</ul>
+
+
+  <img src= "{{static 'bingo_cage2.jpg' }}" style="width:30%;position:absolute;left:650px;top:10px  " />
+
+   <div style="position: absolute; left:550px; top:30px;width:100%" >
+
+                 {{ for x in listA }}
+               <img src= "{{static 'ball_A.jpg' }}" style="width:4% " />
+               {{ endfor }}
+                </div>
+                    <div style="position: absolute; left:550px; top:70px;width:100%">
+             {{ for x in listB }}
+               <img src= "{{static 'ball_B.jpg' }}" style="width:4%" />
+               {{ endfor }}
+                  </div>
+
+                    <div style="position: absolute;  left:550px;top:110px;width:100%">
+              {{ for x in listC }}
+               <img src= "{{static 'ball_C.jpg' }}" style="width:4% " />
+               {{ endfor }}
+                   </div>
+
+<button  id="btn2" type="button"  onclick = "send_2()" style="font-size:20px;border: 2px solid #f44336; border-radius:
+12px;position: absolute;  left:180px;top:230px;width:20%">Estrai una pallina</button>
+
+
+    <img id ="ballC" src= "{{static 'ball_C.jpg' }}" style="width:5%;position: absolute;  left:550px;top:290px;display: none; " />
+     <img id ="ballB" src= "{{static 'ball_B.jpg' }}" style="width:5%;position: absolute;  left:550px;top:290px;display: none; " />
+     <img id ="ballA" src= "{{static 'ball_A.jpg' }}" style="width:5%;position: absolute;  left:550px;top:290px;display: none; " />
+
+
+
+
+     <p id="result2" style="position: absolute;  left:70px;top:310px "></p>
+       <p id="result3" style="position: absolute;  left:10px;top:360px"></p>
+     <div id="next" style="position: absolute;  left:470px;top:365px;display:none">
+<button name="btn_submit" value="True" class="btn btn-primary btn-large" style="position: relative; left:200px" >
+                  <span style="font-size:12pt">Avanti</span>
+             </button>         </div>
+
+ </div>
+
+
+<br>
+ <p style="width:60%" align="center"> Clicca per estrarre una pallina dalla urna bingo </p>
+
+
+
+<br>
+<br><br>
+<br><br>
+<br><br>
+
+
+</body>
+
+<script>
+
+ let result2 = document.getElementById('result2');
+ let result3 = document.getElementById('result3');
+
+ let btn2 = document.getElementById('btn2');
+ let next = document.getElementById('next');
+ let ballA = document.getElementById('ballA');
+ let ballB = document.getElementById('ballB');
+ let ballC = document.getElementById('ballC');
+
+
+  function send_2() {
+
+       btn2.disabled = true;
+
+  if  (js_vars.random_choice == 'A'){
+                  ballA.style.display = "block";
+                  result2.innerHTML = 'La alternativa vincolante è Progetto A';
+    }
+    else{
+        if  (js_vars.random_choice == 'B'){
+                  ballB.style.display = "block";
+                  result2.innerHTML = 'La alternativa vincolante è Progetto B';
+        }
+
+        else{
+                  ballC.style.display = "block";
+                  result2.innerHTML = 'La alternativa vincolante è Nessun progetto';
+
+         }
+    }
+    result3.innerHTML = 'Quindi il tuo compenso monetario è...(clicca avanti)';
+    next.style.display = "block";
+
+  }
+
+
+</script>
+
+
+
+
+
+
+
+{{ endblock }}

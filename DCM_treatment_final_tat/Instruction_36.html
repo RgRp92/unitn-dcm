@@ -1,0 +1,228 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+
+td, th,tr{
+   padding: 0;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+
+}
+
+
+td, th,tr{
+   padding: 5px;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+<h1> Ad esempio</h1>
+
+  <p>
+    Supponiamo che la freccia cada <b> nell'area blu </b>:
+</p>
+    <p>
+          Quindi,<b> le tue predizioni NON saranno sostituite</b>: il tuo compenso monetario è di <b>
+       {{ if  chosen_letter  == 'A'}}
+      {{subsession.session.example_prediction_payoff_A}}
+      {{ else }}
+          {{ if  chosen_letter  == 'B'}}
+      {{subsession.session.example_prediction_payoff_B}}
+      {{ else }}
+
+     {{subsession.session.example_prediction_payoff_C}}
+
+      {{ endif }}
+      {{ endif }}€</b>
+</p>
+
+
+
+
+ <img src= "{{static 'spinning_wheel_25.jpeg' }}" style="width:35%; position:relative; right:10px; top:30px" />
+
+
+
+
+ <img src= "{{static 'arrow_right.jpg' }}" style="width:8%; position:relative; left:0px; bottom:0px " />
+
+  <div style="width:60%; position:relative; left:440px;bottom:330px">
+
+
+ <table  align="center"   >
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Scheda di scelta  {{Constants.random_practice_choice_sit}}  </b> </th>
+    </tr>
+
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Priorità nel Centro città  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td>  4  visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level3_cost }} </td>
+        <td> €{{Constants.level2_cost }}   </td> <td>
+      </td>
+    </tr>
+
+
+    <tr style="background-color: #F0E68C">
+
+                    {{ if Constants.random_practice_alternative  == 'A'}}
+
+        <th scope="row"> Io scelgo </th> <td style="text-align:center"> <input type="radio" id="A" checked="checked"   style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+      {{ else}}
+
+       {{ if Constants.random_practice_alternative  == 'B'}}
+        <th scope="row"> Io scelgo </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  checked="checked"   style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+       {{ else}}
+       <th scope="row"> Io scelgo </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   checked="checked"   style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+
+      {{ endif}}
+             {{ endif}}
+
+       {{ if  chosen_letter  == 'A'}}
+      <tr style="background-color: #F0E68C; height:10px;" >
+         <th scope="row" > Le tue previsoni </th> <td > &nbsp &nbsp &nbsp  &nbsp {{subsession.session.example_prediction_A}}
+          <img src= "{{static 'red_circle.png' }}" style="width:30%;position:relative;right:20%"  />
+       </td>
+        <td> {{subsession.session.example_prediction_B}}  </td> <td>  {{subsession.session.example_prediction_C}} </td>
+       </tr>
+      <tr style="background-color: #F0E68C">
+         <th scope="row" > Compensi monetari </th> <td style=" text-align: center"> &nbsp &nbsp &nbsp  &nbsp  &nbsp €{{subsession.session.example_prediction_payoff_A}}
+          <img src= "{{static 'red_circle.png' }}" style="width:33%;position:relative;right:29%"  /> </td>
+        <td>  €{{subsession.session.example_prediction_payoff_B}} </td> <td>  €{{subsession.session.example_prediction_payoff_C}} </td>
+       </tr>
+      {{ else }}
+          {{ if  chosen_letter  == 'B'}}
+       <tr style="background-color: #F0E68C; height:10px;" >
+         <th scope="row" > Le tue previsoni  </th>  <td>  {{subsession.session.example_prediction_A}}  </td> <td style=" text-align: center">
+           &nbsp &nbsp &nbsp  &nbsp  {{subsession.session.example_prediction_B}}  <img src= "{{static 'red_circle.png' }}" style="width:30%;position:relative;right:20%"  /></td>
+        <td>  {{subsession.session.example_prediction_C}}  </td>
+       </tr>
+      <tr style="background-color: #F0E68C">
+         <th scope="row" > Compensi monetari </th>  <td>  €{{subsession.session.example_prediction_payoff_A}}</td> <td style=" text-align: center">
+        &nbsp &nbsp  &nbsp  &nbsp  &nbsp  €{{subsession.session.example_prediction_payoff_B}}<img src= "{{static 'red_circle.png' }}" style="width:33%;position:relative;right:27%"  /></td>
+        <td>  €{{subsession.session.example_prediction_payoff_C}}  </td>
+            </tr>
+      {{ else }}
+
+     <tr style="background-color: #F0E68C; height:10px;" >
+         <th scope="row" > Le tue previsoni  </th>  <td> {{subsession.session.example_prediction_A}}  </td>
+         <td> {{subsession.session.example_prediction_B}}  </td>
+         <td style=" text-align: center">
+           &nbsp &nbsp &nbsp  &nbsp {{subsession.session.example_prediction_C}}  <img src= "{{static 'red_circle.png' }}" style="width:30%;position:relative;right:20%"  /></td>
+
+       </tr>
+      <tr style="background-color: #F0E68C">
+         <th scope="row" > Compensi monetari </th>  <td> €{{subsession.session.example_prediction_payoff_A}}</td>
+          <td> €{{subsession.session.example_prediction_B}}  </td>
+          <td style=" text-align: center">
+        &nbsp &nbsp  &nbsp  &nbsp  &nbsp€{{subsession.session.example_prediction_payoff_C}}<img src= "{{static 'red_circle.png' }}" style="width:33%;position:relative;right:27%"  /></td>
+
+            </tr>
+
+      {{ endif }}
+      {{ endif }}
+
+
+
+</table>
+
+  </div>
+<br>
+
+<br>
+
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}
+
+

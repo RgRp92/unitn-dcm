@@ -1,0 +1,204 @@
+{{ block content }}
+<style>
+li {
+  font-size: 1.5em;
+
+}
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+td, th,tr{
+   padding: 2.5px;
+   margin: 0;
+
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+<!--
+<h1 style="width:100%;">Task 2 – Belief task      </h1 >
+-->
+
+<h1>
+Un esempio
+</h1>
+
+<p> Quante persone pensi scelgano ogni alternativa?
+</p>
+
+
+  <div style="width:70%; position:relative; left:15%; top:10px">
+
+  <table  align="center"   >
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b>Esempio di scheda di scelta   </b> </th>
+    </tr>
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Equamente  distribuito tra centro citta’ e periferia  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level2_cost }} </td>
+        <td> €{{Constants.level1_cost }}   </td> <td>
+      </td>
+    </tr>
+
+    <tr style="background-color: #F0E68C">
+    <th scope="row"> Le tue previsioni </th>
+
+                 <td > <input  id="CE_pract_pred_A" type="number" name="CE_pract_pred_A" value= "0" min="0" step="1" style="text-align:center;height:25px; width:50px; "> (su {{num_participants}})</td>
+
+                 <td > <input  id="CE_pract_pred_B" type="number" name="CE_pract_pred_B" value= "0"  min="0" step="1" style="text-align:center;height:25px; width:50px; ">(su {{num_participants}})</td>
+
+                 <td>  <input  id="CE_pract_pred_C" type="number" name="CE_pract_pred_C"  value= "0"  min="0" step="1"  style="text-align:center;height:25px; width:50px; ">(su {{num_participants}})</td>
+</tr>
+
+
+</table>
+
+
+  </div>
+
+
+<br>
+<br>
+<br>
+
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Scrivi le tue previsioni e clicca qui</button>
+
+
+
+
+
+</body>
+
+
+<script>
+
+    let fieldA = document.getElementById('CE_pract_pred_A');
+    let fieldB = document.getElementById('CE_pract_pred_B');
+    let fieldC = document.getElementById('CE_pract_pred_C');
+
+    let payoff_a = document.getElementById('A');
+    let payoff_b = document.getElementById('B');
+    let payoff_c = document.getElementById('C');
+
+    let num_participants = js_vars.number_players;
+
+    let form = document.getElementById('form');
+    let isValid = form.reportValidity();
+
+ function liveRecv(data) {
+      payoff_a.innerHTML =  data.payoff_a.toFixed(2);
+      payoff_b.innerHTML =  data.payoff_b.toFixed(2);
+      payoff_c.innerHTML =  data.payoff_c.toFixed(2);
+}
+
+  function sendValue() {
+
+    var myText = "La somma delle previsioni deve essere uguale a   ";
+    var num_pred = parseFloat(num_participants) -1
+    var text = myText.concat(num_pred.toString());
+
+    if(parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value)  == parseFloat(num_pred) ){
+          liveSend( { 'fieldA' : fieldA.value, 'fieldB' : fieldB.value, 'fieldC' : fieldC.value, 'clicked_button' : 1});
+          js_vars.tempA = parseFloat(fieldA.value);
+          js_vars.tempB = parseFloat(fieldB.value);
+          js_vars.tempC = parseFloat(fieldC.value);
+    }
+    else{
+          alert (text);
+    }
+  }
+
+
+
+  function checkSubmit() {
+
+                if (!isValid) return;
+            var myText = "La somma delle predizioni deve essere uguale a ";
+            var num_pred = parseFloat(num_participants) -1
+            var text = myText.concat(num_pred.toString());
+
+            if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value) ==0) {
+               alert ("In ciascuna colonna scrivi quante persone pensi che scelgano ogni alternativa");
+            }
+           else {
+            if(  parseFloat(fieldA.value) + parseFloat(fieldB.value) +  parseFloat(fieldC.value)  != parseFloat(num_pred)) {
+               alert (text);
+            }
+            else {
+
+                 // var text = "According to your predictions: \n -";
+                  // var text = text.concat(fieldA.value);
+                  // var text = text.concat("  participants chose option A \n -");
+                  // var text = text.concat(fieldB.value);
+                 //  var text = text.concat(" participants chose option B \n -");
+                  // var text = text.concat(fieldC.value);
+                  // var text = text.concat(" participants chose option C");
+
+                  // if(confirm(text)) {
+                    form.submit();
+                  //  }
+
+
+            }
+            }
+  }
+
+
+
+
+</script>
+
+
+
+
+
+
+
+{{ endblock }}

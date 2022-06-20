@@ -1,0 +1,110 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+  margin-top: 15px;
+  margin-bottom: 23px;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:80px">
+
+<h1 style="width:100%;">Fase 2     </h1 >
+<p>
+    Ora, supponiamo che, escluso te, nella <b> scheda di scelta vincolante (numero {{ Constants.random_practice_choice_sit }})</b>
+    nella <b> sezione delle preferenze </b>:
+</p>
+<div style="position:relative; bottom:30px" >
+<ul style="position:relative; top:30px" >
+     <li><b> {{random_prediction_A}} </b> {% if random_prediction_A == 1 %}partecipante ha
+    {% elif random_prediction_A != 1 %} partecipanti hanno {%endif%}<b> scelto il Progetto A </b></li>
+  <li><b> {{random_prediction_B}}</b> {% if random_prediction_B == 1 %}partecipante ha
+    {% elif random_prediction_B != 1 %} partecipanti hanno {%endif%} <b> scelto il Progetto B</b></li>
+    <li><b> {{random_prediction_C}}</b> {% if random_prediction_C == 1 %}partecipante ha
+    {% elif random_prediction_C != 1 %} partecipanti hanno{%endif%} <b>  scelto Nessun progetto</b></li>
+</ul>
+
+
+  <img src= "{{static 'bingo_cage2.jpg' }}" style="width:35%;position:absolute;left:700px;top:0px  " />
+
+   <div style="position: absolute; left:550px; top:20px;width:100%" >
+
+                 {{ for x in listA }}
+               <img src= "{{static 'ball_A.jpg' }}" style="width:5% " />
+               {{ endfor }}
+                </div>
+                    <div style="position: absolute; left:550px; top:80px;width:100%">
+             {{ for x in listB }}
+               <img src= "{{static 'ball_B.jpg' }}" style="width:5%" />
+               {{ endfor }}
+                  </div>
+                    <div style="position: absolute;  left:550px;top:140px;width:100%">
+              {{ for x in listC }}
+               <img src= "{{static 'ball_C.jpg' }}" style="width:5% " />
+               {{ endfor }}
+                   </div>
+    <div style="position: absolute; top:200px; width:75%">
+    <p  >
+Quindi posizioniamo <b> {{random_prediction_A}}  {% if random_prediction_A == 1 %}pallina
+    {% elif random_prediction_A != 1 %} palline {%endif%}</b> con la <b> lettera A</b>,
+        <b> {{random_prediction_B}} {% if random_prediction_B == 1 %}pallina
+    {% elif random_prediction_B != 1 %} palline {%endif%}</b>
+        con la <b> lettera B</b>, e
+    <b> {{random_prediction_C}} {% if random_prediction_C == 1 %}pallina
+    {% elif random_prediction_C != 1 %} palline {%endif%}</b> con la <b> lettera C</b> in un'altra ruota bingo,
+    e estraiamo <b> casualmente </b> una delle palline.</p>
+</p>
+<p>
+    Questo determinerà <b> l'alternativa vincolante  </b> (Progetto A, B o Nessun progetto) da cui dipende il tuo compenso monetario aggiuntivo.
+
+</p>
+    </div>
+
+
+</div>
+
+
+
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+
+
+
+
+
+</body>
+
+<br>
+<br>
+
+  <button name="btn_submit" value="True" class="btn btn-primary btn-large" >
+                  <span style="font-size:12pt">Avanti</span>
+             </button>
+
+
+{{ endblock }}

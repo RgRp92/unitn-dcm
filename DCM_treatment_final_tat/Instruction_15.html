@@ -1,0 +1,62 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+.myDiv {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
+}
+
+
+</style>
+
+<h1 style="width:100%;">Distribuzione geografica</h1 >
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<div class="myDiv" style=" position:relative;right:250px; top:10px">
+    <p >Considerando questa mappa di Trento, le aree urbane in cui si potrebbero sviluppare questi progetti sono 2: </p>
+
+
+    <ol>
+        <li>Centro città e dintorni:  Centro Storico, Piedicastello Sud e S. Giuseppe (<span style="color:#FFA500"><b>zona arancione</b> </span>)</li>
+  <li>Zone periferiche: include Mattarello, Oltrefersina, Piedicastello Nord e Gardolo  (<span style="color:#800080"><b>zona viola</b></span>)</li>
+</ol>
+<div  style=" position:absolute; left:500px;  bottom:450px;font-size: 0.7em; width:100%" >
+<br>
+<img src= "{{static 'trento_buildings2.jpg' }}" style="width:70%; position:absolute; right:80px; top:40px " />
+
+    <p  align="center"  style="width:30%; position:absolute; left:400px; top:200px " > <i>Mappa degli edifici pubblici (punti rossi) e delle  aree considerate </i>  </p>
+
+
+</div>
+
+
+
+
+
+
+</body>
+
+
+
+
+    {{ next_button }}
+{{ endblock }}

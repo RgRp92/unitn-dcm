@@ -1,0 +1,125 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+td, th,tr{
+   padding: 0;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+
+
+
+  #image_75 {
+            display: none;
+        }
+
+
+  #image_25 {
+            display: none;
+        }
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<br>
+
+<div style="width:100%; position:relative;  bottom:10px ">
+
+ <button id="btn1" type="button"  onclick= "send()" style="font-size:20px;border: 2px solid #f44336; border-radius: 12px; position:absolute; left:250px;top:100px"   >Fai girare la ruota della fortuna</button>
+
+ <img id="image_base" src= "{{static 'spinning_wheel_1.jpg' }}" style="width:35%; position:absolute; left:550px;top:20px " />
+  <img id="image_75" src= "{{static 'spinning_wheel_75.jpeg' }}" style="width:35%; position:absolute; left:550px;top:20px " />
+  <img id="image_25" src= "{{static 'spinning_wheel_25.jpeg' }}" style="width:35%; position:absolute; left:550px;top:20px " />
+
+    <p align="center"  style="width:70%;position:absolute" > Clicca sul pulsante qui sotto e controlla se le tue previsioni saranno sostituite o no </p>
+
+  <p  align="center" style="width:70%;position:absolute; top:200px"> <b id="result"> </b></p>
+
+<div id="next_button" style="display:none;position:absolute; left:320px;top:290px" >
+   {{ next_button }}
+</div>
+
+</div>
+
+
+
+<br>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+</body>
+
+
+<script>
+
+
+
+  let image_base = document.getElementById('image_base')
+  let image_75 = document.getElementById('image_75')
+  let image_25 = document.getElementById('image_25')
+  let btn1 = document.getElementById('btn1');
+  let result = document.getElementById('result');
+  let next_button = document.getElementById('next_button');
+
+
+  function send() {
+
+                  next_button.style.display = "block";
+                  image_base.style.display = "none";
+                     btn1.disabled = true;
+                     if (js_vars.replace == 1) {
+                     image_75.style.display = "block";
+                      result.innerHTML = 'Le tue previsioni saranno sostituite';
+
+                     }
+                     else{
+                     image_25.style.display = "block";
+                     result.innerHTML = 'Le tue previsioni NON saranno sostituite';
+
+                     }
+
+
+  }
+
+
+</script>
+
+
+
+
+{{ endblock }}

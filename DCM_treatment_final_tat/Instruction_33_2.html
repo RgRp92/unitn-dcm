@@ -1,0 +1,60 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1> Fase 3 </h1>
+
+
+<ul>
+    <li>C'è una <b> probabilità {{prob_NOT_replace}}% </b> che i tuoi <b> compensi siano determinati dalle tue previsioni</b>
+        nella scheda di scelta vincolante e nell'alternativa vincolante (come determinato nella Fase 1 e Fase 2) </li>
+
+    <li>C'è una <b> probabilità {{prob_replace}}% </b>  that che i tuoi <b> compensi siano determinati dalle previsioni
+        di persone che scelgono la tua stessa alternativa</b> nella scheda di scelta vincolante nella <b>sezione delle preferenze</b>
+    </li>
+</ul>
+
+<p>
+Ad esempio, se scegli <b> {{ if chosen_letter == 'C' }} Nessun progetto {{else}} Progetto {{chosen_letter}} {{endif}}</b>
+    nella scheda di scelta vincolante, c'è {{prob_replace}}%
+    di possibilità che le tue previsioni vengano sostituite dai partecipanti che hanno scelto il Progetto
+    <b> {{ if chosen_letter == 'C' }} Nessun progetto {{else}} Progetto {{chosen_letter}} {{endif}}</b>
+    nella scheda di scelta vincolante (proprio come te)
+</p>
+
+
+<br>
+<br>
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

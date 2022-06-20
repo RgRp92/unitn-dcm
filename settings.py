@@ -11,34 +11,28 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     dict(
-        name='DCM_treatment',
-        display_name="DCM_treatment",
-        num_demo_participants=3,
-        app_sequence=['DCM_CM_v2'],
-    ),
-    dict(
-        name='DCM_treatment_final',
-        display_name="DCM_treatment_final",
-        num_demo_participants=3,
-        app_sequence=['DCM_treatment_final'],
-    ),
-    dict(
-        name='DCM_pilot',
-        display_name="DCM_pilot",
-        num_demo_participants=10,
-        app_sequence=['DCM_pilot_italian'],
-    ),
-    dict(
         name='DCM_1to9',
-        display_name="DCM-control-CS_1to9",
+        display_name="Mattina_DCM-control-CS_1to9",
         num_demo_participants=3,
         app_sequence=['DCM_italian_final'],
     ),
     dict(
         name='DCM_9to1',
-        display_name="DCM-control-CS_9to1",
+        display_name="Pomerggio_DCM-control-CS_9to1",
         num_demo_participants=3,
         app_sequence=['DCM_italian_final2'],
+    ),
+dict(
+        name='CM_Treatment_1to9',
+        display_name="CM_Treatment_1to9",
+        num_demo_participants=4,
+        app_sequence=['DCM_treatment_final_tat_18'],
+    ),
+dict(
+        name='CM_Treatment_9to1',
+        display_name="CM_Treatment_9to1",
+        num_demo_participants=4,
+        app_sequence=['DCM_treatment_final_tat_18_2'],
     ),
 ]
 
@@ -66,7 +60,174 @@ ROOMS = [
         display_name='Studio Pilota 2',
         participant_label_file='rooms/pilot2label.txt',
         use_secure_urls=True
-    )
+    ),
+    dict(
+        name='21_Giugno_Mattina',
+        display_name='21 Giugno Mattina',
+        participant_label_file='rooms/21_giugno_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='21_Giugno_Pomeriggio',
+        display_name='21 Giugno Pomeriggio',
+        participant_label_file='rooms/21_giugno_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='22_Giugno_Mattina',
+        display_name='22 Giugno Mattina',
+        participant_label_file='rooms/22_giugno_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='22_Giugno_Pomeriggio',
+        display_name='22 Giugno Pomeriggio',
+        participant_label_file='rooms/22_giugno_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='24_Giugno_Mattina',
+        display_name='24 Giugno Mattina',
+        participant_label_file='rooms/24_giugno_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='24_Giugno_Pomeriggio',
+        display_name='24 Giugno Pomeriggio',
+        participant_label_file='rooms/24_giugno_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='27_Giugno_Mattina',
+        display_name='27 Giugno Mattina',
+        participant_label_file='rooms/27_giugno_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='27_Giugno_Pomeriggio',
+        display_name='27 Giugno Pomeriggio',
+        participant_label_file='rooms/27_giugno_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='28_Giugno_Mattina',
+        display_name='28 Giugno Mattina',
+        participant_label_file='rooms/28_giugno_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='28_Giugno_Pomeriggio',
+        display_name='28 Giugno Pomeriggio',
+        participant_label_file='rooms/28_giugno_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='29_Giugno_Mattina',
+        display_name='29 Giugno Mattina',
+        participant_label_file='rooms/29_giugno_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='29_Giugno_Pomeriggio',
+        display_name='29 Giugno Pomeriggio',
+        participant_label_file='rooms/29_giugno_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='30_Giugno_Mattina',
+        display_name='30 Giugno Mattina',
+        participant_label_file='rooms/30_giugno_matt.txt',
+        use_secure_urls=True
+    ),    dict(
+        name='30_Giugno_Pomeriggio',
+        display_name='30 Giugno Pomeriggio',
+        participant_label_file='rooms/30_giugno_pom.txt',
+        use_secure_urls=True
+    ),    dict(
+        name='1_Luglio_Mattina',
+        display_name='1 Luglio Mattina',
+        participant_label_file='rooms/1_luglio_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='1_Luglio_Pomeriggio',
+        display_name='1 Luglio Pomeriggio',
+        participant_label_file='rooms/1_luglio_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='4_Luglio_Mattina',
+        display_name='4 Luglio Mattina',
+        participant_label_file='rooms/4_luglio_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='4_Luglio_Pomeriggio',
+        display_name='4 Luglio Pomeriggio',
+        participant_label_file='rooms/4_luglio_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='5_Luglio_Mattina',
+        display_name='5 Luglio Mattina',
+        participant_label_file='rooms/5_luglio_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='5_Luglio_Pomeriggio',
+        display_name='5 Luglio Pomeriggio',
+        participant_label_file='rooms/5_luglio_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='6_Luglio_Mattina',
+        display_name='6 Luglio Mattina',
+        participant_label_file='rooms/6_luglio_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='6_Luglio_Pomeriggio',
+        display_name='6 Luglio Pomeriggio',
+        participant_label_file='rooms/6_luglio_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='7_Luglio_Mattina',
+        display_name='7 Luglio Mattina',
+        participant_label_file='rooms/7_luglio_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='7_Luglio_Pomeriggio',
+        display_name='7 Luglio Pomeriggio',
+        participant_label_file='rooms/7_luglio_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='8_Luglio_Mattina',
+        display_name='8 Luglio Mattina',
+        participant_label_file='rooms/8_luglio_matt.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='8_Luglio_Pomeriggio',
+        display_name='8 Luglio Pomeriggio',
+        participant_label_file='rooms/8_luglio_pom.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='Extra_day_1',
+        display_name='Extra day 1',
+        participant_label_file='rooms/extra_day_1.txt',
+        use_secure_urls=True
+    ),
+    dict(
+        name='Extra_day_2',
+        display_name='Extra day 2',
+        participant_label_file='rooms/extra_day_2.txt',
+        use_secure_urls=True
+    ),
+
 ]
 
 ADMIN_USERNAME = 'admin'
@@ -87,6 +248,7 @@ Recipes for common tasks in oTree
 SECRET_KEY = 'fnv*lfr%ghepfge1rg1a56t0sj+9d*p&1+&g%q@j!ju@zu^v@6'
 
 SESSION_FIELDS = [
+    'player_temp_AB_',
     'completions_by_treatment',
     'past_groups',
     'matrices',
@@ -140,6 +302,18 @@ PARTICIPANT_FIELDS = [
      'CE7_ALL',
      'CE8_ALL',
      'CE9_ALL',
+    'CE1_ALL_as_shown',
+     'CE2_ALL_as_shown',
+     'CE3_ALL_as_shown',
+    'CE4_ALL_as_shown',
+     'CE5_ALL_as_shown',
+     'CE6_ALL_as_shown',
+     'CE7_ALL_as_shown',
+     'CE8_ALL_as_shown',
+     'CE9_ALL_as_shown',
+    'predA',
+    'predB',
+    'predC',
     'num_players',
     'replace_predictions_practice',
     'replace_predictions',
@@ -154,15 +328,15 @@ PARTICIPANT_FIELDS = [
     'group_pre_B_sum',
     'group_pre_C_sum',
     'group_pre_cont',
-
     'group_list_pred_A_practice',
     'group_list_pred_B_practice',
     'group_list_pred_C_practice',
-
+    'group_list_pred_A',
+    'group_list_pred_B',
+    'group_list_pred_C',
     'group_elec',
     'random_choice',
     'random_choice_practice',
-
     'group_pre_A_sum_practice',
     'group_pre_B_sum_practice',
     'group_pre_C_sum_practice',
@@ -170,11 +344,9 @@ PARTICIPANT_FIELDS = [
     'list_choices_A_practice',
     'list_choices_B_practice',
     'list_choices_C_practice',
-
    'group_list_pred_A_practice',
    'participant.group_list_pred_B_practice',
    'group_list_pred_C_practice',
-
    'id_resto',
 
 
@@ -209,4 +381,6 @@ PARTICIPANT_FIELDS = [
     'num_Test_payoff_b_pred',
     'num_Test_payoff_c_pred',
     'TARI',
+    'choice_binding_sit'
 ]
+

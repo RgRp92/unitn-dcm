@@ -1,0 +1,180 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+td, th,tr{
+   padding: 0;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1>Ad esempio </h1>
+<p>
+
+<p> Dall' esempio precedente, supponiamo che: <b> la scheda di scelta vincolante </b> è <b> la {{ Constants.random_practice_choice_sit }} </b> e <b>
+    l'alternativa vincolante </b> è <b> {{ if chosen_letter == 'C' }} Nessun progetto {{else}} Progetto {{chosen_letter}} {{endif}} </b> </p>
+
+
+  <div style="width:100%; position:relative;">
+
+      <div style="width:55%; position:absolute;">
+<br>
+          <p> Supponiamo che <b> le tue predizioni vengano sostituite. </b></p>
+
+<p> Diamo un'occhiata alla tue scelte nella situazione vincolante: <b> supponiamo che tu abbia scelto {{ if chosen_letter == 'C' }} Nessun progetto {{else}} Progetto {{chosen_letter}} {{endif}}  </b> </p>
+
+<p> Le tue <b>  predizioni saranno sostituite dalla media delle previsioni di altri parteicpanti che hanno scelto come te {{ if chosen_letter == 'C' }} Nessun progetto {{else}} Progetto {{chosen_letter}} {{endif}}  </b>
+    nella sezione delle preferenze
+    </p>
+
+
+
+
+</div>
+
+
+  <table  align="center"   style="width:50%; position:absolute; left:550px;top:0px" >
+
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Scheda di scelta  {{Constants.random_practice_choice_sit}}  </b> </th>
+    </tr>
+
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Priorità nel Centro città  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td>  4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level3_cost }} </td>
+        <td> €{{Constants.level2_cost }}   </td> <td>
+      </td>
+    </tr>
+
+
+    <tr style="background-color: #F0E68C">
+
+                    {{ if Constants.random_practice_alternative  == 'A'}}
+
+        <th scope="row"> Io scelgo </th> <td style="text-align:center"> <input type="radio" id="A" checked="checked"   style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+      {{ else}}
+
+       {{ if Constants.random_practice_alternative  == 'B'}}
+        <th scope="row">  Io scelgo  </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  checked="checked"   style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+       {{ else}}
+       <th scope="row">  Io scelgo  </th> <td style="text-align:center"> <input type="radio" id="A"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   checked="checked"   style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+
+      {{ endif}}
+             {{ endif}}
+
+
+
+
+
+</table>
+
+
+
+
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

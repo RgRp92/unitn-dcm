@@ -1,0 +1,99 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<h1>
+An example of a choice card
+</h1>
+
+<p> Please select your most preferred alternative </p>
+
+
+
+<table class="table">
+<tr>
+
+    {{ for choice in form.CE_choice_practice}}
+             {{ if forloop.counter == 1}}
+                 <th> Option A </th>  <td onclick="clicked1(event)">{{ choice }}</td>
+             {{ else}}
+                  {{ if forloop.counter == 2}}
+                  <th> Option B </th>  <td onclick="clicked2(event)"> {{ choice }}</td>
+                  {{ else}}
+                   <th> No project </th>   <td onclick="clicked3(event)">{{ choice }}</td>
+                  {{ endif}}
+             {{ endif}}
+    {{ endfor }}
+</tr>
+</table>
+
+
+<br>
+<br>
+
+
+</body>
+<p style="display: none;" id="choice">none</p>
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Next</button>
+
+<script>
+
+   let choice = document.getElementById('choice');
+
+   function checkSubmit() {
+       if( choice.innerHTML == "none" ) {
+          alert("Please select an option");
+        }
+       else {
+
+            // var myText = "Your most preferred option was   ";
+           //  var text = myText.concat(choice.innerHTML);
+
+           //  if(confirm(text)) {
+                form.submit();
+           //    }
+       }
+  }
+
+function clicked1(e){
+               choice.innerHTML="A";
+               alert ("You have selected A as your most preferred option");
+}
+function clicked2(e){
+               choice.innerHTML="B";
+               alert ("You have selected B as your most preferred option");
+}
+function clicked3(e){
+               choice.innerHTML="Status quo";
+               alert ("You have selected Status quo as your most preferred option");
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}

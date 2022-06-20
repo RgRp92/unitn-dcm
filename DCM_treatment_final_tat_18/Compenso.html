@@ -1,0 +1,30 @@
+{{ block content }}
+<style>
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1 {
+  font-size: 3.1em;
+   margin-left: auto;
+  margin-right: auto;
+   text-align: center;
+}
+</style>
+
+
+<body  style=" margin:0px;position:relative; bottom:30px">
+
+
+<h1 style="width:100%;"> Grazie per aver completato lo studio! </h1 >
+<br>
+<p>Nella tua ricevuta dovrai scrivere il seguente compenso monetario: {{player.payoff}}</p>
+
+
+
+<img src= "{{static 'Logo_trento_2.jpg' }}" style="width:55%;" />
+
+</body>
+{{ endblock }}

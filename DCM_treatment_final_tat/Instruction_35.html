@@ -1,0 +1,60 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<p>
+Per determinare se verrai pagato in base alle tue predizioni o meno, utilizzeremo una ruota della fortuna come quella
+mostrata nell'immagine.</p>
+ <img src= "{{static 'spinning_wheel_1.jpg' }}" style="width:40%; position:relative; left:600px; bottom:40px " />
+
+<div class="myDiv" style=" position:relative;right:0px; bottom: 370px;width:60%">
+<ul>
+    <li> Se la freccia si ferma  <b> nell'area blu</b>,<b> le tue predizioni NON veranno sostituite </b></li>
+<br>
+    <li> Se la freccia si ferma  <b> nell'area viola  </b>,  <b> le tue predizioni SARANNO sostituite </b></li>
+</ul>
+
+</div>
+
+    <p style=" position:relative;right:0px; bottom: 350px;width:70%" >
+Nota che c'è una probabilità del {{prob_not_replace}}% che le tue predizioni NON vengano sostituie
+        e una probabilità del {{prob_replace}}% che le tue predizioni VENGANO sostituite.
+</p>
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

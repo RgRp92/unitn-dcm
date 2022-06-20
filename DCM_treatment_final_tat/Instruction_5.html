@@ -1,0 +1,46 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+
+li {
+  font-size: 1.5em;
+
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;"> Panoramica dello studio </h1 >
+
+<br>
+<p>Nella <span style="color:red"> <b> Parte 1 </b> </span>, vi sono due sezioni:</p>
+
+<p><b>Sezione delle preferenze</b>: dovrai esprimere le <b> tue preferenze</b> su alcuni progetti alternativi di
+installazione di tetti verdi a Trento</p>
+
+<p><b>Sezione delle predizioni</b>: dovrai predirre le scelte che gli altri partecipanti prenderanno nei loro compiti
+di preferenza</p>
+
+<p>Potrai guadagnare un compenso monetario aggiuntivo a seconda delle tue predizioni in quest'ultima sezione</p>
+
+<p> Puoi guadagnare un minimo di €{{min_income}} e un massimo di €{{max_income}} </p>
+
+</body>
+  <button name="btn_submit" value="True" class="btn btn-primary btn-large" >
+                  <span style="font-size:12pt">Avanti</span>
+             </button>
+
+{{ endblock }}

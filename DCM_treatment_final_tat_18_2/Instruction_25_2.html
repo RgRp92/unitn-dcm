@@ -1,0 +1,50 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<p> Ci sono altri {{num_participants}} partecipanti alla sessione, escludendo te stesso </p>
+
+<p> Ti verrà chiesto di  <b> prevedere il numero di partecipanti  </b>
+    (su {{num_participants}}) che <b> scelgono ciascuna alternativa </b> (Progetto A, Progetto B and Nessun progetto)
+    in ciascuna delle {{Constants.num_CE}} situazioni di scelta presentate nella  <b> sezione delle preferenze </b>
+</p>
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+    {{ next_button }}
+
+
+
+{{ endblock }}

@@ -1,0 +1,89 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+.myDiv {
+    margin-left: auto;
+    margin-right: auto;
+    width: 33%
+}
+
+
+.underline_y {
+  text-decoration: underline;
+  text-decoration-color: #FFA500;
+}
+
+
+.underline_p {
+  text-decoration: underline;
+  text-decoration-color: #800080;
+}
+</style>
+
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<div class="myDiv" style=" position:relative;width:100%">
+
+<p style="  width:70%"> I <b>90.000 m<sup> 2 </sup> </b> di tetti di edifici pubblici che saranno trasformati in tetti verdi possono essere distribuiti in: </p>
+
+<div class="myDiv" style=" position:absolute;right:640px; top: 115px;">
+        <p align="center"Style="Margin:4px">  <b> Priorità  nel centro città </b> </p>
+    <p align="center" Style="Margin:2px"> 80% <span class="underline_y" > nel centro della città </span> </p>
+    <p align="center" Style="Margin:2px"> 20% <span class="underline_p" > nelle periferie </span> </p>
+</div>
+
+<div class="myDiv" style=" position:absolute;left:330px; top: 115px;">
+        <p align="center" Style="Margin:4px">  <b> Priorità nelle periferie </b> </p>
+    <p align="center" Style="Margin:2px"> 20% <span class="underline_y" > nel centro della città </span> </p>
+    <p align="center" Style="Margin:2px"> 80% <span class="underline_p" > nelle periferie </span> </p>
+</div>
+
+<div class="myDiv" style=" position:absolute;left:160px; top: 270px;">
+        <p align="center" Style="Margin:4px">  <b> Equamente distribuiti </b> </p>
+    <p align="center" Style="Margin:2px"> 50% <span class="underline_y" > nel centro della città  </span> </p>
+    <p align="center" Style="Margin:2px"> 50% <span class="underline_p" > nelle periferie </span> </p>
+</div>
+
+
+<div  style=" position:absolute; left:570px;bottom:80px; font-size: 0.7em; width:50%" >
+<p  align="center" > <i> Map of public buildings (red dots) and considered areas  </i>  </p>
+<br>
+
+    <img src= "{{static 'trento_buildings2.jpg' }}" style="width:70%; position:absolute; right:30px; top:55px " />
+
+</div>
+
+    </div>
+
+</body>
+
+<br>
+<br> <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br> <br> <br> <br> <br> <br> <br>
+
+
+    {{ next_button }}
+{{ endblock }}

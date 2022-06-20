@@ -31,8 +31,7 @@ margin-top:10px;
 <body style=" margin:0px;position:relative; bottom:50px">
 
 
-<h1 style="width:100%;"> Questionario finale </h1 >
-<ol start="21">
+<ol start="23">
 <li>	Qual è la tua occupazione al momento? </li>
 
 
@@ -56,7 +55,7 @@ margin-top:10px;
 <br>
 
 
-    <li> Quale è il suo reddito individuale (al netto delle imposte) da Lei conseguito lo scorso anno (2021)? </li>
+    <li> Quale è il suo reddito familiare (al netto delle imposte) conseguito lo scorso anno (2021)? </li>
 
          <span onclick="clicked5(event)">    {{form.reddito}} </span>
 
@@ -64,7 +63,7 @@ margin-top:10px;
 
 
 
-        <li>	A quanto ammonta l’imposta TARI pagata dal tuo nucleo familiare nel 2021? (considera la somma dei due pagamenti effettuati)  </li>
+        <li>A quanto ammonta l’imposta TARI pagata dal tuo nucleo familiare nel 2021? (considera la somma dei due pagamenti effettuati)  </li>
 
 
       <span>€ </span><input onchange="clicked6(event)" name='TARI' id="TARI" type="number"  >
@@ -83,7 +82,7 @@ margin-top:10px;
 <p style="display: none;" id="choice6">0</p>
  <br>
 
-<button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+<button style="position: relative; left:90%" type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
 
 
 
@@ -105,9 +104,7 @@ let choice1 = document.getElementById('choice1');
    let  button = document.getElementById('button');
     let TARI = document.getElementById('TARI');
 
-
-
-   function checkSubmit() {
+ function checkSubmit() {
 
             if( choice1.innerHTML == "0"  ||
             choice2.innerHTML == "0"  ||
@@ -123,7 +120,6 @@ let choice1 = document.getElementById('choice1');
               }
 
   }
-
 function clicked1(e){
               choice1.innerHTML ="1";
 

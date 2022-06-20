@@ -72,8 +72,8 @@ Scheda di scelta {{player.participant.contador}}
         <td> {{location_2}}</td> <td>  </td>
     </tr>
           <tr>
-          <th scope="row"> Manutenzione  </th> <td> Ogni {{maintan_1}} mesi  </td>
-        <td> Ogni {{maintan_2}} mesi </td> <td>  </td>
+          <th scope="row"> Frequenza manutenzione  </th> <td>  {{maintan_1}} visite all'anno  </td>
+        <td> {{maintan_2}} visite all'anno </td> <td>  </td>
     </tr>
       <tr>
           <th scope="row"> Tasso di assorbimento   </th> <td> {{rainab_1}}  </td>
@@ -86,7 +86,7 @@ Scheda di scelta {{player.participant.contador}}
     </tr>
 
     <tr style="background-color: #F0E68C">
-  <th scope="row"> Io scelgo il progetto   </th>
+  <th scope="row"> Io scelgo  </th>
 
         {{ for choice in form.CE5_choice}}
              {{ if forloop.counter == 1}}
@@ -113,7 +113,7 @@ Scheda di scelta {{player.participant.contador}}
 
 </body>
 <p style="display: none;" id="choice">none</p>
-<button type="button" class="btn btn-primary" onclick="checkSubmit()">Scegli una alternativa e clicca qui</button>
+<button style="position: relative; left:58%" type="button" class="btn btn-primary" onclick="checkSubmit()">Scegli una alternativa e clicca qui</button>
 
 <script>
 
