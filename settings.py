@@ -382,5 +382,8 @@ PARTICIPANT_FIELDS = [
     'num_Test_payoff_c_pred',
     'TARI',
     'choice_binding_sit'
+    'anno_di_nascita',
+    'house_size',
+    'household_n'
 ]
 

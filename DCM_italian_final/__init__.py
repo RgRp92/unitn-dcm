@@ -495,7 +495,10 @@ class Player(BasePlayer):
                  [6, "Superiore ai € 119.000"]],
         widget=widgets.RadioSelect)
 
-    house_size = models.FloatField(label="")
+    household_size = models.IntegerField(
+        label="",
+        min=0,
+        max=1000)
 
     TARI = models.FloatField(
         label="TAX",
