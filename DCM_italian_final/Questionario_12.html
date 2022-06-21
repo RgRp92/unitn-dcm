@@ -187,25 +187,10 @@ function clicked6(e){
 }
 
 function clicked7(e){
-
-       if(TARI.value==0) {
-          alert("Si prega indica la tua TARI")
-           TARI.style.backgroundColor =  "rgba(221,0,0,0.3)";
-           }
-      else{
-            TARI.style.backgroundColor = "white";
-            var myText = "Siete sicuri che l'ultima tassa sui rifiuti che avete pagato fosse pari a ";
-            var text = myText.concat(TARI.value.toString());
-            var text2 = text.concat('€ ?');
-             if(confirm(text2)) {
-          choice7.innerHTML ="1";
-            }
-       }
+              choice7.innerHTML ="1";
 
 
 }
-
-
 
 
 
