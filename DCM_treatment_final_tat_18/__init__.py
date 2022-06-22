@@ -1669,9 +1669,8 @@ class Consent_3(Page):
 
 class Consent_4(Page):
     form_model = 'player'
-    form_fields = ['nome', 'cognome','email',
-                   'numero_di_cellulare',
-                    'anno_di_nascita']
+    form_fields = ['nome', 'cognome', 'email',
+                   'numero_di_cellulare', 'anno_di_nascita']
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept ==1 and player.futuro_studies == 1
