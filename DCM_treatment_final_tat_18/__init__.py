@@ -1676,10 +1676,6 @@ class Consent_4(Page):
         return player.participant.accept ==1 and player.futuro_studies == 1
 
 
-
-
-
-
 class Instruction_1(Page):
     @staticmethod
     def vars_for_template(player):
