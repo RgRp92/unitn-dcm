@@ -27,7 +27,7 @@ class Subsession(BaseSubsession):
 class Constants(BaseConstants):
 
     players_per_group = None
-    name_in_url = 'DCM_italian_final_tat'
+    name_in_url = 'DCM_italian_final_tat_2'
     tasks = ['1', '2', '3','4','5','6','7','8','9']
     num_CE = len(tasks)
     ###practice test####
