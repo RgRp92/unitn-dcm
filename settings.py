@@ -24,13 +24,13 @@ SESSION_CONFIGS = [
     ),
 dict(
         name='Mattina_CM_Treatment_1to9',
-        display_name="CM_Treatment_1to9",
+        display_name="Mattina_CM_Treatment_1to9",
         num_demo_participants=4,
         app_sequence=['DCM_treatment_final_tat_18'],
     ),
 dict(
         name='Pomeriggio_CM_Treatment_9to1',
-        display_name="CM_Treatment_9to1",
+        display_name="Pomeriggio_CM_Treatment_9to1",
         num_demo_participants=4,
         app_sequence=['DCM_treatment_final_tat_18_2'],
     ),
