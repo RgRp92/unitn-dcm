@@ -50,27 +50,9 @@ ricontatto per verifcare l'eventuale disponibilità a partecipare a progetti di 
 <br>
     <br>
 
-<li>	Nato a: </li>
+<li>	Anno di  nascita: </li>
 
- <input onchange="clicked5(event)" name='nato_a' id="nato_a" >
-<br>
-    <br>
-
-
-<li>	Mese di  nascita: </li>
-
-   <span onclick="clicked6(event)">  {{ form.mesi_di_nascita }}</span>
-<br>
-<br>
-
-<li>	Giorno di  nascita: </li>
-
-   <span onclick="clicked7(event)">  {{ form.giorno_di_nascita_30 }}</span>
-<br>
-    <br>
-<li>	Anni di  nascita: </li>
-
-   <span onclick="clicked8(event)">  {{ form.anni_di_nascita }}</span>
+   <span onclick="clicked5(event)">  {{ form.anno_di_nascita }}</span>
 <br>
 
 <br>
@@ -83,9 +65,7 @@ ricontatto per verifcare l'eventuale disponibilità a partecipare a progetti di 
 <p style="display: none;" id="choice3">0</p>
 <p style="display: none;" id="choice4">0</p>
 <p style="display: none;" id="choice5">0</p>
-<p style="display: none;" id="choice6">0</p>
-<p style="display: none;" id="choice7">0</p>
-<p  style="display: none;" id="choice8">0</p>
+
 
 </body>
 
@@ -98,9 +78,7 @@ ricontatto per verifcare l'eventuale disponibilità a partecipare a progetti di 
    let choice3 = document.getElementById('choice3');
    let choice4 = document.getElementById('choice4');
    let choice5 = document.getElementById('choice5');
-   let choice6 = document.getElementById('choice6');
-   let choice7 = document.getElementById('choice7');
-   let choice8 = document.getElementById('choice8');
+
 
 
 
@@ -109,15 +87,10 @@ ricontatto per verifcare l'eventuale disponibilità a partecipare a progetti di 
                                    choice2.innerHTML == "0" ||
                                    choice3.innerHTML == "0" ||
                                    choice4.innerHTML == "0" ||
-                                    choice5.innerHTML == "0" ||
-                                    choice6.innerHTML == "0" ||
-                                    choice7.innerHTML == "0"  ||
-                                     choice8.innerHTML == "0" ) {
-                 alert("Rispondere a tutte le domande prima di continuare");
-
-                                  //  if(confirm("You have not answered all options, are you sure you want to continue?")) {
-                                 //   form.submit();
-                                 //       }
+                                   choice5.innerHTML == "0" ) {
+                                    if(confirm("Per favore rispondi a tutte le domande")) {
+                                    form.submit();
+                                        }
                           } else {
                                      form.submit();
                                        }
@@ -148,17 +121,7 @@ function clicked5(e){
                choice5.innerHTML ="1";
 }
 
-function clicked6(e){
-               choice6.innerHTML ="1";
 
-}
-
-function clicked7(e){
-               choice7.innerHTML ="1";
-}
-function clicked8(e){
-               choice8.innerHTML ="1";
-}
 
 
 </script>

@@ -35,48 +35,16 @@ table{
 
 
 <ol start="11">
-<li>La tua famiglia è mai stata colpita da un'alluvione?  </li>
-
-
-   <span onclick="clicked1(event)" style="font-size:1.2em">  {{  form.affected_flooding}} </span>
-
-  <br>
-<li>Con quale probabilità un'alluvione simile a quella avvenuta nel  '66 potrebbe colpire Trento nel prossimo decennio?
-   </li>
-
-  <br>
-  <table  style="width:80%" >
-
-      <tr style="background-color: #ADDFFF" >
-          <th style="width:20%;text-align:center">  Molto bassa	  </th>
-          <th style="width:20%;text-align:center">  Bassa  </th>
-           <th style="width:20%;;text-align:center">  Media  </th>
-          <th style="width:20%;;text-align:center"> Alta   </th>
-          <th style="width:20%;;text-align:center"> Molto alta   </th>
-
-    </tr>
-
-    <tr >
-        {{ for lik_severe_flood in form.lik_severe_flood}}
-                 <th onclick="clicked2(event)" style="text-align:center;background-color: #C6DEFF">
-                     {{ lik_severe_flood }} {{ lik_severe_flood.label }}</th>
-      {{ endfor }}
-
- </tr>
-</table>
-
-   <img src= "{{static 'alluvione_66_1.jpg' }}" style="width:28%;  position:relative; left:100px; top: 8px;"/>
-<img src= "{{static 'alluvione_66_2.jpg' }}" style="width:30%;  position:relative; left:120px;   top: 8px; " />
-
-   <br>
-   <br>
-      <br>
-   <br>
 
 <li>Con quale probabilità problematiche simili a quelle in foto potrebbero verificarsi a Trento nel prossimo decennio?
    </li>
+    <br>
 
+    <img src= "{{static 'runoff_1.jpeg' }}" style="width:30%;  position:relative; left:100px; top: 8px;"/>
+<img src= "{{static 'runoff_2.jpg' }}" style="width:30%;  position:relative;  left:120px;   top: 8px;" />
   <br>
+    <br>
+    <br>
   <table  style="width:80%" >
 
       <tr style="background-color: #ADDFFF" >
@@ -90,15 +58,14 @@ table{
 
     <tr >
         {{ for lik_mild_flood in form.lik_mild_flood}}
-                 <th onclick="clicked3(event)" style="text-align:center;background-color: #C6DEFF">
+                 <th onclick="clicked1(event)" style="text-align:center;background-color: #C6DEFF">
                      {{ lik_mild_flood }} {{ lik_mild_flood.label }}</th>
       {{ endfor }}
 
  </tr>
 </table>
 
-<img src= "{{static 'runoff_1.jpeg' }}" style="width:30%;  position:relative; left:100px; top: 8px;"/>
-<img src= "{{static 'runoff_2.jpg' }}" style="width:30%;  position:relative;  left:120px;   top: 8px;" />
+
 
    <br>
    <br>
@@ -124,7 +91,7 @@ table{
 
     <tr >
         {{ for serious_problem in form.serious_problem}}
-                 <th onclick="clicked4(event)" style="text-align:center;background-color: #C6DEFF">
+                 <th onclick="clicked2(event)" style="text-align:center;background-color: #C6DEFF">
                      {{ serious_problem }} {{ serious_problem.label }}</th>
       {{ endfor }}
 
@@ -144,8 +111,7 @@ table{
 
 <p style="display: none;" id="choice1">0</p>
 <p style="display: none;" id="choice2">0</p>
-<p style="display: none;" id="choice3">0</p>
-<p style="display: none;" id="choice4">0</p>
+
 
 <br>
 <br>
@@ -159,15 +125,13 @@ table{
 <script>
    let choice1 = document.getElementById('choice1');
    let choice2 = document.getElementById('choice2');
-   let choice3 = document.getElementById('choice3');
-   let choice4 = document.getElementById('choice4');
+
 
    function checkSubmit() {
 
             if( choice1.innerHTML == "0" ||
-               choice2.innerHTML == "0" ||
-                choice3.innerHTML == "0" ||
-                choice4.innerHTML == "0" ) {
+
+                choice2.innerHTML == "0" ) {
                 alert("Rispondere a tutte le domande prima di continuare");
               }
               else {
@@ -183,12 +147,7 @@ function clicked1(e){
 function clicked2(e){
                choice2.innerHTML ="1"
 }
-function clicked3(e){
-               choice3.innerHTML ="1";
-}
-function clicked4(e){
-               choice4.innerHTML ="1";
-}
+
 
 
 

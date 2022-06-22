@@ -31,7 +31,7 @@ margin-top:10px;
 <body style=" margin:0px;position:relative; bottom:50px">
 
 
-<ol start="23">
+<ol start="21">
 <li>	Qual è la tua occupazione al momento? </li>
 
 
@@ -61,12 +61,17 @@ margin-top:10px;
 
     <br>
 
+<li> A quanti metri quadri corrisponde la grandezza della casa dove vivi attualmente? </li>
 
+      <span>m2 </span><input onchange="clicked6(event)" name='house_size' id="house_size" type="number"  >
 
+    <br>
+<br>
+    <p>
+
+    </p>
         <li>A quanto ammonta l’imposta TARI pagata dal tuo nucleo familiare nel 2021? (considera la somma dei due pagamenti effettuati)  </li>
-
-
-      <span>€ </span><input onchange="clicked6(event)" name='TARI' id="TARI" type="number"  >
+      <span>€ </span><input onchange="clicked7(event)" name='TARI' id="TARI" type="number"  >
 
 
 <br>
@@ -80,6 +85,8 @@ margin-top:10px;
 <p style="display: none;" id="choice4">0</p>
 <p style="display: none;" id="choice5">0</p>
 <p style="display: none;" id="choice6">0</p>
+<p style="display: none;" id="choice7">0</p>
+
  <br>
 
 <button style="position: relative; left:90%" type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
@@ -95,6 +102,8 @@ let choice1 = document.getElementById('choice1');
     let choice4 = document.getElementById('choice4');
      let choice5 = document.getElementById('choice5');
       let choice6 = document.getElementById('choice6');
+       let choice7 = document.getElementById('choice7');
+
 
 
    let occupazione_altro = document.getElementById('occupazione_altro');
@@ -102,7 +111,8 @@ let choice1 = document.getElementById('choice1');
 
 
    let  button = document.getElementById('button');
-    let TARI = document.getElementById('TARI');
+   let house_size = document.getElementById('house_size');
+   let TARI = document.getElementById('TARI');
 
  function checkSubmit() {
 
@@ -111,7 +121,8 @@ let choice1 = document.getElementById('choice1');
             choice3.innerHTML == "0"  ||
             choice4.innerHTML == "0"  ||
             choice5.innerHTML == "0"  ||
-            choice6.innerHTML == "0"
+            choice6.innerHTML == "0" ||
+            choice7.innerHTML == "0"
               ) {
                 alert("Rispondere a tutte le domande prima di continuare");
               }
@@ -170,25 +181,16 @@ function clicked5(e){
 }
 
 function clicked6(e){
-
-       if(TARI.value==0) {
-          alert("Si prega indica la tua TARI")
-           TARI.style.backgroundColor =  "rgba(221,0,0,0.3)";
-           }
-      else{
-            TARI.style.backgroundColor = "white";
-            var myText = "Siete sicuri che l'ultima tassa sui rifiuti che avete pagato fosse pari a ";
-            var text = myText.concat(TARI.value.toString());
-            var text2 = text.concat('€ ?');
-             if(confirm(text2)) {
-          choice6.innerHTML ="1";
-            }
-       }
+              choice6.innerHTML ="1";
 
 
 }
 
+function clicked7(e){
+              choice7.innerHTML ="1";
 
+
+}
 
 
 

@@ -18,13 +18,16 @@ h1 {
 <body  style=" margin:0px;position:relative; bottom:30px">
 
 
-<h1 style="width:100%;"> Grazie per aver completato lo studio! </h1 >
+<h2 style="width:100%;"> Grazie per aver completato lo studio! </h2 >
 <br>
-<p>Nella tua ricevuta dovrai scrivere il seguente compenso monetario: {{player.payoff}}</p>
+<h3>Il tuo compenso monetario aggiuntivo è pari a: {{player.payoff}}</h3>
 
 
 
-<img src= "{{static 'Logo_trento_2.jpg' }}" style="width:55%;" />
 
 </body>
+<br>
+<button name="btn_submit" value="True" class="btn btn-primary btn-large"  >
+                  <span style="font-size:12pt">Clicca qui per concludere lo studio</span>
+             </button>
 {{ endblock }}

@@ -40,12 +40,6 @@ input[type=radio]{
 </style>
 
 
-<body style=" margin:0px;position:relative; bottom:50px">
-<!--
-<h1 style="width:100%;">Task 2 – Belief task      </h1 >
--->
-
-
 
 <body style=" margin:0px;position:relative; bottom:50px">
 
@@ -90,7 +84,6 @@ Scheda di scelta {{player.participant.contador}}
           <th scope="row"> Incremento imposta TARI </th> <td>  €{{cost_1}}  </td>
         <td> €{{cost_2}}  </td> <td>  </td>
     </tr>
-
     <tr style="background-color: #F0E68C">
     <th scope="row"> Le tue previsioni </th>
 
@@ -120,7 +113,7 @@ Scheda di scelta {{player.participant.contador}}
 <br>
 <br>
 
-<button style="position: relative; left:58%"  type="button" class="btn btn-primary" onclick="checkSubmit()">Dopo aver controllato i compensi clicca qui</button>
+<button style="position:relative; left:35%" type="button" class="btn btn-primary" onclick="checkSubmit()">Clicca qui dopo aver scritto le tue previsioni e controllato i compensi. </button>
 </body>
 
 
@@ -182,7 +175,7 @@ Scheda di scelta {{player.participant.contador}}
             }
            else {
                if( js_vars.tempA != parseFloat(fieldA.value) || js_vars.tempB != parseFloat(fieldB.value) || js_vars.tempC != parseFloat(fieldC.value)) {
-                 alert (Per favore controlla i compensi prima di procedere");
+                 alert ("Per favore controlla i compensi prima di procedere");
                 }
               else {
                 //     if(confirm("Are you sure you want to continue?")) {

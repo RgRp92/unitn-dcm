@@ -1,4 +1,4 @@
-
+rvr
 from otree.api import *
 
 import random
@@ -27,7 +27,7 @@ class Subsession(BaseSubsession):
 class Constants(BaseConstants):
 
     players_per_group = None
-    name_in_url = 'DCM_italian_final_tat2'
+    name_in_url = 'DCM_italian_final_tat'
     tasks = ['1', '2', '3','4','5','6','7','8','9']
     num_CE = len(tasks)
     ###practice test####
@@ -137,6 +137,9 @@ class Constants(BaseConstants):
     level2_cost = 15
     level3_cost = 20
     level4_cost = 25
+
+
+
 
 
 class Group(BaseGroup):
@@ -286,9 +289,13 @@ class Player(BasePlayer):
     CE9_pred_B = make_field_prediction("CE9_B")
     CE9_pred_C = make_field_prediction("CE9_C")
 
+    ## INFORMATIVA PER IL TRATTAMENTO NELL’AMBITO DEL RECLUTAMENTO DEI PARTECIPANTI ALLA RICERCA
 
-    ##tari
-
+    nome = models.StringField(blank=True)
+    cognome = models.StringField(blank=True)
+    email = models.StringField(blank=True)
+    numero_di_cellulare = models.StringField(blank=True)
+    anno_di_nascita = models.IntegerField(choices=list(range(1920, 2005)), blank=True)
 
 
     ##Questionnario
@@ -397,26 +404,10 @@ class Player(BasePlayer):
         choices=[[0, "Femminile"], [1, "Maschile"], [2, "Altro"]],
         widget = widgets.RadioSelect )
 
-    person_14_less = models.IntegerField(
-        label="Ragazzi di età inferiore ai 14 anni",
+    household_n = models.IntegerField(
+        label="",
         min=0,
-        max=30)
-    person_15_19 = models.IntegerField(
-        label="Adolescenti tra i 15 e i 19 anni",
-        min=0,
-        max=30)
-    person_20_40 = models.IntegerField(
-        label="Adulti tra i 20 e i 40 anni",
-        min=0,
-        max=30)
-    person_41_65 = models.IntegerField(
-        label="Adulti tra i 41 e i 65 anni",
-        min=0,
-        max=30)
-    person_65 = models.IntegerField(
-        label="Adulti di età superiore ai 66 anni",
-        min=0,
-        max=30)
+        max=10)
 
     Education = models.IntegerField(
         choices=[[0, "Nessuno studio formale"], [1, "Scuola elementare"], [2, "Scuola secondaria"],  [3, "Scuola superiore"],
@@ -525,12 +516,17 @@ class Player(BasePlayer):
 
     Campo_lavoro_altro = models.StringField( blank=True  )
 
-    reddito  = models.IntegerField(
-        choices=[[0, "Nessuno, non ricevo reddito "], [1, "Meno di € 9,999"], [2, "Tra i € 10.000 e i € 19.999"],
-                 [3, "Tra i € 20.000 e i € 29.999"],
-                 [4, "Tra i € 30.000 e i € 39.999"], [5, "Tra € 40.000 e i € 59.999"],
-                 [6, "Superiore ai € 60.000"]],
+    reddito = models.IntegerField(
+        choices=[[0, "Nessuno, non percepisco reddito "], [1, "Meno di € 19,999"], [2, "Tra i € 20.000 e i € 39.999"],
+                 [3, "Tra i € 40.000 e i € 69.999"],
+                 [4, "Tra i € 70.000 e i € 99.999"], [5, "Tra € 100.000 e i € 119.999"],
+                 [6, "Superiore ai € 119.000"]],
         widget=widgets.RadioSelect)
+
+    house_size = models.IntegerField(
+        label="",
+        min=0,
+        max=1000)
 
     TARI = models.FloatField(
         label="TAX",
@@ -1227,8 +1223,7 @@ class Questionario_5(Page):
 
 class Questionario_6(Page):
     form_model = 'player'
-    form_fields = ['affected_flooding',
-                   'lik_severe_flood',
+    form_fields = [
                    'lik_mild_flood',
                    'serious_problem']
     @staticmethod
@@ -1239,11 +1234,7 @@ class Questionario_7(Page):
     form_model = 'player'
     form_fields = ['anni_natto',
                    'gender',
-                   'person_14_less',
-                   'person_15_19',
-                   'person_20_40',
-                   'person_41_65',
-                   'person_65',
+                   'household_n',
                    'Education']
 
     @staticmethod
@@ -1304,7 +1295,8 @@ class Questionario_12(Page):
                      'Campo_lavoro',
                      'Campo_lavoro_altro',
                      'reddito',
-                     'TARI']
+                     'TARI',
+                     'house_size']
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept ==1
@@ -1677,8 +1669,8 @@ class Consent_3(Page):
 class Consent_4(Page):
     form_model = 'player'
     form_fields = ['nome', 'cognome','email',
-                   'numero_di_cellulare','nato_a',
-                   'mesi_di_nascita','giorno_di_nascita_30', 'anni_di_nascita']
+                   'numero_di_cellulare',
+                    'anno_di_nascita']
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept ==1 and player.futuro_studies == 1
@@ -2852,10 +2844,7 @@ class remarks(Page):
 class grazie(Page):
     @staticmethod
     def is_displayed(player: Player):
-        return
-
-
-
+        return player.round_number == 1
 
 
 class Pred_CE1(Page):
@@ -5108,8 +5097,7 @@ class Test_1(Page):
 class Compenso(Page):
     @staticmethod
     def is_displayed(player: Player):
-        return
-
+        return player.participant.accept == 1
 
 
 page_sequence = [

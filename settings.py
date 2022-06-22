@@ -43,8 +43,8 @@ LANGUAGE_CODE = 'en'
 INSTALLED_APPS = ['otree']
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
-USE_POINTS = True
+REAL_WORLD_CURRENCY_CODE = 'EUR'
+USE_POINTS = False
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
@@ -317,7 +317,7 @@ PARTICIPANT_FIELDS = [
     'num_players',
     'replace_predictions_practice',
     'replace_predictions',
-   'group_pre_A_sum_practice',
+    'group_pre_A_sum_practice',
     'group_pre_B_sum_practice',
     'group_pre_C_sum_practice',
     'group_pre_cont_practice',
@@ -348,9 +348,7 @@ PARTICIPANT_FIELDS = [
    'participant.group_list_pred_B_practice',
    'group_list_pred_C_practice',
    'id_resto',
-
-
-'random_number',
+    'random_number',
     'list_choices_A',
     'list_choices_B',
     'list_choices_C',
