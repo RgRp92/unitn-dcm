@@ -1,0 +1,107 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+td, th,tr{
+   padding: 5px;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<h1>
+Un esempio di scheda di scelta
+</h1>
+
+
+
+
+
+
+  <div style="width:70%; position:relative; left:15%; top:10px">
+
+  <table  align="center"   >
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b>Esempio di scheda di scelta   </b> </th>
+    </tr>
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Equamente  distribuito tra centro citta’ e periferia  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td>  2 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level2_cost }} </td>
+        <td> €{{Constants.level1_cost }}   </td> <td>
+      </td>
+    </tr>
+
+
+</table>
+
+
+  </div>
+
+
+<br>
+<br>
+
+
+</body>
+<p style="display: none;" id="choice">none</p>
+
+
+
+{{ endblock }}

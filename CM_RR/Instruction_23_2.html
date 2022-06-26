@@ -1,0 +1,64 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+<h1>Attenzione!</h1>
+
+<p>
+Ora è il momento di fare le tue scelte circa i diversi progetti di installazione di tetti verdi nel Comune di Trento.
+</p>
+
+
+<br>
+<br>
+
+
+
+
+
+
+</body>
+
+
+
+<script>
+
+    let TARI = document.getElementById('TARI');
+
+function clicked(e)
+{
+            var myText = "The last waste tax you paid was equal to  ";
+            var text = myText.concat(TARI.value.toString());
+            var text2 = text.concat('€, is this correct?');
+    if(!confirm(text2)) {
+        e.preventDefault();
+    }
+}
+
+
+
+
+</script>
+
+
+{{ endblock }}

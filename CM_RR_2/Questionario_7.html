@@ -1,0 +1,143 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+
+}
+
+p, li {
+  font-size: 1.5em;
+}
+span{
+  font-size: 1.2em;
+  display: block;
+
+}
+input{
+width:60px;
+height:30px;
+margin-bottom:10px;
+margin-top:10px;
+}
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<ol start = 13>
+<li>Qual è il tuo anno di nascita? </li>
+
+   <span>  <input onchange="clicked1(event)" name="anni_natto" id="anni_natto"  min="1920" max="2005" step="1" type="number"> </span>
+
+    <br>
+
+<li>Genere  </li>
+  <span onclick="clicked2(event)" style="font-size:1.2em">   {{  form.gender}}</span>
+
+ <br>
+<li>Includendo te stesso, quanti membri vivono nella tua famiglia? </li>
+
+   <span  >   <input onchange="clicked3(event)" name="household_n" id="household_n"
+   min="0" max="20" step="1" type="number"> {{ form.household_n.label}} <br> </span>
+
+ <br>
+
+   <li>	Qual’è il livello di istruzione massimo che hai ottenuto, ad oggi? </li>
+  <span onclick="clicked4(event)">     {{ form.Education}}</span>
+
+
+
+
+
+</ol>
+
+</body>
+
+
+<br>
+
+
+
+<p style="display:none ;"  id="choice1">0</p>
+<p style="display:none ;"  id="choice2">0</p>
+<p style="display:none ;"  id="choice3">0</p>
+<p style="display:none ;"  id="choice4">0</p>
+
+
+<button style="position: relative; left:90%" type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+
+</body>
+
+
+<script>
+   let choice1 = document.getElementById('choice1');
+   let choice2 = document.getElementById('choice2');
+   let choice3 = document.getElementById('choice3');
+   let choice4 = document.getElementById('choice4');
+
+
+   let anni_natto = document.getElementById('anni_natto');
+   let household_n = document.getElementById('household_n');
+
+
+
+   function checkSubmit() {
+
+          if( choice1.innerHTML == "0" ||
+           choice2.innerHTML == "0" ||
+            choice3.innerHTML == "0" ||
+           choice4.innerHTML == "0"  ) {
+           alert("Rispondere a tutte le domande prima di continuare");
+           }
+          else {
+
+            // var text = choice2.innerHTML;
+
+              //if(confirm(text)) {
+                form.submit();
+               //}
+            }
+
+  }
+
+function clicked1(e){
+              choice1.innerHTML ="1"
+              if (anni_natto.value <1929 || anni_natto.value>2004) {
+              alert("inserire un anno di nascita valido (maggiore di 1920 e meno di 2005")
+               anni_natto.style.backgroundColor ="rgba(221,0,0,0.3)";
+               } else {
+
+               anni_natto.style.backgroundColor ="white";
+               }
+
+}
+function clicked2(e){
+               choice2.innerHTML ="1";
+}
+
+function clicked3(e){
+                if (household_n.value <0 || household_n.value>20 || String(household_n.value)== ""  ) {
+              alert("inserire un numero valido (maggiore o uguale a  di 0 e meno di 20")
+               household_n.style.backgroundColor ="rgba(221,0,0,0.3)";
+                choice3.innerHTML ="0"
+               } else {
+                choice3.innerHTML ="1"
+               household_n.style.backgroundColor ="white";
+               }
+}
+
+function clicked4(e){
+               choice4.innerHTML ="1";
+}
+
+
+
+
+
+</script>
+{{ endblock }}

@@ -1,0 +1,139 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+
+}
+
+p, li {
+  font-size: 1.5em;
+}
+span{
+  font-size: 1.2em;
+}
+
+
+</style>
+
+
+<p style=" font-size: 1.4em">
+
+    Gentilmente compili i seguenti campi per raccogliere i dati anagrafici e di contatto al fine di essere
+ricontatto per verifcare l'eventuale disponibilità a partecipare a progetti di ricerca futuri</p>
+<ol>
+<li> Nome </li>
+
+
+  <input onchange="clicked1(event)" name='nome' id="nome" >
+
+<br>
+<br>
+<li>	Cognome  </li>
+  <input onchange="clicked2(event)" name='cognome' id="cognome" >
+
+<br>
+<br>
+
+<li>	Email : </li>
+
+ <input onchange="clicked3(event)" name='email' id="email" >
+<br>
+    <br>
+<li>	Numero di cellulare : </li>
+
+ <input onchange="clicked4(event)" name='numero_di_cellulare' id="numero_di_cellulare" >
+<br>
+    <br>
+
+<li>	Anno di  nascita: </li>
+
+   <span onclick="clicked5(event)">  {{ form.anno_di_nascita }}</span>
+<br>
+
+<br>
+<p style=" font-size: 1.4em">
+Il consenso potrà essere revocato in qualsiasi momento e senza formalità, mandando una e-
+mail all’indirizzo simone.cerroni@unitn.it
+Le modalità per la revoca del consenso saranno ripetute in calce ad ogni comunicazione che
+riceverà.
+</p>
+<br>
+<button type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+</ol>
+
+
+<p  style="display: none;" id="choice1">0</p>
+<p style="display: none;"  id="choice2">0</p>
+<p style="display: none;" id="choice3">0</p>
+<p style="display: none;" id="choice4">0</p>
+<p style="display: none;" id="choice5">0</p>
+
+
+</body>
+
+
+<script>
+
+
+    let choice1 = document.getElementById('choice1');
+   let choice2 = document.getElementById('choice2');
+   let choice3 = document.getElementById('choice3');
+   let choice4 = document.getElementById('choice4');
+   let choice5 = document.getElementById('choice5');
+
+
+
+
+   function checkSubmit() {
+       if( choice1.innerHTML == "0" ||
+                                   choice2.innerHTML == "0" ||
+                                   choice3.innerHTML == "0" ||
+                                   choice4.innerHTML == "0" ||
+                                   choice5.innerHTML == "0" ) {
+                                    if(confirm("Per favore rispondi a tutte le domande")) {
+                                    form.submit();
+                                        }
+                          } else {
+                                     form.submit();
+                                       }
+
+  }
+
+
+
+function clicked1(e){
+              choice1.innerHTML ="1";
+}
+
+function clicked2(e){
+               choice2.innerHTML ="1";
+}
+
+function clicked3(e){
+               choice3.innerHTML ="1";
+
+}
+
+function clicked4(e){
+              choice4.innerHTML ="1";
+
+}
+
+function clicked5(e){
+               choice5.innerHTML ="1";
+}
+
+
+
+
+</script>
+{{ endblock }}
+
+
+
+
+
+
+

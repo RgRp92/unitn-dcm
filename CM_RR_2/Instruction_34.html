@@ -1,0 +1,334 @@
+{{ block content }}
+<style>
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+
+td, th,tr{
+   padding: 5px;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+}
+
+td{
+text-align:center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+input[type=radio]{
+    opacity:1;
+    outline: 2px solid black;
+}
+</style>
+
+
+<body style=" margin:0px; position:relative; bottom:50px;" >
+
+
+
+<h1>Attenzione</h1>
+
+<p>
+    Ci si aspetta che coloro che hanno scelto la tua  <b> stessa alternativa </b> nella sezione delle <b> PREFERENZE </b>,
+    forniscano le <b>stesse previsioni</b> nella sezioni delle <b>previsioni</b></p>
+
+<p>
+Pertanto, il tuo compenso monetario aggiuntivo non dovrebbe variare nel caso le tue predizioni fossero sostituite o meno</p>
+<div class="row" >
+ <div class="column" >
+
+  <table  align="center"   >
+
+       <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> LE TUE PREVISIONI  </b> </th>
+    </tr>
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Scheda di scelta  4  </b> </th>
+    </tr>
+
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Priorità nel Centro città  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level3_cost }} </td>
+        <td> €{{Constants.level2_cost }}   </td> <td>
+      </td>
+    </tr>
+
+    <tr style="background-color: #F0E68C">
+
+
+
+        <th scope="row"> Io scelgo </th> <td style="text-align:center"> <input type="radio" id="A" checked="checked"   style= "width: 1.2em;
+    height: 1.2em; border: 1px solid "/>
+  </td> <td style="text-align:center"> <input type="radio" id="B"  disabled  style= "width: 1.2em;
+    height: 1.2em; border: 1px solid " /> </td> <td style="text-align:center"> <input type="radio" id="C"   disabled style= "width: 1.2em;
+    height: 1.2em;" /> </td>
+       </tr>
+
+</table>
+
+  </div>
+ <div class="column" >
+
+  <table  align="center"   >
+
+       <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> PREVISIONI ID 2  </b> </th>
+    </tr>
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Scheda di scelta  4  </b> </th>
+    </tr>
+
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Priorità nel Centro città  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level3_cost }} </td>
+        <td> €{{Constants.level2_cost }}   </td> <td>
+      </td>
+    </tr>
+
+       <tr style="background-color: #F0E68C">
+    <th scope="row"> Io prevedo </th>
+
+                 <td >  (4 su 5 partecipanti)</td>
+
+                 <td >  (1 su 5 partecipanti)</td>
+
+                 <td >  (0 su 5 partecipanti)</td>
+</tr>
+
+</table>
+     <br>
+  <table  align="center"   >
+
+       <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> PREVISIONI ID 3  </b> </th>
+    </tr>
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Scheda di scelta  4  </b> </th>
+    </tr>
+
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Priorità nel Centro città  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level3_cost }} </td>
+        <td> €{{Constants.level2_cost }}   </td> <td>
+      </td>
+    </tr>
+
+        <tr style="background-color: #F0E68C">
+    <th scope="row"> Io prevedo </th>
+
+                 <td >  (4 su 5 partecipanti)</td>
+
+                 <td >  (1 su 5 partecipanti)</td>
+
+                 <td >  (0 su 5 partecipanti)</td>
+</tr>
+
+</table>
+          <br>
+
+  <table  align="center"   >
+
+       <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> PREVISIONI ID 4 </b> </th>
+    </tr>
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Scheda di scelta  4  </b> </th>
+    </tr>
+
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Priorità nel Centro città  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level3_cost }} </td>
+        <td> €{{Constants.level2_cost }}   </td> <td>
+      </td>
+    </tr>
+
+        <tr style="background-color: #F0E68C">
+    <th scope="row"> Io prevedo </th>
+
+                 <td >  (4 su 5 partecipanti)</td>
+
+                 <td >  (1 su 5 partecipanti)</td>
+
+                 <td >  (0 su 5 partecipanti)</td>
+</tr>
+
+</table>
+          <br>
+
+  <table  align="center"   >
+
+       <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> PREVISIONI ID 6 </b> </th>
+    </tr>
+
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Scheda di scelta  4  </b> </th>
+    </tr>
+
+
+      <tr>
+
+    <th scope="row" style="width:20%" >Caratteristiche</th> <th scope="col" style="width:20% ;text-align:center"  >Progetto A</th>
+          <th scope="col" style="width:20%;text-align:center" >Progetto B </th>
+           <th scope="col" style="width:20%;text-align:center" >Nessun progetto</th>
+    </tr>
+
+    <tr>
+          <th scope="row"> Distribuzione geografica   </th> <td> Priorità nel Centro città  </td>
+        <td> Priorità nel Centro città</td> <td>  </td>
+    </tr>
+          <tr>
+          <th scope="row"> Frequenza manutenzione  </th> <td> 6 visite all'anno  </td>
+        <td> 4 visite all'anno </td> <td>  </td>
+    </tr>
+      <tr>
+          <th scope="row"> Tasso di assorbimento   </th> <td> 50%  </td>
+        <td> 25% </td> <td>  </td>
+    </tr>
+
+      <tr>
+          <th scope="row"> Incremento imposta TARI </th> <td>  €{{Constants.level3_cost }} </td>
+        <td> €{{Constants.level2_cost }}   </td> <td>
+      </td>
+    </tr>
+
+        <tr style="background-color: #F0E68C">
+    <th scope="row"> Io prevedo </th>
+
+                 <td >  (4 su 5 partecipanti)</td>
+
+                 <td >  (1 su 5 partecipanti)</td>
+
+                 <td >  (0 su 5 partecipanti)</td>
+</tr>
+
+</table>
+
+  </div>
+
+
+</div>
+
+
+
+</body>
+
+
+
+
+
+{{ endblock }}
