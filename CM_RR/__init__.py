@@ -4130,7 +4130,7 @@ class your_prediction_replaced(Page):
                 random_prediction_C = player.participant.num_players - 1 - random_prediction_A - random_prediction_B
 
                 if player.participant.group_elec == 1:
-                    player.participant.list_choices_A_ = "A"
+                    player.participant.list_choices_A= "A"
                     lenb = len(player.participant.list_choices_B.split())
                     lenc = len(player.participant.list_choices_C.split())
                     if lenb > lenc:
@@ -4141,7 +4141,7 @@ class your_prediction_replaced(Page):
                             "C", "", 1)
 
                 if player.participant.group_elec == 2:
-                    player.participant.list_choices_B_ = "B"
+                    player.participant.list_choices_B= "B"
                     lena = len(player.participant.list_choices_A.split())
                     lenc = len(player.participant.list_choices_C.split())
                     if lena > lenc:
@@ -4653,6 +4653,12 @@ class your_payoff_replaced(Page):
                         AverageC=AverageC, num_participants=player.participant.num_players - 1,
                     payoff_a=payoff_a,payoff_b=payoff_b,payoff_c=payoff_c, random_choice=player.participant.random_choice)
 
+class Test_0(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.participant.accept == 1
+
+
 class Test_1(Page):
 
 
@@ -4786,61 +4792,9 @@ class Fase_previsioni_a(Page):
 
 
 page_sequence = [
-    Introduction,
-    Instruction_1,
-    Instruction_2,
-    Consent_1,
+
     Consent_2,
-    Consent_3,
-    Consent_4,
-    Instruction_3,
-    Instruction_4,
-    Instruction_5,
-    Instruction_6,
-    Instruction_7,
-    Instruction_8,
-    Instruction_9,
-    Instruction_10,
-    Instruction_11,
-    Instruction_12_1,
-    #Instruction_12_2,
-    Instruction_13,
-    Instruction_14,
-    Instruction_15,
-    Instruction_16,
-    Instruction_17,
-    Instruction_19,
-    Instruction_20,
-    Instruction_22,
-    Instruction_23_practice_CE,
-    Instruction_24,
-    Instruction_25_2,
-    Instruction_26_practice_PRED,
-    Instruction_27,
-    Instruction_27_2,
-    Instruction_28,
-    Instruction_29,
-    Instruction_30,
-    Instruction_31,
-    Instruction_32,
-    Instruction_32_2,
-    Instruction_34,
-    Instruction_34_2,
-    Instruction_34_3,
-    Instruction_34_4,
-    Instruction_33_2,
-    Instruction_35,
-    Instruction_36,
-    Instruction_37,
-    Instruction_38,
-    Instruction_38_1,
-    Instruction_39,
-    Instruction_39_2,
-    Instruction_40,
-    Instruction_41,
-    Instruction_42,
-    Instruction_43,
-    Instruction_44,
+
     Instruction_40_2,
     Practice_CE,
     Practice_Pred_CE,
@@ -4851,6 +4805,7 @@ page_sequence = [
     Practice_results_binding_alternative_payoff,
     Practice_payoff_not_replaced,
     Practice_payoff_replaced,
+    Test_0,
     Test_1,
     Instruction_23_2_a,
     Instruction_23_2,
