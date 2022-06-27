@@ -4863,7 +4863,6 @@ page_sequence = [
     CE7,
     CE8,
     CE9,
-    Fase_previsioni,
     Fase_previsioni_a,
     Pred_CE1,
     Pred_CE2,
