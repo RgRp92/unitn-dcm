@@ -4130,7 +4130,7 @@ class your_prediction_replaced(Page):
                 random_prediction_C = player.participant.num_players - 1 - random_prediction_A - random_prediction_B
 
                 if player.participant.group_elec == 1:
-                    player.participant.list_choices_A_ = "A"
+                    player.participant.list_choices_A= "A"
                     lenb = len(player.participant.list_choices_B.split())
                     lenc = len(player.participant.list_choices_C.split())
                     if lenb > lenc:
@@ -4141,7 +4141,7 @@ class your_prediction_replaced(Page):
                             "C", "", 1)
 
                 if player.participant.group_elec == 2:
-                    player.participant.list_choices_B_ = "B"
+                    player.participant.list_choices_B= "B"
                     lena = len(player.participant.list_choices_A.split())
                     lenc = len(player.participant.list_choices_C.split())
                     if lena > lenc:
