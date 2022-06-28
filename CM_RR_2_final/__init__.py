@@ -335,23 +335,23 @@ class Player(BasePlayer):
     Test_2 = models.CharField(
         choices=[[0, "Vero"], [1, "Falso"], [2, "Non ricordo"]],
         widget=widgets.RadioSelectHorizontal,
-        label="Nelle istruzioni appena fornite, vi informiamo che i partecipanti che compiono le stesse scelte nella parte 1, "
+        label="Nelle istruzioni appena fornite, vi informiamo che i partecipanti che scelgono la stessa alternativa nella parte 1, "
               "forniscono delle previsioni molto simili nella parte 2?"
     )
+
     Test_3 = models.CharField(
-        choices=[[0, "Per niente credibile"], [1, "Poco credibile"],[2,"Non saprei"],
-                 [3,"Abbastanza credibile"],[4,"Molto credibile"]],
-        widget=widgets.RadioSelectHorizontal,
-        label="Quanto crede sia credibile la suguente affermazione: I partecipanti che compiono le "
-              "stesse scelte nella parte 1, forniscono delle previsioni molto simili nella parte 2.",
-    )
-    Test_4 = models.CharField(
         choices=[[0, "Vero"], [1, "Falso"], [2, "Non saprei"]],
         widget=widgets.RadioSelectHorizontal,
         label="Se esprimo le mie scelte sinceramente e facendo molta attenzione nella parte 1, il compenso monetario "
               "aggiuntivo che posso ottenere nella parte 2 dipende solo dalle mie previsioni?",
     )
-
+    Test_4 = models.CharField(
+        choices=[[0, "Per niente credibile"], [1, "Poco credibile"], [2, "Non saprei"],
+                 [3, "Abbastanza credibile"], [4, "Molto credibile"]],
+        widget=widgets.RadioSelectHorizontal,
+        label="Quanto pensi sia credibile la suguente affermazione? I partecipanti che scelgono la "
+              "stessa alternativa nella parte 1, forniscono delle previsioni molto simili nella parte 2.",
+    )
     ##Questionnario
     #Behavioural question
     Member_env_group = models.IntegerField(
@@ -4736,7 +4736,7 @@ class Fase_previsioni_a(Page):
     def is_displayed(player: Player):
         return player.participant.accept == 1
 
-class Go_to_Zoom(Page):
+class Go_to_zoom(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept == 1
@@ -4754,7 +4754,7 @@ page_sequence = [
     Consent_2,
     Consent_3,
     Consent_4,
-    Go_to_Zoom,
+    Go_to_zoom,
     Back_to_Otree,
     Practice_CE,
     Practice_Pred_CE,
