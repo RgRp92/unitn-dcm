@@ -1,0 +1,158 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p, li {
+  font-size: 1.5em;
+}
+
+
+td, th,tr{
+   padding: 5px;
+   margin: 0;
+    height: 30px;
+  border-bottom: 1px solid ;
+   border-right: 1px solid ;
+   border-top: 1px solid ;
+   border-left: 1px solid ;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<ol start="11">
+
+<li>Con quale probabilità problematiche simili a quelle in foto potrebbero verificarsi a Trento nel prossimo decennio?
+   </li>
+    <br>
+
+    <img src= "{{static 'runoff_1.jpeg' }}" style="width:30%;  position:relative; left:100px; top: 8px;"/>
+<img src= "{{static 'runoff_2.jpg' }}" style="width:30%;  position:relative;  left:120px;   top: 8px;" />
+  <br>
+    <br>
+    <br>
+  <table  style="width:80%" >
+
+      <tr style="background-color: #ADDFFF" >
+          <th style="width:20%;text-align:center">  Molto bassa	  </th>
+          <th style="width:20%;text-align:center">  Bassa  </th>
+           <th style="width:20%;;text-align:center">  Media  </th>
+          <th style="width:20%;;text-align:center"> Alta   </th>
+          <th style="width:20%;;text-align:center"> Molto alta   </th>
+
+    </tr>
+
+    <tr >
+        {{ for lik_mild_flood in form.lik_mild_flood}}
+                 <th onclick="clicked1(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ lik_mild_flood }} {{ lik_mild_flood.label }}</th>
+      {{ endfor }}
+
+ </tr>
+</table>
+
+
+
+   <br>
+   <br>
+   <br>
+   <br>
+
+   <li>Quanto sei d'accordo con la seguente affermazione? <br>
+<span align="center">"Il cambiamento climatico è un problema serio e dovrebbero essere fatti notevoli investimenti finanziari per adattarsi ai cambiamenti climatici"
+</span>
+   </li>
+
+  <br>
+  <table  style="width:80%" >
+
+      <tr style="background-color: #ADDFFF" >
+           <th style="width:20%;text-align:center">  Per niente d'accordo </th>
+          <th style="width:20%;text-align:center"> Non d'accordo </th>
+           <th style="width:20%;;text-align:center">   Non saprei </th>
+          <th style="width:20%;;text-align:center">  D'accordo  </th>
+          <th style="width:20%;;text-align:center"> Molto d'accordo   </th>
+
+    </tr>
+
+    <tr >
+        {{ for serious_problem in form.serious_problem}}
+                 <th onclick="clicked2(event)" style="text-align:center;background-color: #C6DEFF">
+                     {{ serious_problem }} {{ serious_problem.label }}</th>
+      {{ endfor }}
+
+ </tr>
+</table>
+
+
+
+</ol>
+
+</body>
+
+   <br>
+   <br>   <br>
+   <br>
+<button style="position: relative; left:90%" type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+<p style="display: none;" id="choice1">0</p>
+<p style="display: none;" id="choice2">0</p>
+
+
+<br>
+<br>
+<br><br><br><br><br><br>
+
+
+
+</body>
+
+
+<script>
+   let choice1 = document.getElementById('choice1');
+   let choice2 = document.getElementById('choice2');
+
+
+   function checkSubmit() {
+
+            if( choice1.innerHTML == "0" ||
+
+                choice2.innerHTML == "0" ) {
+                alert("Rispondere a tutte le domande prima di continuare");
+              }
+              else {
+                form.submit();
+              }
+
+  }
+
+function clicked1(e){
+              choice1.innerHTML ="1"
+
+}
+function clicked2(e){
+               choice2.innerHTML ="1"
+}
+
+
+
+
+
+
+
+</script>
+{{ endblock }}

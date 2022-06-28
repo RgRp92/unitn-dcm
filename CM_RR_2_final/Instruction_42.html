@@ -1,0 +1,118 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+   margin-left: auto;
+  margin-right: auto;
+
+}
+
+p {
+  font-size: 1.5em;
+
+}
+li {
+  font-size: 1.5em;
+
+}
+td{
+text-align:center;
+}
+td, th, tr{
+   padding: 5px;
+   margin: 0;
+
+  border-bottom: 1px solid #ddd;
+   border-right: 1px solid #ddd;
+}
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+
+<h1>Ad esempio </h1>
+<div  style=" position:relative;right:0px; top:10px, width:100%">
+
+<table  class="table"  style="width:50%; position:absolute;left:510px; height: 70px;" >
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Le tue previsioni nella scheda di scelta 4</b> </th>
+    </tr>
+      <tr>
+
+    <th scope="row">Participante</th> <th scope="col">Progetto A</th>  <th scope="col"> Progetto B </th>
+           <th scope="col"> Nessun progetto</th>
+    </tr>
+
+
+
+    <tr>
+          <th scope="row">  ID 1 </th> <td> 9   </td>
+        <td> 1 </td> <td>0 </td>
+
+
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+    <table  class="table"  style="width:50%; position:absolute;left:510px; height: 70px;" >
+    <tr>
+        <th colspan="4" style="background-color: #A3CEDC;text-align: center" > <b> Previsioni nella scheda di scelta 4</b> </th>
+    </tr>
+      <tr>
+
+    <th scope="row">Participante</th> <th scope="col" width="23%">Progetto A</th>  <th scope="col"> Progetto B </th>
+           <th scope="col"> Nessun progetto</th>
+    </tr>
+
+
+
+     <tr>
+          <th scope="row">  ID 5  </th> <td> 2   </td>
+        <td> 2 </td> <td>1 </td>
+
+    </tr>
+<tr>
+          <th scope="row">  ID 10 </th> <td> 2   </td>
+        <td> 8 </td> <td> 0 </td>
+
+    <tr style="background-color: #F0E68C">
+
+    <th scope="row">Media</th> <td style="text-align: center; vertical-align: middle;">   2
+           </td>
+        <td >  8 </td> <td >  1 </td>
+       </tr>
+
+</table>
+
+    <br>
+    <div style=" position:absolute;  width:45%; position:absolute;right:510px; height: 70px; top:50px">
+      <p > Supponiamo che <b>   altri 2 partecipanti</b> hanno
+          scelto l'alternativa Progetto B
+      </p>
+         <p>
+        Invece di usare le tue previsioni,
+     usiamo la media delle previsioni dei partecipanti
+              </b>
+          <span>  <b> ID 5, ID 10 </b></span>
+                per determinare il tuo compenso monetario aggiuntivo</p>
+
+        </div>
+
+     <img src= "{{static 'arrow_right.jpg' }}" style="width:8%; position:absolute; left:420px; top:150px " />
+
+ </div>
+
+</body>
+
+
+
+<br><br><br><br><br><br><br><br><br>
+
+{{ endblock }}

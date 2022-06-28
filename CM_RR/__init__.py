@@ -1355,12 +1355,17 @@ class Practice_Pred_CE(Page):
                     costs2=cost_2, num_participants =player.participant.num_players - 1)
 
 class Wait_practice_test(WaitPage):
+    title_text = "Ti chiediamo gentilmente di attendere"
+    body_text = "Attendi che tutti i partecipanti abbiano completato la Fase 1"
+    after_all_players_arrive = final_cal
     after_all_players_arrive = final_cal_practice
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept ==1
 
 class Wait_final(WaitPage):
+    title_text = "Ti chiediamo gentilmente di attendere"
+    body_text = "Attendi che tutti i partecipanti abbiano completato la Fase 1"
     after_all_players_arrive = final_cal
     @staticmethod
     def is_displayed(player: Player):
@@ -1806,11 +1811,7 @@ class Instruction_24(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept ==1
-    @staticmethod
-    def vars_for_template(player):
-        max_income = Constants.quadratic_score_A + Constants.quadratic_score_B
-        min_income = Constants.quadratic_score_A - Constants.quadratic_score_B
-        return dict(max_income=max_income, min_income=min_income)
+
 
 class Instruction_25_1(Page):
 
@@ -1823,11 +1824,6 @@ class Instruction_25_2(Page):
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept ==1
-    @staticmethod
-    def vars_for_template(player):
-        max_income = Constants.quadratic_score_A + Constants.quadratic_score_B
-        min_income = Constants.quadratic_score_A - Constants.quadratic_score_B
-        return dict(max_income=max_income, min_income=min_income, num_participants = player.participant.num_players-1)
 
 class Instruction_26_practice_PRED(Page):
     @staticmethod
@@ -1840,38 +1836,9 @@ class Instruction_27(Page):
         return  player.participant.accept ==1
 
 class Instruction_27_2(Page):
-    form_model = 'player'
-    form_fields = ['CE_pract_pred_A','CE_pract_pred_B','CE_pract_pred_C']
     @staticmethod
     def is_displayed(player: Player):
         return player.participant.accept ==1
-
-    @staticmethod
-    def vars_for_template(player):
-        max_income = Constants.quadratic_score_A + Constants.quadratic_score_B
-        min_income = Constants.quadratic_score_A - Constants.quadratic_score_B
-        return dict(max_income=max_income, min_income=min_income, num_participants=player.participant.num_players - 1)
-
-    @staticmethod
-    def live_method(player: Player, data):
-        if data['clicked_button'] == 1:
-            a= float(data['fieldA'])/(player.participant.num_players - 1)
-            b = float(data['fieldB'])/(player.participant.num_players - 1)
-            c = float(data['fieldC'])/(player.participant.num_players - 1)
-            factor1 = a*a + b*b + c*c
-            payoff_a =  round(Constants.quadratic_score_A + Constants.quadratic_score_B*(2*a - factor1),1)
-            payoff_b =  round(Constants.quadratic_score_A + Constants.quadratic_score_B*(2*b - factor1),1)
-            payoff_c =  round(Constants.quadratic_score_A + Constants.quadratic_score_B*(2*c - factor1),1)
-            response = dict(payoff_a=payoff_a, payoff_b=payoff_b, payoff_c=payoff_c)
-            player.participant.payoff_practice_A = payoff_a
-            player.participant.payoff_practice_B = payoff_b
-            player.participant.payoff_practice_C = payoff_c
-            return{player.id_in_group: response }
-
-#Passing data from Python to JavaScript (js_vars)
-    @staticmethod
-    def js_vars(player):
-        return dict(number_players = player.participant.num_players,tempA=0,tempB=0,tempC=0)
 
 class Instruction_28(Page):
     @staticmethod
@@ -1969,6 +1936,10 @@ class Instruction_38(Page):
     def is_displayed(player: Player):
         return  player.participant.accept ==1
 class Instruction_38_1(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return  player.participant.accept ==1
+class Instruction_38_2(Page):
     @staticmethod
     def is_displayed(player: Player):
         return  player.participant.accept ==1
@@ -4781,6 +4752,9 @@ class Compenso(Page):
     def is_displayed(player: Player):
         return player.participant.accept == 1
 
+    def vars_for_template(player: Player):
+        return dict(payoff = player.payoff + 15)
+
 class Fase_previsioni(Page):
     @staticmethod
     def is_displayed(player: Player):
@@ -4790,6 +4764,15 @@ class Fase_previsioni_a(Page):
     def is_displayed(player: Player):
         return player.participant.accept == 1
 
+class Go_to_Zoom(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.participant.accept == 1
+
+class Back_to_Otree(Page):
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.participant.accept == 1
 
 page_sequence = [
     Introduction,
@@ -4799,6 +4782,7 @@ page_sequence = [
     Consent_2,
     Consent_3,
     Consent_4,
+    Go_to_Zoom,
     Instruction_3,
     Instruction_4,
     Instruction_5,
@@ -4820,6 +4804,7 @@ page_sequence = [
     Instruction_22,
     Instruction_23_practice_CE,
     Instruction_24,
+    Instruction_25_1,
     Instruction_25_2,
     Instruction_26_practice_PRED,
     Instruction_27,
@@ -4830,24 +4815,22 @@ page_sequence = [
     Instruction_31,
     Instruction_32,
     Instruction_32_2,
-    Instruction_34,
-    Instruction_34_2,
-    Instruction_34_3,
-    Instruction_34_4,
     Instruction_33_2,
     Instruction_35,
     Instruction_36,
     Instruction_37,
-    Instruction_38,
     Instruction_38_1,
+    Instruction_38,
     Instruction_39,
+    Instruction_34,
     Instruction_39_2,
     Instruction_40,
     Instruction_41,
+    Instruction_38_2,
     Instruction_42,
     Instruction_43,
     Instruction_44,
-    Instruction_40_2,
+    Back_to_Otree,
     Practice_CE,
     Practice_Pred_CE,
     Wait_practice_test,
@@ -4859,8 +4842,8 @@ page_sequence = [
     Practice_payoff_replaced,
     Test_0,
     Test_1,
-    Instruction_23_2_a,
     Instruction_23_2,
+    Instruction_23_2_a,
     CE1,
     CE2,
     CE3,

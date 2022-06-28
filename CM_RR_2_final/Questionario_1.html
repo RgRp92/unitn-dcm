@@ -1,0 +1,287 @@
+{{ block content }}
+<style>
+
+h1 {
+  font-size: 3em;
+
+}
+
+p, li {
+  font-size: 1.5em;
+}
+span{
+  font-size: 1.2em;
+}
+
+
+</style>
+
+
+<body style=" margin:0px;position:relative; bottom:50px">
+
+
+<h1 style="width:100%;">Questionario finale </h1 >
+<ol>
+<li>	Sei membro di un'associazione ambientalista (come WWF, Greenpeace)? </li>
+
+
+   <span onclick="clicked1(event)">    {{  form.Member_env_group}}</span>
+
+<br>
+<li>	Con quale frequenza visiti le aree verdi urbane (come parchi, foreste urbane, zone umide, ecc.)? </li>
+  <span onclick="clicked2(event)">     {{  form.green_areas_frequency}}</span>
+
+<br>
+<li>	Quante volte svolgi attività ricreative all'aperto come escursioni, ciclismo, arrampicata, birdwatching, ecc.? </li>
+
+   <span onclick="clicked3(event)">  {{ form.recreational_outdoor }}</span>
+
+
+
+<br>
+<li>	Tu o i tuoi familiari possedete una casa di proprietà? </li>
+  <span onclick="clicked4(event)">  {{ form.Own_house}} <br> </span>
+
+
+
+   <li value="5" id="Own_house_green_roof" style="display:none">
+       	Hai un tetto verde sulla tua casa? </li>
+
+    <span  id="Own_house_green_roof2" onclick="clicked5(event)" style="display:none">
+        {{  form.Own_house_green_roof  }}   <br> </span>
+
+ <li id="Consider_install_green_roof" style="display:none">
+   	Prenderesti in considerazione l'installazione di un tetto verde sulla casa di tua proprietà ?
+     </li>
+
+      <span id="Consider_install_green_roof2" onclick="clicked6(event)" style="display:none">
+    {{  form.Consider_install_green_roof}}  </span>
+<br>
+
+<li id="vivi_affito2" >
+   	La casa dove vivi abitualmente è in affitto?
+     </li>
+    <span  id=vivi_affito onclick="clicked8(event)" >
+        {{  form.vivi_affito  }}   <br> </span>
+
+    <li id="Consider_rent_green_roof" style="display:none">
+   	Pagheresti un affitto più alto per un tetto verde sulla casa dove vivi?
+     </li>
+
+     <span id="Consider_rent_green_roof2" onclick="clicked7(event)" style="display:none">
+    {{  form.Consider_rent_green_roof}} </span>
+
+    <br>
+
+
+</ol>
+
+</body>
+
+
+<br>
+
+
+
+<p style="display: none;" id="choice1">0</p>
+<p style="display: none;" id="choice2">0</p>
+<p style="display: none;" id="choice3">0</p>
+<p style="display: none;" id="choice4">0</p>
+
+<p style="display: none;" id="choice5">0</p>
+<p style="display: none;" id="choice6">0</p>
+<p style="display: none;" id="choice7">0</p>
+<p style="display: none;" id="choice8">0</p>
+
+
+<button style="position: relative; left:90%" type="button" class="btn btn-primary" onclick="checkSubmit()">Avanti</button>
+
+
+</body>
+
+
+<script>
+   let choice1 = document.getElementById('choice1');
+   let choice2 = document.getElementById('choice2');
+   let choice3 = document.getElementById('choice3');
+   let choice4 = document.getElementById('choice4');
+   let choice8 = document.getElementById('choice8');
+
+   let Own_house_green_roof = document.getElementById('Own_house_green_roof');
+   let  Own_house_green_roof2 = document.getElementById('Own_house_green_roof2');
+   let choice5 = document.getElementById('choice5');
+
+   let Consider_install_green_roof = document.getElementById('Consider_install_green_roof');
+   let  Consider_install_green_roof2 = document.getElementById('Consider_install_green_roof2');
+   let choice6 = document.getElementById('choice6');
+
+    let Consider_rent_green_roof = document.getElementById('Consider_rent_green_roof');
+    let  Consider_rent_green_roof2 = document.getElementById('Consider_rent_green_roof2');
+    let choice7 = document.getElementById('choice7');
+
+
+
+   function checkSubmit() {
+              if ( formInputs.Own_house.value == 1  &&  formInputs.vivi_affito.value == 1){
+                                   if( choice1.innerHTML == "0" ||
+                                   choice2.innerHTML == "0" ||
+                                   choice3.innerHTML == "0" ||
+                                   choice4.innerHTML == "0" ||
+                                    choice8.innerHTML == "0"  ) {
+                                     alert("Rispondere a tutte le domande prima di continuare");
+                                      }  else {
+                                    form.submit();
+                                     }
+              } else{
+                           if (formInputs.Own_house.value == 1 &&  formInputs.vivi_affito.value == 0 ){
+                                   if( choice1.innerHTML == "0" ||
+                                    choice2.innerHTML == "0" ||
+                                     choice3.innerHTML == "0" ||
+                                     choice4.innerHTML == "0" ||
+                                    choice8.innerHTML == "0" ||
+                                   choice7.innerHTML == "0") {
+                                   alert("Rispondere a tutte le domande prima di continuare");
+                                    }  else {
+                                     form.submit();
+                                      }
+                            } else{
+                                     if ( formInputs.Own_house.value == 0 &&  formInputs.vivi_affito.value == 1  && formInputs.Own_house_green_roof.value==0  ){
+
+                                          if( choice1.innerHTML == "0" ||
+                                            choice2.innerHTML == "0" ||
+                                           choice3.innerHTML == "0" ||
+                                            choice4.innerHTML == "0" ||
+                                           choice5.innerHTML == "0" ||
+                                           choice8.innerHTML == "0" ) {
+                                            alert("Rispondere a tutte le domande prima di continuare");
+                                           }
+                                          else {
+                                          form.submit();
+                                             }
+
+                                     } else{
+                                                if ( formInputs.Own_house.value == 0 &&  formInputs.vivi_affito.value == 1  && formInputs.Own_house_green_roof.value==1  ){
+
+                                                       if( choice1.innerHTML == "0" ||
+                                                       choice2.innerHTML == "0" ||
+                                                       choice3.innerHTML == "0" ||
+                                                       choice4.innerHTML == "0" ||
+                                                       choice5.innerHTML == "0" ||
+                                                       choice6.innerHTML == "0" ||
+                                                       choice8.innerHTML == "0" ) {
+                                                        alert("Rispondere a tutte le domande prima di continuare");
+                                                         }
+                                                      else {
+                                                      form.submit();
+                                                       }
+                                                 } else{
+                                                        if ( formInputs.Own_house.value == 0 &&  formInputs.vivi_affito.value == 0  && formInputs.Own_house_green_roof.value==1  ){
+
+                                                           if( choice1.innerHTML == "0" ||
+                                                              choice2.innerHTML == "0" ||
+                                                            choice3.innerHTML == "0" ||
+                                                            choice4.innerHTML == "0" ||
+                                                            choice5.innerHTML == "0" ||
+                                                            choice6.innerHTML == "0" ||
+                                                           choice7.innerHTML == "0" ||
+                                                          choice8.innerHTML == "0" ) {
+                                                          alert("Rispondere a tutte le domande prima di continuare");
+                                                             }
+                                                         else {
+                                                         form.submit();
+                                                         }
+                                                        }
+                                                     else{
+
+                                               alert("Rispondere a tutte le domande prima di continuare");
+
+                                                     }
+                                             }
+                                     }
+                          }
+             }
+
+  }
+
+function clicked1(e){
+              choice1.innerHTML ="1"
+
+}
+function clicked2(e){
+               choice2.innerHTML ="1"
+}
+function clicked3(e){
+               choice3.innerHTML ="1";
+
+}
+function clicked4(e){
+               choice4.innerHTML ="1";
+
+               if ( formInputs.Own_house.value == 0 ){
+               Own_house_green_roof.style.display = "block";
+               Own_house_green_roof2.style.display = "block";
+
+               Consider_rent_green_roof.style.display = "none";
+               Consider_rent_green_roof2.style.display = "none";
+               Consider_rent_green_roof2.checked= false;
+
+                } else {
+               Own_house_green_roof.style.display = "none";
+               Own_house_green_roof2.style.display = "none";
+
+               Consider_rent_green_roof.style.display = "none";
+               Consider_rent_green_roof2.style.display = "none";
+               Consider_rent_green_roof2.checked= false;
+               }
+
+
+
+}
+
+function clicked5(e){
+               choice5.innerHTML ="1";
+
+                if ( formInputs.Own_house_green_roof.value == 1 ){
+               Consider_install_green_roof.style.display = "block";
+               Consider_install_green_roof2.style.display = "block";
+
+                } else{
+                Consider_install_green_roof.style.display = "none";
+               Consider_install_green_roof2.style.display = "none";
+
+                 }
+
+}
+
+function clicked6(e){
+               choice6.innerHTML ="1";
+}
+
+function clicked7(e){
+
+                choice7.innerHTML ="1";
+
+
+}
+
+function clicked8(e){
+              choice8.innerHTML ="1";
+              if ( formInputs.vivi_affito.value == 0 ){
+               Consider_rent_green_roof.style.display = "block";
+               Consider_rent_green_roof2.style.display = "block";
+
+
+               }  else {
+
+               Consider_rent_green_roof.style.display = "none";
+               Consider_rent_green_roof2.style.display = "none";
+
+
+
+               }
+
+}
+
+
+</script>
+{{ endblock }}

@@ -26,13 +26,13 @@ dict(
         name='Mattina_CM_Treatment_1to9',
         display_name="Mattina_CM_Treatment_1to9",
         num_demo_participants=4,
-        app_sequence=['CM_RR'],
+        app_sequence=['CM_RR_final'],
     ),
 dict(
         name='Pomeriggio_CM_Treatment_9to1',
         display_name="Pomeriggio_CM_Treatment_9to1",
         num_demo_participants=4,
-        app_sequence=['CM_RR_2'],
+        app_sequence=['CM_RR_2_final'],
     ),
 ]
 
