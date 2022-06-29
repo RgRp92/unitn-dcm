@@ -154,11 +154,6 @@ def get_quiz_data():
 
         ),
         dict(
-            name='Test_4',
-            solution=False,
-            explanation="",
-        ),
-        dict(
             name='Test_3',
             solution= True,
             explanation="La risposta corretta è: Vero se esprimi le tue scelte sinceramente e facendo molta attenzione nella parte 1, il "
@@ -332,7 +327,7 @@ class Player(BasePlayer):
         widget=widgets.RadioSelectHorizontal,label="Qual’è la probabilità con cui vengono sostituite le tue "
                                                    "previsioni nella parte 2?",
     )
-    Test_2 = models.CharField(
+    Test_2 = models.StringField(
         choices=[[0, "Vero"], [1, "Falso"], [2, "Non ricordo"]],
         widget=widgets.RadioSelectHorizontal,
         label="Nelle istruzioni appena fornite, vi informiamo che i partecipanti che scelgono la stessa alternativa nella parte 1, "
@@ -1205,8 +1200,7 @@ class questionario_base (Page):
 class Questionario_1 (Page):
     form_model = 'player'
     form_fields = ['Member_env_group',
-                   'green_areas_frequency',
-                   'recreational_outdoor',
+
                    'Own_house',
                    'vivi_affito',
                    'Own_house_green_roof',
@@ -1409,7 +1403,7 @@ class Practice_Pred_CE(Page):
 
 class Wait_practice_test(WaitPage):
     title_text = "Ti chiediamo gentilmente di attendere"
-    body_text = "Attendi che tutti i partecipanti abbiano completato la Fase 1"
+    body_text = "Attendi che tutti i partecipanti abbiano completato la parte 1"
     after_all_players_arrive = final_cal
     after_all_players_arrive = final_cal_practice
     @staticmethod
@@ -1418,7 +1412,7 @@ class Wait_practice_test(WaitPage):
 
 class Wait_final(WaitPage):
     title_text = "Ti chiediamo gentilmente di attendere"
-    body_text = "Attendi che tutti i partecipanti abbiano completato la Fase 1"
+    body_text = "Attendi che tutti i partecipanti abbiano completato la parte 1"
     after_all_players_arrive = final_cal
     @staticmethod
     def is_displayed(player: Player):
@@ -1853,6 +1847,12 @@ class Instruction_23_2(Page):
     def is_displayed(player: Player):
         return  player.participant.accept ==1
 class Instruction_23_2_a(Page):
+
+
+    @staticmethod
+    def is_displayed(player: Player):
+        return  player.participant.accept ==1
+class Instruction_23_2_z(Page):
 
 
     @staticmethod
@@ -4685,7 +4685,7 @@ class Test_0(Page):
 
 class Test_1(Page):
     form_model = 'player'
-    form_fields = ['Test_1', 'Test_2', 'Test_3', 'Test_4']
+    form_fields = ['Test_1', 'Test_2', 'Test_3']
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -4696,9 +4696,17 @@ class Test_1(Page):
     def is_displayed(player: Player):
         return  player.participant.accept == 1
 
+class Test_2(Page):
+    form_model = 'player'
+    form_fields = ['Test_4']
+
+    @staticmethod
+    def is_displayed(player: Player):
+        return  player.participant.accept == 1
+
 class Results(Page):
     form_model = 'player'
-    form_fields = ['Test_1', 'Test_2', 'Test_3', 'Test_4']
+    form_fields = ['Test_1', 'Test_2', 'Test_3']
 
     @staticmethod
     def vars_for_template(player: Player):
@@ -4741,10 +4749,12 @@ class Go_to_zoom(Page):
     def is_displayed(player: Player):
         return player.participant.accept == 1
 
+    timeout_seconds = 450
+
 class Back_to_Otree(Page):
     @staticmethod
-    def is_displayed(player: Player):
-        return player.participant.accept == 1
+    def is_displayed(player:Player):
+            return player.participant.accept == 1
 
 page_sequence = [
     Introduction,
@@ -4790,10 +4800,10 @@ page_sequence = [
     Pred_CE8,
     Pred_CE9,
     Wait_final,
+    Test_2,
     questionario_base,
     Questionario_1,
     Questionario_2,
-    Questionario_3,
     Questionario_4,
     Questionario_5,
     Questionario_6,
