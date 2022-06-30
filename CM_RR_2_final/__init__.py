@@ -4777,7 +4777,6 @@ page_sequence = [
     Practice_payoff_replaced,
     Test_0,
     Test_1,
-    Results,
     Instruction_23_2,
     Instruction_23_2_a,
     CE1,
