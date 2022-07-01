@@ -2803,11 +2803,13 @@ class Pred_CE3(Page):
 
                 cost_1 = (Constants.CS3_cost_A == -1) * str(Constants.level1_cost) + \
                          (Constants.CS3_cost_A == 0) * str(Constants.level2_cost) + \
-                         (Constants.CS3_cost_A == 1) * str(Constants.level3_cost)
+                         (Constants.CS3_cost_A == 1) * str(Constants.level3_cost) + \
+                         (Constants.CS3_cost_A == 2) * str(Constants.level4_cost)
 
                 cost_2 = (Constants.CS3_cost_B == -1) * str(Constants.level1_cost) + \
                          (Constants.CS3_cost_B == 0) * str(Constants.level2_cost) + \
-                         (Constants.CS3_cost_B == 1) * str(Constants.level3_cost)
+                         (Constants.CS3_cost_B == 1) * str(Constants.level3_cost) + \
+                         (Constants.CS3_cost_B == 2) * str(Constants.level4_cost)
 
                 return dict(location_1=location_1,
                         location_2=location_2,
@@ -2885,15 +2887,19 @@ class Pred_CE4(Page):
 
                 maintan_2 = (Constants.CS4_maintan_B == -1) * Constants.Maintenance_level_1 + \
                             (Constants.CS4_maintan_B == 0) * Constants.Maintenance_level_2 + \
-                            (Constants.CS4_maintan_B == 1) * Constants.Maintenance_level_3
+                            (Constants.CS4_maintan_B == 1) * Constants.Maintenance_level_3 + \
+                            (Constants.CS4_maintan_B == 2) * Constants.Maintenance_level_4
 
                 cost_1 = (Constants.CS4_cost_A == -1) * str(Constants.level1_cost) + \
                          (Constants.CS4_cost_A == 0) * str(Constants.level2_cost) + \
-                         (Constants.CS4_cost_A == 1) * str(Constants.level3_cost)
+                         (Constants.CS4_cost_A == 1) * str(Constants.level3_cost) + \
+                         (Constants.CS4_cost_A == 2) * str(Constants.level4_cost)
 
                 cost_2 = (Constants.CS4_cost_B == -1) * str(Constants.level1_cost) + \
                          (Constants.CS4_cost_B == 0) * str(Constants.level2_cost) + \
-                         (Constants.CS4_cost_B == 1) * str(Constants.level3_cost)
+                         (Constants.CS4_cost_B == 1) * str(Constants.level3_cost) + \
+                         (Constants.CS4_cost_B == 2) * str(Constants.level4_cost)
+
                 return dict(location_1=location_1,
                         location_2=location_2,
                         rainab_1=rainab_1,
