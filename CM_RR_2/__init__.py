@@ -4874,7 +4874,6 @@ page_sequence = [
     Pred_CE7,
     Pred_CE8,
     Pred_CE9,
-    Wait_final,
     questionario_base,
     Questionario_1,
     Questionario_2,
