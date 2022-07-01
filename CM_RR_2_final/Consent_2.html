@@ -120,9 +120,9 @@ diverse soluzioni di pianificazione urbana nel comune di Trento”.<br>
 <br>
     {{ for accept in form.accept}}
      {{ if forloop.counter == 1}}
-    <span onclick="clicked1(event)"> {{ accept }} </span> Si, accetto e partecipo all’indagine <br>
+    <span onclick="clicked1(event)"> {{ accept }} </span> Si, confermo di aver letto e compreso l'informativa <br>
      {{ else }}
-     <span onclick="clicked2(event)"> {{ accept }} </span>  No, non accetto e non partecipo all’indagine
+     <span onclick="clicked2(event)"> {{ accept }} </span>  No, non confermo di aver letto e compreso l'informativa
       {{ endif }}
 
     {{ endfor }}

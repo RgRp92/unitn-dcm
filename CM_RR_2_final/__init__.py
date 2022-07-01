@@ -4778,6 +4778,7 @@ page_sequence = [
     Test_0,
     Test_1,
     Instruction_23_2,
+    Instruction_23_2_z,
     Instruction_23_2_a,
     CE1,
     CE2,
