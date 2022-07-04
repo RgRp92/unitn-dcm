@@ -2891,8 +2891,7 @@ class Pred_CE4(Page):
 
                 maintan_2 = (Constants.CS4_maintan_B == -1) * Constants.Maintenance_level_1 + \
                             (Constants.CS4_maintan_B == 0) * Constants.Maintenance_level_2 + \
-                            (Constants.CS4_maintan_B == 1) * Constants.Maintenance_level_3 + \
-                            (Constants.CS4_maintan_B == 2) * Constants.Maintenance_level_4
+                            (Constants.CS4_maintan_B == 1) * Constants.Maintenance_level_3 
 
                 cost_1 = (Constants.CS4_cost_A == -1) * str(Constants.level1_cost) + \
                          (Constants.CS4_cost_A == 0) * str(Constants.level2_cost) + \
