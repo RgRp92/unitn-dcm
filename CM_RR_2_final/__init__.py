@@ -2192,11 +2192,13 @@ class CE3(Page):
 
             cost_1 = (Constants.CS3_cost_A == -1) * str(Constants.level1_cost)   + \
                      (Constants.CS3_cost_A == 0) * str(Constants.level2_cost)  + \
-                     (Constants.CS3_cost_A == 1) * str(Constants.level3_cost)
+                     (Constants.CS3_cost_A == 1) * str(Constants.level3_cost)+ \
+                     (Constants.CS3_cost_A == 2) * str(Constants.level4_cost)
 
             cost_2 = (Constants.CS3_cost_B == -1) * str(Constants.level1_cost) + \
                      (Constants.CS3_cost_B == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS3_cost_B == 1) * str(Constants.level3_cost )
+                     (Constants.CS3_cost_B == 1) * str(Constants.level3_cost ) + \
+                     (Constants.CS3_cost_B == 2) * str(Constants.level4_cost)
 
 
             return dict(location_1=location_1,
@@ -2253,11 +2255,13 @@ class CE4(Page):
 
             cost_1 = (Constants.CS4_cost_A == -1) * str(Constants.level1_cost) + \
                      (Constants.CS4_cost_A == 0) * str(Constants.level2_cost )+ \
-                     (Constants.CS4_cost_A == 1) * str(Constants.level3_cost )
+                     (Constants.CS4_cost_A == 1) * str(Constants.level3_cost ) + \
+                     (Constants.CS4_cost_A == 2) * str(Constants.level4_cost)
 
             cost_2 = (Constants.CS4_cost_B == -1) * str(Constants.level1_cost) + \
                      (Constants.CS4_cost_B == 0) * str(Constants.level2_cost ) + \
-                     (Constants.CS4_cost_B == 1) * str(Constants.level3_cost )
+                     (Constants.CS4_cost_B == 1) * str(Constants.level3_cost ) + \
+                     (Constants.CS4_cost_B == 2) * str(Constants.level4_cost)
 
             return dict(location_1=location_1,
                     location_2=location_2,
