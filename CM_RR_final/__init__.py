@@ -1524,11 +1524,11 @@ class Practice_results_replace_1(Page):
 
 
         else:
-           id_resto = {i: player.participant.id_resto[i] for i in range(0, leng)}
+           id_resto = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
            example_prediction_average_A = {i: player.participant.group_list_pred_A_practice[i] for i in range(0, leng)}
            example_prediction_average_B = {i: player.participant.group_list_pred_B_practice[i] for i in range(0, leng)}
            example_prediction_average_C = {i: player.participant.group_list_pred_C_practice[i] for i in range(0, leng)}
-           listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng)}
+           listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
 
         integersA= [int(i) for i in player.participant.group_list_pred_A_practice]
         integersB = [int(i) for i in player.participant.group_list_pred_B_practice]
@@ -1629,11 +1629,11 @@ class Practice_payoff_replaced(Page):
 
         leng=  len(player.participant.group_list_pred_A_practice)
 
-        id_resto = {i: player.participant.id_resto[i] for i in range(0, leng)}
+        id_resto = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
         example_prediction_average_A = {i: player.participant.group_list_pred_A_practice[i] for i in range(0, leng)}
         example_prediction_average_B = {i: player.participant.group_list_pred_B_practice[i] for i in range(0, leng)}
         example_prediction_average_C = {i: player.participant.group_list_pred_C_practice[i] for i in range(0, leng)}
-        listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng)}
+        listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
 
         integersA= [int(i) for i in player.participant.group_list_pred_A_practice]
         integersB = [int(i) for i in player.participant.group_list_pred_B_practice]
@@ -4202,14 +4202,14 @@ class your_prediction_replaced(Page):
 
 
             else:
-                id_resto = {i: player.participant.id_resto[i] for i in range(0, leng)}
+                id_resto = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
                 example_prediction_average_A = {i: player.participant.group_list_pred_A[i] for i in
                                                 range(0, leng)}
                 example_prediction_average_B = {i: player.participant.group_list_pred_B[i] for i in
                                                 range(0, leng)}
                 example_prediction_average_C = {i: player.participant.group_list_pred_C[i] for i in
                                                 range(0, leng)}
-                listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng)}
+                listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
 
             integersA = [int(i) for i in player.participant.group_list_pred_A]
             integersB = [int(i) for i in player.participant.group_list_pred_B]
@@ -4637,11 +4637,11 @@ class your_payoff_replaced(Page):
 
         leng=  len(player.participant.group_list_pred_A)
 
-        id_resto = {i: player.participant.id_resto[i] for i in range(0, leng)}
+        id_resto = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
         example_prediction_average_A = {i: player.participant.group_list_pred_A[i] for i in range(0, leng)}
         example_prediction_average_B = {i: player.participant.group_list_pred_B[i] for i in range(0, leng)}
         example_prediction_average_C = {i: player.participant.group_list_pred_C[i] for i in range(0, leng)}
-        listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng)}
+        listA_2 = {i: player.participant.id_resto[i] for i in range(0, leng-1)}
 
         integersA= [int(i) for i in player.participant.group_list_pred_A]
         integersB = [int(i) for i in player.participant.group_list_pred_B]
